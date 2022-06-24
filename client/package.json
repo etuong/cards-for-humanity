@@ -1,5 +1,5 @@
 {
-  "name": "hello",
+  "name": "cards-for-humanity",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "node-sass": "^7.0.1",
     "sass-loader": "^13.0.0",
     "vue": "^3.2.13",
+    "vue-bulma-modal": "^2.0.0-alpha.2",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
