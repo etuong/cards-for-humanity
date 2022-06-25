@@ -6,6 +6,7 @@
     class="section-xs"
     @cancel="close"
     @ok="createRoom"
+    okText="OK"
   >
     <form class="columns is-multiline">
       <div class="field column is-6">
@@ -71,11 +72,15 @@ export default defineComponent({
       if (this.name.length < 1) {
         this.errors["name"] = true;
         flag = false;
+      } else {
+        this.errors["name"] = false;
       }
 
       if (this.password.length < 4) {
         this.errors["password"] = true;
         flag = false;
+      } else {
+        this.errors["password"] = false;
       }
 
       if (!flag) {
@@ -84,7 +89,7 @@ export default defineComponent({
 
       // this.$socket.emit("create_room", this.roomdata);
 
-      return true;
+      this.close();
     },
     close() {
       this.$emit("close");

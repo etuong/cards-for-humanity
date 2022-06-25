@@ -14,3 +14,19 @@ $text: #2c3e50;
   primary: $primary;
   light: darken($light, 10%);
 }
+
+html, body {
+  /* IE 10-11 didn't like using min-height */
+  height: 100%;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 15px;
+}

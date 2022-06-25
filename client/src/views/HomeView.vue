@@ -14,8 +14,11 @@
           </p>
         </div>
         <div class="buttons is-centered">
-          <button class="button is-primary is-large" @click="toggleModal">
-            <strong>Create a room</strong>
+          <button class="button is-primary is-medium" @click="toggleModal">
+            <strong>Create a Game</strong>
+          </button>
+          <button class="button is-primary is-medium" @click="toggleModal">
+            <strong>Join a Game</strong>
           </button>
         </div>
       </div>
@@ -23,8 +26,8 @@
         <div class="column is-4 is-6-desktop">
           <img
             class="mx-auto mt-0-widescreen is-block image"
-            alt="Vue logo"
-            src="../assets/logo.png"
+            alt="Heart Card"
+            src="../assets/heart-card.png"
           />
         </div>
         <div class="column is-12 is-6-desktop">
