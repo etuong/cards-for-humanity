@@ -58,7 +58,7 @@ export default defineComponent({
   components: { IconText, RoomCreator },
   data() {
     return {
-      showModal: true,
+      showModal: false,
     };
   },
   methods: {

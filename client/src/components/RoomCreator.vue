@@ -1,6 +1,7 @@
 <template>
   <card-modal
     title="Create a room"
+    :visible="true"
     transition="fade"
     class="section-xs"
     @cancel="close"
@@ -14,7 +15,7 @@
             v-model="name"
             class="input"
             type="text"
-            placeholder="Enter the name.."
+            placeholder="Enter the name of new room.."
             required
           />
         </div>
@@ -30,7 +31,7 @@
             v-model="password"
             class="input"
             type="text"
-            placeholder="Text input"
+            placeholder="Set a password.."
             :disabled="!isPrivate"
           />
         </div>
@@ -42,10 +43,11 @@
   </card-modal>
 </template>
 
-<script lang="ts">
+<script>
+import { defineComponent } from "vue";
 import { CardModal } from "vue-bulma-modal";
 
-export default {
+export default defineComponent({
   name: "RoomCreator",
   components: {
     CardModal,
@@ -60,21 +62,20 @@ export default {
   },
   methods: {
     createRoom() {
-      let { errors, ...roomdata } = this.$data;
       let flag = true;
 
-      if (roomdata.name.length < 1) {
-        this.$set(this.$data.errors, "name", true);
+      if (this.name.length < 1) {
+        this.errors["name"] = true;
         flag = false;
       } else {
-        this.$set(this.$data.errors, "name", false);
+        this.errors["name"] = false;
       }
 
       if (!flag) {
         return false;
       }
 
-      this.$socket.emit("create_room", roomdata);
+      // this.$socket.emit("create_room", this.roomdata);
 
       this.resetForm();
 
@@ -84,12 +85,12 @@ export default {
       this.$emit("close");
     },
     resetForm() {
-      this.$data.name = "";
-      this.$data.password = "";
-      this.$data.errors = {};
+      this.name = "";
+      this.password = "";
+      this.errors = {};
     },
   },
-};
+});
 </script>
 
 <style lang="scss">
