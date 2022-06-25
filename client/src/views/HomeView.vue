@@ -1,9 +1,7 @@
 <template>
   <section class="section">
     <div class="container">
-      <div v-if="showModal">
-        <room-creator @close="toggleModal" />
-      </div>
+      <room-creator @close="toggleModal" v-if="showModal" />
       <div class="mb-6 pb-3 is-multiline">
         <div class="column is-12 is-9-desktop mx-auto has-text-centered">
           <h2 class="mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">
@@ -30,18 +28,36 @@
           />
         </div>
         <div class="column is-12 is-6-desktop">
-          <icon-text
-            title="Setup"
-            text="To start the game, create or join a room. Each player is dealt with ten White Cards."
-          />
-          <icon-text
-            title="Game Play"
-            text="Each player takes turn to be the Card Czar and plays a Black Card. Everyone else answers the question by choosing one White card that fills in the blank. The Card Czar shuffles all of the answers and shares each card combination and then picks a favorite. Whoever played that answer keeps the Black Card as one Awesome Point. Player with most points wins."
-          />
-          <icon-text
-            title="House Rules"
-            text="Be nice, but not too nice, and have fun!"
-          />
+          <icon-text title="Setup">
+            <p>
+              To start the game, create or join a room. Each player is dealt
+              with ten White Cards.
+            </p>
+          </icon-text>
+          <icon-text title="Game Play">
+            <ol>
+              <li>
+                Each player takes turn to be the Card Czar and plays a Black
+                Card
+              </li>
+              <li>
+                Everyone else answers the question by choosing one White card
+                that fills in the blank
+              </li>
+              <li>
+                The Card Czar shuffles all of the answers and shares each card
+                combination and then picks a favorite
+              </li>
+              <li>
+                Whoever played that answer keeps the Black Card as one Awesome
+                Point
+              </li>
+              <li>Player with most points wins.</li>
+            </ol>
+          </icon-text>
+          <icon-text title="House Rules">
+            <p>Be nice, but not too nice, and have fun!</p>
+          </icon-text>
         </div>
       </div>
     </div>
@@ -68,3 +84,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+ol {
+  padding-left: 20px;
+}
+</style>

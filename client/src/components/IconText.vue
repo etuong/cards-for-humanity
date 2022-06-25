@@ -23,8 +23,8 @@
       <h4 class="is-size-4 has-text-weight-bold mb-2">
         {{ title }}
       </h4>
-      <p class="subtitle has-text-grey">
-        {{ text }}
+      <p class="has-text-grey">
+       <slot></slot>
       </p>
     </div>
   </div>
@@ -39,11 +39,7 @@ export default defineComponent({
     title: {
       type: String,
       required: true
-    },
-    text: {
-      type: String,
-      required: true
-    },
+    }
    },
 });
 </script>

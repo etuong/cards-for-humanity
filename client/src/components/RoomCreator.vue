@@ -8,7 +8,7 @@
     @ok="createRoom"
   >
     <form class="columns is-multiline">
-      <div class="field column is-12">
+      <div class="field column is-6">
         <label class="label">Room Name</label>
         <div class="control">
           <input
@@ -20,7 +20,7 @@
           />
         </div>
         <p v-if="errors['name']" class="help is-danger">
-          You have to enter the name.
+          You have to enter a name
         </p>
       </div>
 
@@ -32,20 +32,25 @@
             class="input"
             type="text"
             placeholder="Set a password.."
-            :disabled="!isPrivate"
+            required
           />
         </div>
         <p v-if="errors['password']" class="help is-danger">
-          Minimum password length is 3
+          Minimum password length is 4
         </p>
       </div>
     </form>
   </card-modal>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { CardModal } from "vue-bulma-modal";
+
+interface Error {
+  name: Boolean;
+  password: Boolean;
+}
 
 export default defineComponent({
   name: "RoomCreator",
@@ -54,10 +59,9 @@ export default defineComponent({
   },
   data() {
     return {
-      name: "",
-      password: "",
-      maxPlayers: 5,
-      errors: {},
+      name: "" as String,
+      password: "" as String,
+      errors: { name: false, password: false } as Error,
     };
   },
   methods: {
@@ -67,8 +71,11 @@ export default defineComponent({
       if (this.name.length < 1) {
         this.errors["name"] = true;
         flag = false;
-      } else {
-        this.errors["name"] = false;
+      }
+
+      if (this.password.length < 4) {
+        this.errors["password"] = true;
+        flag = false;
       }
 
       if (!flag) {
@@ -77,23 +84,16 @@ export default defineComponent({
 
       // this.$socket.emit("create_room", this.roomdata);
 
-      this.resetForm();
-
       return true;
     },
     close() {
       this.$emit("close");
     },
-    resetForm() {
-      this.name = "";
-      this.password = "";
-      this.errors = {};
-    },
   },
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 .control.is-fullwidth {
   flex: 1;
 }
