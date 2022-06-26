@@ -1,6 +1,6 @@
 <template>
   <card-modal
-    title="Create a room"
+    title="Join a Game"
     :visible="true"
     transition="fade"
     class="section-xs"
@@ -10,13 +10,13 @@
   >
     <form class="columns is-multiline">
       <div class="field column is-6">
-        <label class="label">Room Name</label>
+        <label class="label">Player's Name</label>
         <div class="control">
           <input
             v-model="name"
             class="input"
             type="text"
-            placeholder="Enter the name of new room.."
+            placeholder="Enter your name.."
             required
           />
         </div>
@@ -37,7 +37,7 @@
           />
         </div>
         <p v-if="errors['password']" class="help is-danger">
-          Minimum password length is 4
+          Oops! This password does not exist in any room!
         </p>
       </div>
     </form>
@@ -54,7 +54,7 @@ interface Error {
 }
 
 export default defineComponent({
-  name: "RoomCreator",
+  name: "GameJoiner",
   components: {
     CardModal,
   },

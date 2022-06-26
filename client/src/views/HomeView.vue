@@ -1,7 +1,11 @@
 <template>
   <section class="section">
     <div class="container">
-      <room-creator @close="toggleModal" v-if="showModal" />
+      <game-creator
+        @close="toggleGameCreatorModal"
+        v-if="showGameCreatorModal"
+      />
+      <game-joiner @close="toggleGameJoinerModal" v-if="showGameJoinerModal" />
       <div class="mb-6 pb-3 is-multiline">
         <div class="column is-12 is-9-desktop mx-auto has-text-centered">
           <h2 class="mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">
@@ -14,10 +18,16 @@
           </p>
         </div>
         <div class="buttons is-centered">
-          <button class="button is-primary is-medium" @click="toggleModal">
+          <button
+            class="button is-primary is-medium"
+            @click="toggleGameCreatorModal"
+          >
             <strong>Create a Game</strong>
           </button>
-          <button class="button is-primary is-medium" @click="toggleModal">
+          <button
+            class="button is-primary is-medium"
+            @click="toggleGameJoinerModal"
+          >
             <strong>Join a Game</strong>
           </button>
         </div>
@@ -70,19 +80,24 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import IconText from "../components/IconText.vue";
-import RoomCreator from "../components/RoomCreator.vue";
+import GameCreator from "../components/GameCreator.vue";
+import GameJoiner from "../components/GameJoiner.vue";
 
 export default defineComponent({
   name: "HomeView",
-  components: { IconText, RoomCreator },
+  components: { IconText, GameCreator, GameJoiner },
   data() {
     return {
-      showModal: false,
+      showGameCreatorModal: false,
+      showGameJoinerModal: false,
     };
   },
   methods: {
-    toggleModal() {
-      this.showModal = !this.showModal;
+    toggleGameCreatorModal() {
+      this.showGameCreatorModal = !this.showGameCreatorModal;
+    },
+    toggleGameJoinerModal() {
+      this.showGameJoinerModal = !this.showGameJoinerModal;
     },
   },
 });
@@ -91,5 +106,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 ol {
   padding-left: 20px;
+}
+
+.is-medium {
+  width: 160px;
 }
 </style>
