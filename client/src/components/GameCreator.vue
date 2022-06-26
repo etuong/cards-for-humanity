@@ -82,8 +82,7 @@ export default defineComponent({
         return false;
       }
 
-      // this.$socket.emit("create_room", this.roomdata);
-
+      this.$socket.emit("create_room", { name, password });
       this.close();
     },
     close() {

@@ -20,8 +20,7 @@ export default defineComponent({
   },
   sockets: {
     connected() {
-      console.log("Ethan is here 1");
-      this.$socket.emit("create_room", { name: "Happy" });
+      console.log("Application socket is connected!");
     },
   },
 });
@@ -30,6 +29,6 @@ export default defineComponent({
 <style scoped>
 .body-content {
   flex: 1 0 auto;
-  padding: 20px;
+  padding: 10px;
 }
 </style>

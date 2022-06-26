@@ -1,0 +1,1 @@
+exports.WHITE_CARDS_IN_HAND = 10;
