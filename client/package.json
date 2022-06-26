@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "NODE_ENV=development vue-cli-service serve",
+    "build": "NODE_ENV=production vue-cli-service build"
   },
   "dependencies": {
     "bulma": "^0.9.4",
     "core-js": "^3.8.3",
     "node-sass": "^7.0.1",
     "sass-loader": "^13.0.0",
+    "socket.io-client": "^4.5.1",
     "vue": "^3.2.13",
+    "vue-3-socket.io": "^1.0.5",
     "vue-bulma-modal": "^2.0.0-alpha.2",
     "vue-router": "^4.0.3"
   },

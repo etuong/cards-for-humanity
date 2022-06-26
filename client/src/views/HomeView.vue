@@ -79,9 +79,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import IconText from "../components/IconText.vue";
 import GameCreator from "../components/GameCreator.vue";
 import GameJoiner from "../components/GameJoiner.vue";
+import IconText from "../components/IconText.vue";
 
 export default defineComponent({
   name: "HomeView",
@@ -94,6 +94,7 @@ export default defineComponent({
   },
   methods: {
     toggleGameCreatorModal() {
+
       this.showGameCreatorModal = !this.showGameCreatorModal;
     },
     toggleGameJoinerModal() {
