@@ -2,22 +2,35 @@
   <section class="hero welcome is-small">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">
-          Hello, {{ playersData && playersData.joiningPlayer }}!
-        </h1>
-        <h2 class="subtitle">Let's wait for other players</h2>
-        <h2 class="subtext">
-          We need at least 3 players to start. As soon as all players are ready,
-          anyone can press the Start button!
-        </h2>
-        <br />
-        <button
-          class="button is-danger is-medium"
-          @click="toggleGameJoinerModal"
-          :disabled="!gameReady"
-        >
-          <strong>Start!</strong>
-        </button>
+        <div class="columns">
+          <div class="column">
+            <h1 class="title">Hello, {{ playerName }}!</h1>
+            <h2 class="subtext">Are you ready?</h2>
+            <br />
+            <button
+              class="button is-info is-medium"
+              @click="toggleGameJoinerModal"
+              :disabled="!gameReady"
+            >
+              <strong>Ready!</strong>
+            </button>
+          </div>
+          <div class="column">
+            <h2 class="subtitle">Let's wait for other players</h2>
+            <h2 class="subtext">
+              We need at least 3 players to start. As soon as all players are
+              ready, anyone can press the Start button!
+            </h2>
+            <br />
+            <button
+              class="button is-danger is-medium"
+              @click="toggleGameJoinerModal"
+              :disabled="!gameReady"
+            >
+              <strong>Start!</strong>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -26,7 +39,7 @@
     <div class="container">
       <div
         v-if="playersData && playersData.players"
-        class="list has-hoverable-list-items"
+        class="list has-hoverable-list-items has-visible-pointer-controls"
       >
         <div
           v-for="(player, index) in playersData.players"
@@ -60,10 +73,11 @@ export default defineComponent({
   components: {},
   props: {
     playersData: Object,
+    playerName: String,
   },
   data() {
     return {
-      gameReady: this.playersData.isGameReady,
+      gameReady: this.playersData && this.playersData.isGameReady,
     };
   },
   methods: {},
@@ -81,6 +95,16 @@ export default defineComponent({
 
 .section {
   padding: 0 1.5rem;
+}
+
+.column {
+  border-left: 1px solid #dbdbdb;
+}
+
+@media screen and (min-width: 800px) {
+  .column {
+    border-bottom: 1px solid #dbdbdb;
+  }
 }
 
 [data-letters]:before {

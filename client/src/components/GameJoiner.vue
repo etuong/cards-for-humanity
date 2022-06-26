@@ -37,7 +37,7 @@
           />
         </div>
         <p v-if="errors['password']" class="help is-danger">
-          Oops! This password does not exist in any room!
+          Password needs to be at least 4 characters!
         </p>
       </div>
     </form>
@@ -82,7 +82,10 @@ export default defineComponent({
         return false;
       }
 
-      // this.$socket.emit("create_room", this.roomdata);
+      this.$socket.emit("join_room", {
+        name: this.name,
+        password: this.password,
+      });
 
       this.close();
     },

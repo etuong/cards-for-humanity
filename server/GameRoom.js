@@ -1,7 +1,6 @@
 const CardDeck = require("./CardDeck");
 const Player = require("./Player");
 
-
 class GameRoom {
   constructor(roomID) {
     const deck = new CardDeck();
@@ -14,6 +13,7 @@ class GameRoom {
     this.currentCardCzar = null;
     this.playerSelections = [];
     this.winningCards = [];
+    this.isGameInSession = false;
   }
 
   addPlayerToRoom(name) {
@@ -121,6 +121,7 @@ class GameRoom {
     this.currentBlackCard = this.blackDeck.cards.pop();
     this.currentCardCzar = Object.values(this.playerList.players)[this.playerList.cardCzarIndex];
     this.playerList.resetReady();
+    this.isGameInSession = true;
   }
 }
 
