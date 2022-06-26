@@ -1,6 +1,6 @@
-class PlayerList {
+class Players {
   constructor() {
-    this.players = {};
+    this.players = [];
     this.pending = {};
     this.cardCzarIndex = 0;
   }
@@ -10,12 +10,7 @@ class PlayerList {
   }
 
   allReady() {
-    for (let id in this.players) {
-      if (!this.players[id].ready) {
-        return false;
-      }
-    }
-    return true;
+    return players.all(player => player.ready);
   }
 
   resetReady() {
@@ -24,6 +19,10 @@ class PlayerList {
     }
   }
 
+  addPlayer = (id, newPlayer) => {
+    this.players[id] = newPlayer;
+  }
+  
   prepareToSend() {
     let playersPackaged = [];
 

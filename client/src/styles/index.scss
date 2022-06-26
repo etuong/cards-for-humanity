@@ -1,4 +1,5 @@
 @import "~bulma/bulma";
+@import "~bulma-list/sass/bulma-list.sass";
 
 $primary: #325B84;
 $link: $primary;
@@ -29,8 +30,4 @@ html, body {
   flex-direction: column;
   height: 100%;
   padding: 15px;
-}
-
-.section {
-  padding: 3rem 0em;
 }

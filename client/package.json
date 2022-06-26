@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "bulma": "^0.9.4",
+    "bulma-list": "^1.2.0",
+    "bulma-responsive-tables": "^1.2.5",
     "core-js": "^3.8.3",
     "node-sass": "^7.0.1",
     "sass-loader": "^13.0.0",

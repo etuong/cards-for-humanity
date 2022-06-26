@@ -14,37 +14,34 @@ app.get("/", (_, res) => {
 });
 
 const io = require('socket.io')(server);
-const cards = require('./Cards.js');
-
+const createID = require("uniqid");
+const GameRoom = require("./GameRoom");
 const gameRooms = {};
 
 io.on('connection', (socket) => {
   socket.emit('connected');
 
   // Create a new room code and add the player to it
-   socket.on('create_room', data => {
-    const roomCode = require("uniqid");;
+  socket.on('create_room', data => {
+    const roomID = createID();
 
-    console.log(`${data.name} has created a new game with password ${data.password}`);
+    gameRooms[roomID] = new GameRoom(roomID);
 
-    // creates new GameRoom instance
-    gameRooms[roomCode] = new GameRoom(roomCode);
+    gameRooms[roomID].addPlayerToRoom(data.name);
 
-    // joins the player to the GameRoom they created
-    socket.join(roomCode);
-    gameRooms[roomCode].addToRoom(data.name, socket.id);
+    socket.join(roomID);
 
-    // updates the players playerList
-    socket.emit('update players', {
-      players: gameRooms[roomCode].playerList.prepareToSend(),
+    socket.emit('update_players', {
+      players: gameRooms[roomID].players,
       joiningPlayer: data.name,
     });
 
+    console.log(`${data.name} has created a new game with password ${data.password} in room ${roomID}`);
     // gives the player their cards
-    socket.emit('joined', {
-      cards: [...gameRooms[roomCode].playerList.players[socket.id].cards],
-      roomCode,
-    });
+    // socket.emit('joined', {
+    //   cards: [...gameRooms[roomID].playerList.players[socket.id].cards],
+    //   roomCode: roomID,
+    // });
 
   });
 });

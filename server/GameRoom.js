@@ -1,30 +1,31 @@
 const CardDeck = require("./CardDeck");
+const Player = require("./Player");
+
 
 class GameRoom {
-  constructor(roomCode) {
-    const deck =  new CardDeck();
-    this.roomCode = roomCode;
+  constructor(roomID) {
+    const deck = new CardDeck();
+    this.roomID = roomID;
 
     this.whiteDeck = deck.getWhiteCards();
     this.blackDeck = deck.getBlackCards();
-    this.playerList = new PlayerList(roomCode);
+    this.players= [];
     this.currentBlackCard = null;
     this.currentCardCzar = null;
     this.playerSelections = [];
     this.winningCards = [];
-    this.stage = 'waiting for ready';
   }
 
-  // adds a player to the room
-  addToRoom(name, id) {
-    this.playerList.players[id] = new Player(name, id, this.roomCode);
-    this.playerList.players[id].refillWhiteCards(this.whiteDeck.cards);
+  addPlayerToRoom(name) {
+    const newPlayer = new Player(name, this.roomID);
+    newPlayer.refillWhiteCards(this.whiteDeck);
+    this.players.push(newPlayer);
   }
 
   // removes a player from the room
   // long and complicated due to handling of edge cases
   removeFromRoom(id) {
-    const { roomCode, playerList, playerSelections } = this;
+    const { roomID: roomCode, playerList, playerSelections } = this;
     const { players, pending } = playerList;
 
     // delete player from playerList and let other players know someone left

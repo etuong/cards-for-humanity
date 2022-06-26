@@ -94,7 +94,6 @@ export default defineComponent({
   },
   methods: {
     toggleGameCreatorModal() {
-
       this.showGameCreatorModal = !this.showGameCreatorModal;
     },
     toggleGameJoinerModal() {
@@ -111,5 +110,9 @@ ol {
 
 .is-medium {
   width: 160px;
+}
+
+.section {
+  padding: 0em;
 }
 </style>

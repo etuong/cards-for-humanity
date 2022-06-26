@@ -82,7 +82,10 @@ export default defineComponent({
         return false;
       }
 
-      this.$socket.emit("create_room", { name, password });
+      this.$socket.emit("create_room", {
+        name: this.name,
+        password: this.password,
+      });
       this.close();
     },
     close() {
