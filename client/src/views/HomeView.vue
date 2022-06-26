@@ -77,7 +77,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import GameCreator from "../components/GameCreator.vue";
 import GameJoiner from "../components/GameJoiner.vue";

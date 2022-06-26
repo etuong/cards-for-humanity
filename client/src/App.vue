@@ -6,7 +6,7 @@
   <FooterComponent />
 </template>
 
-<script lang="ts">
+<script>
 import FooterComponent from "@/components/Footer.vue"; // @ is an alias to /src
 import NavBar from "@/components/NavBar.vue";
 import Home from "@/views/HomeView.vue";

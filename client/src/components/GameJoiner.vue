@@ -44,14 +44,9 @@
   </card-modal>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import { CardModal } from "vue-bulma-modal";
-
-interface Error {
-  name: Boolean;
-  password: Boolean;
-}
 
 export default defineComponent({
   name: "GameJoiner",
@@ -60,9 +55,9 @@ export default defineComponent({
   },
   data() {
     return {
-      name: "" as String,
-      password: "" as String,
-      errors: { name: false, password: false } as Error,
+      name: "",
+      password: "",
+      errors: { name: false, password: false },
     };
   },
   methods: {
