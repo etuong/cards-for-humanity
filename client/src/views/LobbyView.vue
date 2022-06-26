@@ -2,16 +2,19 @@
   <section class="hero welcome is-small">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">Hello, Admin.</h1>
-        <h2 class="subtitle">Let's wait for other players!</h2>
+        <h1 class="title">
+          Hello, {{ playersData && playersData.joiningPlayer }}!
+        </h1>
+        <h2 class="subtitle">Let's wait for other players</h2>
         <h2 class="subtext">
-          You are the Game Master so press the Start button when every player is
-          ready :)
+          We need at least 3 players to start. As soon as all players are ready,
+          anyone can press the Start button!
         </h2>
         <br />
         <button
           class="button is-danger is-medium"
           @click="toggleGameJoinerModal"
+          :disabled="!gameReady"
         >
           <strong>Start!</strong>
         </button>
@@ -21,12 +24,27 @@
 
   <section class="section">
     <div class="container">
-      <div class="list has-hoverable-list-items">
-        <div v-for="(player, index) in players" :key="index" class="list-item">
-          <div class="list-item-title" data-letters="J"></div>
+      <div
+        v-if="playersData && playersData.players"
+        class="list has-hoverable-list-items"
+      >
+        <div
+          v-for="(player, index) in playersData.players"
+          :key="index"
+          class="list-item"
+        >
+          <div
+            class="list-item-title"
+            :data-letters="`${player.name.charAt(0).toUpperCase()}`"
+          ></div>
           <div class="list-item-content">
-            <div class="list-item-title">{{player.name}}</div>
-            <div class="list-item-description flash">{{player.ready}}</div>
+            <div class="list-item-title">{{ player.name }}</div>
+            <div
+              class="list-item-description"
+              :class="{ flash: !player.ready }"
+            >
+              {{ player.ready ? "Ready" : "Not ready" }}
+            </div>
           </div>
         </div>
       </div>
@@ -40,11 +58,13 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "LobbyView",
   components: {},
-   props: {
-    players: Array,
+  props: {
+    playersData: Object,
   },
   data() {
-    return {};
+    return {
+      gameReady: this.playersData.isGameReady,
+    };
   },
   methods: {},
 });

@@ -25,16 +25,19 @@ io.on('connection', (socket) => {
   socket.on('create_room', data => {
     const roomID = createID();
 
-    gameRooms[roomID] = new GameRoom(roomID);
+    const newGameRoom = new GameRoom(roomID);
 
-    gameRooms[roomID].addPlayerToRoom(data.name);
+    newGameRoom.addPlayerToRoom(data.name);
 
     socket.join(roomID);
 
     socket.emit('update_players', {
-      players: gameRooms[roomID].players,
+      players: newGameRoom.players,
       joiningPlayer: data.name,
+      isGameReady: newGameRoom.isGameReady
     });
+
+    gameRooms[roomID] = newGameRoom;
 
     console.log(`${data.name} has created a new game with password ${data.password} in room ${roomID}`);
     // gives the player their cards

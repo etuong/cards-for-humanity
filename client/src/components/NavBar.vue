@@ -11,8 +11,8 @@
     </div>
     <div id="navbarExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="/"> Home </a>
-        <a class="navbar-item" href="/"> Scoreboard </a>
+        <a class="navbar-item" @click="showHome"> Home </a>
+        <a class="navbar-item" @click="showScoreboard"> Scoreboard </a>
       </div>
     </div>
   </nav>
@@ -23,6 +23,14 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "NavBar",
+  methods: {
+    showHome() {
+      this.$emit("show-view", "Home");
+    },
+    showScoreboard() {
+      this.$emit("show-view", "Lobby");
+    },
+  },
 });
 </script>
 

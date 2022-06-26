@@ -1,8 +1,8 @@
 <template>
-  <nav-bar></nav-bar>
+  <nav-bar @show-view="showView"></nav-bar>
   <div class="body-content">
-    <home v-if="!gameInitialized"></home>
-    <lobby v-if="gameInitialized" :players="players"></lobby>
+    <home v-if="showHomeView"></home>
+    <lobby v-if="showLobbyView" :playersData="playersData"></lobby>
   </div>
   <FooterComponent />
 </template>
@@ -19,22 +19,38 @@ export default defineComponent({
     FooterComponent,
     NavBar,
     Home,
-    Lobby
+    Lobby,
   },
   data() {
     return {
-      gameInitialized: false,
-      players: []
-    }
+      showHomeView: true,
+      showLobbyView: false,
+      playersData: undefined,
+    };
+  },
+  methods: {
+    showView(view) {
+      this.showHomeView = false;
+      this.showLobbyView = false;
+      switch (view) {
+        case "Home":
+          this.showHomeView = true;
+          break;
+        case "Lobby":
+          this.showLobbyView = true;
+          break;
+        default:
+      }
+    },
   },
   sockets: {
     connected() {
       console.log("Application socket is connected!");
     },
     update_players(data) {
-      this.players = data.players;
-      this.gameInitialized = true;
-    }
+      this.playersData = data;
+      this.showView("Lobby");
+    },
   },
 });
 </script>

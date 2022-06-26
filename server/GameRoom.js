@@ -22,6 +22,10 @@ class GameRoom {
     this.players.push(newPlayer);
   }
 
+  isGameReady() {
+    return players.length > 3 && players.all(player => player.ready);
+  }
+
   // removes a player from the room
   // long and complicated due to handling of edge cases
   removeFromRoom(id) {
@@ -116,7 +120,6 @@ class GameRoom {
   startGame() {
     this.currentBlackCard = this.blackDeck.cards.pop();
     this.currentCardCzar = Object.values(this.playerList.players)[this.playerList.cardCzarIndex];
-    this.stage = 'waiting for czar read';
     this.playerList.resetReady();
   }
 }
