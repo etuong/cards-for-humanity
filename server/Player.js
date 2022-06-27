@@ -1,9 +1,10 @@
 const Constant = require("./Constants");
 
 class Player {
-  constructor(name, id) {
+  constructor(name, id, roomId) {
     this.name = name;
     this.id = id;
+    this.roomId = roomId;
     this.cards = [];
     this.ready = false;
     this.winningCards = [];

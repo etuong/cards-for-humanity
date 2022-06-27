@@ -4,13 +4,13 @@
       <div class="container">
         <div class="columns">
           <div class="column">
-            <h1 class="title">Hello, {{ playerName }}!</h1>
+            <h1 class="title">Hello, {{ currentPlayer.name }}!</h1>
             <h2 class="subtext">Are you ready?</h2>
             <br />
             <button
               class="button is-info is-medium"
-              @click="toggleGameJoinerModal"
-              :disabled="!gameReady"
+              @click="setPlayerReady"
+              :disabled="currentPlayer.ready"
             >
               <strong>Ready!</strong>
             </button>
@@ -73,14 +73,18 @@ export default defineComponent({
   components: {},
   props: {
     playersData: Object,
-    playerName: String,
+    currentPlayer: Object,
   },
   data() {
     return {
-      gameReady: this.playersData && this.playersData.isGameReady,
+      gameReady: this.playersData.isGameReady,
     };
   },
-  methods: {},
+  methods: {
+    setPlayerReady() {
+      this.$socket.emit("player_ready", this.currentPlayer);
+    }
+  },
 });
 </script>
 

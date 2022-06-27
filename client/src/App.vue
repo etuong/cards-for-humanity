@@ -5,7 +5,7 @@
     <lobby
       v-if="showLobbyView"
       :playersData="playersData"
-      :playerName="playerName"
+      :currentPlayer="currentPlayer"
     ></lobby>
   </div>
   <FooterComponent />
@@ -31,10 +31,17 @@ export default defineComponent({
       showHomeView: true,
       showLobbyView: false,
       playersData: undefined,
-      playerName: "",
+      currentPlayer: undefined,
     };
   },
+  created: function () {
+    window.addEventListener("beforeunload", this.leaving);
+  },
   methods: {
+    leaving(e) {
+      e.returnValue = "";
+      this.$socket.emit("leave_room", this.currentPlayer.roomId);
+    },
     showView(view) {
       this.showHomeView = false;
       this.showLobbyView = false;
@@ -66,8 +73,8 @@ export default defineComponent({
       this.playersData = data;
       this.showView("Lobby");
     },
-    new_player_joined(newPlayer) {
-      this.playerName = newPlayer.joiningPlayer;
+    update_player(currentPlayer) {
+      this.currentPlayer = { ...currentPlayer };
     },
     room_existed() {
       this.showToast(

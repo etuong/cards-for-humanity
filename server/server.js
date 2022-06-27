@@ -2,18 +2,16 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 const app = express();
-
 const server = require('http').createServer(app);
 
 app.use(logger('dev'));
 app.use(cors());
-// app.use(express.static(`${__dirname}/public`));
-
 app.get("/", (_, res) => {
   res.redirect('https://etuong.github.io/pictionary.io');
 });
 
 const io = require('socket.io')(server);
+const Player = require("./Player");
 const GameRoom = require("./GameRoom");
 const gameRooms = new Map();
 
@@ -21,59 +19,89 @@ io.on('connection', (socket) => {
   socket.emit('connected');
 
   socket.on('create_room', data => {
-    const roomID = data.password.toUpperCase();
+    const roomId = data.password.toUpperCase();
 
-    if (gameRooms.has(roomID)) {
+    if (gameRooms.has(roomId)) {
       socket.emit('room_existed')
+      console.log(`${data.name} tries to create room ${roomId} but room exists already`);
     } else {
+      const newGameRoom = new GameRoom(roomId);
 
-      const newGameRoom = new GameRoom(roomID);
+      const newPlayer = new Player(data.name, socket.id, roomId);
 
-      newGameRoom.addPlayerToRoom(data.name);
+      newGameRoom.addPlayerToRoom(newPlayer);
 
-      socket.join(roomID);
+      socket.join(roomId);
 
-      socket.emit('new_player_joined', {
-        joiningPlayer: data.name,
-      });
+      socket.emit('update_player', newPlayer);
 
       socket.emit('update_players', {
         players: newGameRoom.players,
         isGameReady: newGameRoom.isGameReady
       });
 
-      gameRooms.set(roomID, newGameRoom);
+      gameRooms.set(roomId, newGameRoom);
 
-      console.log(`${data.name} has created a new game with password ${data.password} in room ${roomID}`);
+      console.log(`${data.name} has created a new game with password ${data.password} in room ${roomId}`);
     }
   });
 
   socket.on('join_room', data => {
-    const roomID = data.password.toUpperCase();
-    const gameRoom = gameRooms.get(roomID);
+    const roomId = data.password.toUpperCase();
+    const gameRoom = gameRooms.get(roomId);
 
     if (!gameRoom) {
       socket.emit('room_does_not_exist')
+      console.log(`${data.name} tries to join room ${roomId} but room does not exist`);
     } else if (gameRoom.players.length == 10) {
       socket.emit("room_full");
+      console.log(`${data.name} tries to join room ${roomId} but room is full`);
     } else if (gameRoom.isGameInSession) {
       socket.emit("game_in_session");
+      console.log(`${data.name} tries to join room ${roomId} but game is in session`);
     } else {
-      gameRoom.addPlayerToRoom(data.name);
+      const newPlayer = new Player(data.name, socket.id, roomId);
 
-      socket.join(roomID);
+      gameRoom.addPlayerToRoom(newPlayer);
 
-      socket.emit('new_player_joined', {
-        joiningPlayer: data.name,
-      });
+      socket.join(roomId);
 
-      io.sockets.in(roomID).emit('update_players', {
+      socket.emit('update_player', newPlayer);
+
+      io.sockets.in(roomId).emit('update_players', {
         players: gameRoom.players,
         isGameReady: gameRoom.isGameReady
       });
 
-      console.log(`${data.name} has joined room ${roomID}`);
+      console.log(`${data.name} has joined room ${roomId}`);
     }
+  });
+
+  socket.on('player_ready', player => {
+    const gameRoom = gameRooms.get(player.roomId);
+    const selected_player = gameRoom.getPlayerById(player.id);
+    selected_player.ready = true;
+
+    socket.emit('update_player', selected_player);
+
+    io.sockets.in(player.roomId).emit('update_players', {
+      players: gameRoom.players,
+      isGameReady: gameRoom.isGameReady
+    });
+
+    console.log(`${player.name} is ready to play in room ${player.roomId}!`);
+  });
+
+  socket.on('leave_room', roomId => {
+    const gameRoom = gameRooms.get(roomId);
+    const selected_player = gameRoom.getPlayerById(player.id);
+
+    if (selected_player) {
+      socket.leave(roomId);
+      gameRoom.removePlayerFromRoom(selected_player);
+    }
+
+    console.log(`${player.name} just left room ${roomId}!`);
   });
 });
 
