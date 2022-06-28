@@ -110,6 +110,12 @@ io.on('connection', (socket) => {
     console.log(`${player.name} is ready to play in room ${player.roomId}!`);
   });
 
+  socket.on('game_ready', roomId=> {
+    const gameRoom = gameRooms.get(roomId);
+    gameRoom.startGame();
+    console.log(`Room ${roomId} is ready to play!`);
+  });
+
   socket.on('disconnect', () => {
     gameRooms.forEach((gameRoom, roomId) => {
       let players = gameRoom.players;

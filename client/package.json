@@ -2,6 +2,10 @@
   "name": "cards-for-humanity",
   "version": "0.1.0",
   "private": true,
+  "description": "Cards Against Humanity Web App",
+  "author": {
+    "name": "Ethan Uong"
+  },
   "scripts": {
     "serve": "NODE_ENV=development vue-cli-service serve",
     "build": "NODE_ENV=production vue-cli-service build"
@@ -12,6 +16,8 @@
     "bulma-responsive-tables": "^1.2.5",
     "bulma-toast": "^2.4.1",
     "core-js": "^3.8.3",
+    "jquery": "^3.6.0",
+    "jquery-ui-dist": "^1.13.1",
     "node-sass": "^7.0.1",
     "sass-loader": "^13.0.0",
     "vue": "^3.2.13",
@@ -23,5 +29,9 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etuong/cards-for-humanity.git"
   }
 }

@@ -7,15 +7,17 @@
       :playersData="playersData"
       :currentPlayer="currentPlayer"
     ></lobby>
+    <play v-if="showPlayView"></play>
   </div>
   <FooterComponent />
 </template>
 
 <script>
-import FooterComponent from "@/components/Footer.vue"; // @ is an alias to /src
+import FooterComponent from "@/components/Footer.vue";
 import NavBar from "@/components/NavBar.vue";
 import Home from "@/views/HomeView.vue";
 import Lobby from "@/views/LobbyView.vue";
+import Play from "@/views/PlayView.vue";
 import { defineComponent } from "vue";
 import { toast } from "bulma-toast";
 
@@ -25,29 +27,22 @@ export default defineComponent({
     NavBar,
     Home,
     Lobby,
+    Play,
   },
   data() {
     return {
       showHomeView: true,
       showLobbyView: false,
+      showPlayView: false,
       playersData: undefined,
       currentPlayer: undefined,
     };
   },
-  // created: function () {
-  //   window.addEventListener("beforeunload", this.leaving);
-  // },
   methods: {
-    // leaving(e) {
-    //   if (this.currentPlayer) {
-    //     e.preventDefault();
-    //     e.returnValue = "Are you sure you want to exit?";
-    //     this.$socket.emit("leave_room", this.currentPlayer);
-    //   }
-    // },
     showView(view) {
       this.showHomeView = false;
       this.showLobbyView = false;
+      this.showPlayView = false;
       switch (view) {
         case "Home":
           this.showHomeView = true;
@@ -55,6 +50,8 @@ export default defineComponent({
         case "Lobby":
           this.showLobbyView = true;
           break;
+        case "Play":
+          this.showPlayView = true;
         default:
       }
     },
@@ -69,9 +66,6 @@ export default defineComponent({
     },
   },
   sockets: {
-    test() {
-      alert("bug");
-    },
     connected() {
       console.log("Application socket is connected!");
     },
@@ -80,7 +74,7 @@ export default defineComponent({
       this.showView("Lobby");
     },
     update_player(currentPlayer) {
-      this.currentPlayer = { ...currentPlayer };
+      this.currentPlayer = currentPlayer;
     },
     room_existed() {
       this.showToast(

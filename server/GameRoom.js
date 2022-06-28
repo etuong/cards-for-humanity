@@ -1,10 +1,10 @@
 const CardDeck = require("./CardDeck");
 
+// Acts like a game controller
 class GameRoom {
   constructor(roomId) {
     const deck = new CardDeck();
     this.roomId = roomId;
-
     this.whiteDeck = deck.getWhiteCards();
     this.blackDeck = deck.getBlackCards();
     this.players = [];
@@ -50,7 +50,7 @@ class GameRoom {
 
   // sets current black card, card czar, game stage, and resets players' ready status
   startGame() {
-    this.currentBlackCard = this.blackDeck.cards.pop();
+    this.currentBlackCard = this.blackDeck.pop();
     this.currentCardCzar = Object.values(this.playerList.players)[this.playerList.cardCzarIndex];
     this.playerList.resetReady();
     this.isGameInSession = true;
