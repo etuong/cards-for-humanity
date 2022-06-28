@@ -34,14 +34,17 @@ export default defineComponent({
       currentPlayer: undefined,
     };
   },
-  created: function () {
-    window.addEventListener("beforeunload", this.leaving);
-  },
+  // created: function () {
+  //   window.addEventListener("beforeunload", this.leaving);
+  // },
   methods: {
-    leaving(e) {
-      e.returnValue = "";
-      this.$socket.emit("leave_room", this.currentPlayer.roomId);
-    },
+    // leaving(e) {
+    //   if (this.currentPlayer) {
+    //     e.preventDefault();
+    //     e.returnValue = "Are you sure you want to exit?";
+    //     this.$socket.emit("leave_room", this.currentPlayer);
+    //   }
+    // },
     showView(view) {
       this.showHomeView = false;
       this.showLobbyView = false;
@@ -66,6 +69,9 @@ export default defineComponent({
     },
   },
   sockets: {
+    test() {
+      alert("bug");
+    },
     connected() {
       console.log("Application socket is connected!");
     },

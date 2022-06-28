@@ -71,7 +71,7 @@ export default defineComponent({
         this.errors["name"] = false;
       }
 
-      if (this.password.length < 4) {
+      if (this.password.length < 1) {
         this.errors["password"] = true;
         flag = false;
       } else {

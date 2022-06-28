@@ -23,9 +23,9 @@
             </h2>
             <br />
             <button
-              class="button is-danger is-medium"
+              class="button is-success is-medium"
               @click="toggleGameJoinerModal"
-              :disabled="!gameReady"
+              :disabled="!playersData.isGameReady"
             >
               <strong>Start!</strong>
             </button>
@@ -76,9 +76,7 @@ export default defineComponent({
     currentPlayer: Object,
   },
   data() {
-    return {
-      gameReady: this.playersData.isGameReady,
-    };
+    return { };
   },
   methods: {
     setPlayerReady() {
@@ -128,6 +126,7 @@ export default defineComponent({
 }
 
 .flash {
+  color: red;
   animation: blinker 2s linear infinite;
 }
 

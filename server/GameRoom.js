@@ -21,7 +21,7 @@ class GameRoom {
   }
 
   isGameReady() {
-    return this.players.length > 3 && this.players.all(player => player.ready);
+    return this.players.length > 2 && this.players.every(player => player.ready);
   }
 
   getPlayerById(player_id) {
@@ -33,6 +33,8 @@ class GameRoom {
     if (index > -1) {
       this.players.splice(index, 1);
     }
+
+    return this.players.length == 0 ? true : false;
   }
 
   // takes player selections and puts them into the discard

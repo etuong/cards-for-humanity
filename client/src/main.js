@@ -1,4 +1,3 @@
-import io from 'socket.io-client';
 import { createApp } from "vue";
 import VueSocketIO from "vue-3-socket.io";
 import App from "./App.vue";
@@ -13,5 +12,4 @@ app.use(new VueSocketIO({
   connection,
 }))
 
-// app.config.globalProperties.$socket = io(connection);
 app.mount('#app')

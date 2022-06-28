@@ -9,8 +9,26 @@ app.use(cors());
 app.get("/", (_, res) => {
   res.redirect('https://etuong.github.io/pictionary.io');
 });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+const port = process.env.PORT || 8081;
 
-const io = require('socket.io')(server);
+server.listen(port, () => {
+  console.log(`Server is listening on port: ${port}`);
+});
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin:["http://localhost:8080"],
+    credentials: true
+  },
+  transports: ['polling', 'websocket'],
+  allowEIO3: true
+});
+
 const Player = require("./Player");
 const GameRoom = require("./GameRoom");
 const gameRooms = new Map();
@@ -37,7 +55,7 @@ io.on('connection', (socket) => {
 
       socket.emit('update_players', {
         players: newGameRoom.players,
-        isGameReady: newGameRoom.isGameReady
+        isGameReady: newGameRoom.isGameReady()
       });
 
       gameRooms.set(roomId, newGameRoom);
@@ -70,7 +88,7 @@ io.on('connection', (socket) => {
 
       io.sockets.in(roomId).emit('update_players', {
         players: gameRoom.players,
-        isGameReady: gameRoom.isGameReady
+        isGameReady: gameRoom.isGameReady()
       });
 
       console.log(`${data.name} has joined room ${roomId}`);
@@ -86,29 +104,32 @@ io.on('connection', (socket) => {
 
     io.sockets.in(player.roomId).emit('update_players', {
       players: gameRoom.players,
-      isGameReady: gameRoom.isGameReady
+      isGameReady: gameRoom.isGameReady()
     });
 
     console.log(`${player.name} is ready to play in room ${player.roomId}!`);
   });
 
-  socket.on('leave_room', roomId => {
-    const gameRoom = gameRooms.get(roomId);
-    const selected_player = gameRoom.getPlayerById(player.id);
-
-    if (selected_player) {
-      socket.leave(roomId);
-      gameRoom.removePlayerFromRoom(selected_player);
-    }
-
-    console.log(`${player.name} just left room ${roomId}!`);
-  });
-});
-
-const port = process.env.PORT || 8081;
-
-server.listen(port, () => {
-  console.log(`Server is listening on port: ${port}`);
+  socket.on('disconnect', () => {
+    gameRooms.forEach((gameRoom, roomId) => {
+      let players = gameRoom.players;
+      for (let player of players) {
+        if (player.id === socket.id) {
+          socket.leave(roomId);
+          if (gameRoom.removePlayerFromRoom(player)) {
+            gameRooms.delete(roomId);
+          }
+          io.sockets.in(roomId).emit('update_players', {
+            players: gameRoom.players,
+            isGameReady: gameRoom.isGameReady()
+          });
+          console.log(`${player.name} just left room ${roomId}!`);
+          socket.emit("test");
+          break;
+        }
+      }
+    })
+  })
 });
 
 process.on("exit", function (code) {
