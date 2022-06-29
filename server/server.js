@@ -113,6 +113,10 @@ io.on('connection', (socket) => {
   socket.on('game_ready', roomId=> {
     const gameRoom = gameRooms.get(roomId);
     gameRoom.startGame();
+    io.sockets.in(roomId).emit('game_start', {
+      players: gameRoom.players,
+      isGameReady: gameRoom.isGameReady()
+    });
     console.log(`Room ${roomId} is ready to play!`);
   });
 

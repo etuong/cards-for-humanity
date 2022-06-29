@@ -31,9 +31,9 @@ export default defineComponent({
   },
   data() {
     return {
-      showHomeView: true,
+      showHomeView: false,
       showLobbyView: false,
-      showPlayView: false,
+      showPlayView: true,
       playersData: undefined,
       currentPlayer: undefined,
     };
@@ -52,6 +52,7 @@ export default defineComponent({
           break;
         case "Play":
           this.showPlayView = true;
+          break;
         default:
       }
     },
@@ -75,6 +76,9 @@ export default defineComponent({
     },
     update_player(currentPlayer) {
       this.currentPlayer = currentPlayer;
+    },
+    game_start() {
+      this.showView("Play");
     },
     room_existed() {
       this.showToast(

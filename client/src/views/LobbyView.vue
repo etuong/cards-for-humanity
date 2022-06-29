@@ -74,18 +74,6 @@ export default defineComponent({
     playersData: Object,
     currentPlayer: Object,
   },
-  // data() {
-  //   return {
-  //     playersData: {
-  //       players: [
-  //         { name: "ethan", ready: true },
-  //         { name: "ethan", ready: true },
-  //         { name: "ethan", ready: false },
-  //         { name: "ethan", ready: true },
-  //       ],
-  //     },
-  //   };
-  // },
   methods: {
     setPlayerReady() {
       this.$socket.emit("player_ready", this.currentPlayer);
@@ -98,10 +86,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.info-tiles {
-  margin: 1rem 0;
-}
-
 .section {
   padding: 0 1.5rem;
 }

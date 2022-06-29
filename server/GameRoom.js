@@ -9,7 +9,7 @@ class GameRoom {
     this.blackDeck = deck.getBlackCards();
     this.players = [];
     this.currentBlackCard = null;
-    this.currentCardCzar = null;
+    this.currentCzar = null;
     this.playerSelections = [];
     this.winningCards = [];
     this.isGameInSession = false;
@@ -48,7 +48,14 @@ class GameRoom {
     this.playerSelections = [];
   }
 
-  // sets current black card, card czar, game stage, and resets players' ready status
+  getNextCzar() {
+    if (this.cardCzarIndex + 1 === this.length) {
+      this.cardCzarIndex = 0;
+    } else {
+      this.cardCzarIndex += 1;
+    }
+  }
+
   startGame() {
     this.currentBlackCard = this.blackDeck.pop();
     this.currentCardCzar = Object.values(this.playerList.players)[this.playerList.cardCzarIndex];

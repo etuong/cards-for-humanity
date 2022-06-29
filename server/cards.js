@@ -97,10 +97,6 @@ module.exports = {
       "pick": 1
     },
     {
-      "text": "Tarheels<br>What are they good for?",
-      "pick": 1
-    },
-    {
       "text": "I love third floor Perkins. There's no _____.",
       "pick": 1
     },
@@ -298,10 +294,6 @@ module.exports = {
     },
     {
       "text": "I walked onto the basketball team but never played because Coach K says I'm too _____.",
-      "pick": 1
-    },
-    {
-      "text": "Dear Major Advisor,<br><br>I'm having some trouble with _____ and would like your advice.",
       "pick": 1
     },
     {
@@ -568,503 +560,471 @@ module.exports = {
       "text": "I would’ve graduated debt and stress free if I didn’t get a _____ addiction sophomore year. .",
       "pick": 1
     },
-    //  {
-    //  "text": "What left this stain on my couch?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Turns out that _____-Man was neither the hero we needed nor wanted.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  {
-    //  "text": "In the seventh circle of Hell, sinners must endure _____ for all eternity.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "As part of his daily regimen, Anderson Cooper sets aside 15 minutes for _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "And what did <i>you</i> bring for show and tell?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "I'm not like the rest of you. I'm too rich and busy for _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "_____. Awesome in theory, kind of a mess in practice.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "As part of his contract, Prince won't perform without _____ in his dressing room.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Man, this is bullshit. Fuck _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Dear Leader Kim Jong-un,<br>our village praises your infinite wisdom with a humble offering of _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "She's up all night for good fun.<br>I'm up all night for _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Alright, bros. Our frat house is condemned, and all the hot slam pieces are over at Gamma Phi. The time has come to commence Operation _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "The Japanese have developed a smaller, more efficient version of _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Wes Anderson's new film tells the story of a precocious child coming to terms with _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "What's fun until it gets weird?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "You've seen the bearded lady!<br>You've seen the ring of fire!<br>Now, ladies and gentlemen, feast your eyes upon _____!",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "How am I compensating for my tiny penis?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "I'm sorry, sir, but we don't allow _____ at the country club.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "2 AM in the city that never sleeps. The door swings open and <i>she</i> walks in, legs up to here. Something in her eyes tells me she's looking for _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "As king, how will I keep the peasants in line?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Do <i>not</i> fuck with me! I am literally _____ right now.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "It lurks in the night. It hungers for flesh. This summer, no one is safe from _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "This is the prime of my life. I'm young, hot, and full of _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "I'm pretty sure I'm high right now, because I'm absolutely mesmerized by _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Do the Dew &reg; with our most extreme flavor yet! Get ready for Mountain Dew _____!",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Armani suit: $1,000. Dinner for two at that swanky restaurant: $300. The look on her face when you surprise her with _____: priceless.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "In his new action comedy, Jackie Chan must fend off ninjas while also dealing with _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Well what do you have to say for yourself, Casey? This is the third time you've been sent to the principal's office for _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Here at the Academy for Gifted Children, we allow students to explore _____ at their own pace.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "I don't mean to brag, but they call me the Michael Jordan of _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Why am I broke?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Help me doctor, I've got _____ in my butt!",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Hi MTV! My name is Kendra, I live in Malibu, I'm into _____, and I love to have a good time.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Life's pretty tough in the fast lane. That's why I never leave the house without _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "What's making things awkward in the sauna?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Get ready for the movie of the summer! One cop plays by the book. The other's only interested in one thing: _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Having the worst day EVER. #_____",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "In his farewell address, George Washington famously warned Americans about the dangers of _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Don't forget! Beginning this week, Casual Friday will officially become \"_____ Friday.\"",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "What killed my boner?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Yo' mama so fat she _____!",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Hi, this is Jim from accounting. We noticed a $1,200 charge labeled \"_____\". Can you explain?",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Do you lack energy? Does it sometimes feel like the whole world is _____? Zoloft.&reg;",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "WHOOO! God damn I love _____!",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "Now in bookstores: \"The Audacity of _____\", by Barack Obama.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "text": "And today's soup is Cream of _____.",
-    //  "pick": 1
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I work my ass off all day for this family, and this is what I come home to? _____!?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I have a strict policy. First date, dinner. Second date, kiss. Third date, _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "When I was a kid, we used to play Cowboys and _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "This is America. If you don't work hard, you don't succeed. I don't care if you're black, white, purple, or _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "You Won't Believe These 15 Hilarious _____ Bloopers!"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "James is a lonely boy. But when he discovers a secret door in his attic, he meets a magical new friend: _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Don't worry kid. It gets better. I've been living with _____ for 20 years."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "My grandfather worked his way up from nothing. When he came to this country, all he had was the shoes on his feet and _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Behind every powerful man is _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "You are not alone. Millions of Americans struggle with _____ every day."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Come to Dubai, where you can relax in our world famous spas, experience the nightlife, or simply enjoy _____ by the poolside."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "\"This is madness.\" \"No, THIS IS _____!\""
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Listen Gary, I like you. But if you want that corner office, you're going to have to show me _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I went to the desert and ate of the peyote cactus. Turns out my spirit animal is _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "And would you like those buffalo wings mild, hot, or _____?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "The six things I could never do without: oxygen, Facebook, chocolate, Netflix, friends, and _____ LOL!"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Why won't you make love to me anymore? Is it _____?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Puberty is a time of change. You might notice hair growing in new places. You might develop an interest in _____. This is normal."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I'm sorry, Mrs. Chen, but there was nothing we could do. At 4:15 this morning, your son succumbed to _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I'm Miss Tennessee, and if I could make the world better by changing one thing, I would get rid of _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Tonight we will have sex. And afterwards, If you'd like, a little bit of _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Everybody join hands and close your eyes. Do you sense that? That's the presence of _____ in this room."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "To become a true Yanomama warrior, you must prove that you can withstand _____ without crying out."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Y'all ready to get this thing started? I'm Nick Cannon, and this is America's Got _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "If you had to describe the Card Czar, using only one of the cards in your hand, which one would it be?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Art isn't just a painting in a stuffy museum. Art is alive. Art is _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "As reparations for slavery, all African Americans will receive _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "As Teddy Roosevelt said, the four manly virtues are honor, temperance, industry, and _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Best you go back where you came from, now. We don't take too kindly to _____ in these parts."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "CNN breaking news! Scientists discover _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Coming to Red Lobster&reg; this month, _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Congratulations! You have been selected for our summer internship program. While we are unable to offer a salary, we can offer you _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Dance like there's nobody watching, love like you'll never be hurt, and live like you're _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Errbody in the club _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Feeling so grateful! #amazing #mylife #_____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Girls just wanna have _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Google Calendar alert: _____ in 10 minutes."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I don't believe in God. I believe in _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I got rhythm, I've got music, I've got _____. Who could ask for anything more?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I may not be much to look at, but I fuck like _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I tell you, it was a non-stop fuckfest. When it was over, my asshole looked like _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I'll take the BBQ bacon burger with fried egg and fuck it how about _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I'm sorry, sir, but your insurance plan doesn't cover injuries caused by _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "I've had a horrible vision, father. I saw mountains crumbling, stars falling from the sky. I saw _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "If at first you don't succeed, try _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "In the 1950s, psychologists prescribed _____ as a cure for homosexually."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "LSD + _____ = really bad time."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "\"Mom's to-do list:<br/>- Buy Groceries.<br/>- Clean up _____.<br/>- Soccer Practice.\""
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Most Americans would not vote for a candidate who is openly _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "No, no, no, no, no, no, NO! I will NOT let _____ ruin this wedding."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Oh no! Siri, how do I fix _____?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "One more thing. Watch out for Big Mike. They say he killed a man with _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Ooo, daddy like _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Poor Brandon, still living in his parent's basement. I heard he never got over _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Run, run, as fast as you can! You can't catch me, I'm _____!"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "She's a lady in the streets, _____ in the sheets."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "She's just one of the guys, you know? She likes beer, and football, and _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Son, take it from someone who's been around the block a few times. Nothin' puts her in the mood like _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Summer lovin', had me a blast. _____, happened so fast."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "\"The top Google auto-complete results for \"Barack Obama\":</br>- Barack Obama Height.</br>- Barack Obama net worth.</br>- Barack Obama _____.\""
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Then the princess kissed the frog, and all of a sudden the frog was _____!"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "There is no God. It's just _____ and then you die."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "This Friday at the Liquid Lounge, it's _____ Night! Ladies drink free."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "We do not shake with our left hands in this country. That is the hand we use for _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Well if _____ is a crime, then lock me up!"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Well, shit. My eyes ain't so good, but I'll eat my own boot if that ain't _____!"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What are all those whales singing about?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What sucks balls?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What totally destroyed my asshole?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What turned me into a Republican?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What will end racism once and for all?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What's a total waste of Hillary Clinton's time?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What's about to take dance floor to the next level?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What's the gayest?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "What's the most problematic?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "Why am I laughing and crying and taking off my clothes?"
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "With a one-time gift of just $10, you can save this child from _____."
-    //  },
-    //  {
-    //  "pick": 1,
-    //  "text": "You know who else liked _____? Hitler."
-    //  },
+    {
+      "text": "What left this stain on my couch?",
+      "pick": 1
+    },
+    {
+      "text": "Turns out that _____-Man was neither the hero we needed nor wanted.",
+      "pick": 1
+    },
+    {
+     {
+      "text": "In the seventh circle of Hell, sinners must endure _____ for all eternity.",
+      "pick": 1
+    },
+    {
+      "text": "As part of his daily regimen, Anderson Cooper sets aside 15 minutes for _____.",
+      "pick": 1
+    },
+    {
+      "text": "I'm not like the rest of you. I'm too rich and busy for _____.",
+      "pick": 1
+    },
+    {
+      "text": "_____. Awesome in theory, kind of a mess in practice.",
+      "pick": 1
+    },
+    {
+      "text": "As part of his contract, Prince won't perform without _____ in his dressing room.",
+      "pick": 1
+    },
+    {
+      "text": "Man, this is bullshit. Fuck _____.",
+      "pick": 1
+    },
+    {
+      "text": "Alright, bros. Our frat house is condemned, and all the hot slam pieces are over at Gamma Phi. The time has come to commence Operation _____.",
+      "pick": 1
+    },
+    {
+      "text": "The Japanese have developed a smaller, more efficient version of _____.",
+      "pick": 1
+    },
+    {
+      "text": "Wes Anderson's new film tells the story of a precocious child coming to terms with _____.",
+      "pick": 1
+    },
+    {
+      "text": "What's fun until it gets weird?",
+      "pick": 1
+    },
+    {
+      "text": "How am I compensating for my tiny penis?",
+      "pick": 1
+    },
+    {
+      "text": "I'm sorry, sir, but we don't allow _____ at the country club.",
+      "pick": 1
+    },
+    {
+      "text": "As king, how will I keep the peasants in line?",
+      "pick": 1
+    },
+    {
+      "text": "It lurks in the night. It hungers for flesh. This summer, no one is safe from _____.",
+      "pick": 1
+    },
+    {
+      "text": "This is the prime of my life. I'm young, hot, and full of _____.",
+      "pick": 1
+    },
+    {
+      "text": "I'm pretty sure I'm high right now, because I'm absolutely mesmerized by _____.",
+      "pick": 1
+    },
+    {
+      "text": "Do the Dew &reg; with our most extreme flavor yet! Get ready for Mountain Dew _____!",
+      "pick": 1
+    },
+    {
+      "text": "Armani suit: $1,000. Dinner for two at that swanky restaurant: $300. The look on her face when you surprise her with _____: priceless.",
+      "pick": 1
+    },
+    {
+      "text": "In his new action comedy, Jackie Chan must fend off ninjas while also dealing with _____.",
+      "pick": 1
+    },
+    {
+      "text": "Well what do you have to say for yourself, Casey? This is the third time you've been sent to the principal's office for _____.",
+      "pick": 1
+    },
+    {
+      "text": "Here at the Academy for Gifted Children, we allow students to explore _____ at their own pace.",
+      "pick": 1
+    },
+    {
+      "text": "I don't mean to brag, but they call me the Michael Jordan of _____.",
+      "pick": 1
+    },
+    {
+      "text": "Why am I broke?",
+      "pick": 1
+    },
+    {
+      "text": "Help me doctor, I've got _____ in my butt!",
+      "pick": 1
+    },
+    {
+      "text": "Hi MTV! My name is Kendra, I live in Malibu, I'm into _____, and I love to have a good time.",
+      "pick": 1
+    },
+    {
+      "text": "Life's pretty tough in the fast lane. That's why I never leave the house without _____.",
+      "pick": 1
+    },
+    {
+      "text": "What's making things awkward in the sauna?",
+      "pick": 1
+    },
+    {
+      "text": "Get ready for the movie of the summer! One cop plays by the book. The other's only interested in one thing: _____.",
+      "pick": 1
+    },
+    {
+      "text": "Having the worst day EVER. #_____",
+      "pick": 1
+    },
+    {
+      "text": "In his farewell address, George Washington famously warned Americans about the dangers of _____.",
+      "pick": 1
+    },
+    {
+      "text": "Don't forget! Beginning this week, Casual Friday will officially become \"_____ Friday.\"",
+      "pick": 1
+    },
+    {
+      "text": "What killed my boner?",
+      "pick": 1
+    },
+    {
+      "text": "Yo' mama so fat she _____!",
+      "pick": 1
+    },
+    {
+      "text": "Hi, this is Jim from accounting. We noticed a $1,200 charge labeled \"_____\". Can you explain?",
+      "pick": 1
+    },
+    {
+      "text": "Do you lack energy? Does it sometimes feel like the whole world is _____? Zoloft.&reg;",
+      "pick": 1
+    },
+    {
+      "text": "WHOOO! God damn I love _____!",
+      "pick": 1
+    },
+    {
+      "text": "Now in bookstores: \"The Audacity of _____\", by Barack Obama.",
+      "pick": 1
+    },
+    {
+      "text": "And today's soup is Cream of _____.",
+      "pick": 1
+    },
+    {
+      "pick": 1,
+      "text": "I work my ass off all day for this family, and this is what I come home to? _____!?"
+    },
+    {
+      "pick": 1,
+      "text": "I have a strict policy. First date, dinner. Second date, kiss. Third date, _____."
+    },
+    {
+      "pick": 1,
+      "text": "When I was a kid, we used to play Cowboys and _____."
+    },
+    {
+      "pick": 1,
+      "text": "This is America. If you don't work hard, you don't succeed. I don't care if you're black, white, purple, or _____."
+    },
+    {
+      "pick": 1,
+      "text": "You Won't Believe These 15 Hilarious _____ Bloopers!"
+    },
+    {
+      "pick": 1,
+      "text": "James is a lonely boy. But when he discovers a secret door in his attic, he meets a magical new friend: _____."
+    },
+    {
+      "pick": 1,
+      "text": "Don't worry kid. It gets better. I've been living with _____ for 20 years."
+    },
+    {
+      "pick": 1,
+      "text": "My grandfather worked his way up from nothing. When he came to this country, all he had was the shoes on his feet and _____."
+    },
+    {
+      "pick": 1,
+      "text": "Behind every powerful man is _____."
+    },
+    {
+      "pick": 1,
+      "text": "You are not alone. Millions of Americans struggle with _____ every day."
+    },
+    {
+      "pick": 1,
+      "text": "Come to Dubai, where you can relax in our world famous spas, experience the nightlife, or simply enjoy _____ by the poolside."
+    },
+    {
+      "pick": 1,
+      "text": "\"This is madness.\" \"No, THIS IS _____!\""
+    },
+    {
+      "pick": 1,
+      "text": "Listen Gary, I like you. But if you want that corner office, you're going to have to show me _____."
+    },
+    {
+      "pick": 1,
+      "text": "I went to the desert and ate of the peyote cactus. Turns out my spirit animal is _____."
+    },
+    {
+      "pick": 1,
+      "text": "And would you like those buffalo wings mild, hot, or _____?"
+    },
+    {
+      "pick": 1,
+      "text": "The six things I could never do without: oxygen, Facebook, chocolate, Netflix, friends, and _____ LOL!"
+    },
+    {
+      "pick": 1,
+      "text": "Why won't you make love to me anymore? Is it _____?"
+    },
+    {
+      "pick": 1,
+      "text": "Puberty is a time of change. You might notice hair growing in new places. You might develop an interest in _____. This is normal."
+    },
+    {
+      "pick": 1,
+      "text": "I'm sorry, Mrs. Chen, but there was nothing we could do. At 4:15 this morning, your son succumbed to _____."
+    },
+    {
+      "pick": 1,
+      "text": "I'm Miss Tennessee, and if I could make the world better by changing one thing, I would get rid of _____."
+    },
+    {
+      "pick": 1,
+      "text": "Tonight we will have sex. And afterwards, If you'd like, a little bit of _____."
+    },
+    {
+      "pick": 1,
+      "text": "Everybody join hands and close your eyes. Do you sense that? That's the presence of _____ in this room."
+    },
+    {
+      "pick": 1,
+      "text": "To become a true Yanomama warrior, you must prove that you can withstand _____ without crying out."
+    },
+    {
+      "pick": 1,
+      "text": "Y'all ready to get this thing started? I'm Nick Cannon, and this is America's Got _____."
+    },
+    {
+      "pick": 1,
+      "text": "If you had to describe the Card Czar, using only one of the cards in your hand, which one would it be?"
+    },
+    {
+      "pick": 1,
+      "text": "Art isn't just a painting in a stuffy museum. Art is alive. Art is _____."
+    },
+    {
+      "pick": 1,
+      "text": "As reparations for slavery, all African Americans will receive _____."
+    },
+    {
+      "pick": 1,
+      "text": "As Teddy Roosevelt said, the four manly virtues are honor, temperance, industry, and _____."
+    },
+    {
+      "pick": 1,
+      "text": "Best you go back where you came from, now. We don't take too kindly to _____ in these parts."
+    },
+    {
+      "pick": 1,
+      "text": "CNN breaking news! Scientists discover _____."
+    },
+    {
+      "pick": 1,
+      "text": "Coming to Red Lobster&reg; this month, _____."
+    },
+    {
+      "pick": 1,
+      "text": "Congratulations! You have been selected for our summer internship program. While we are unable to offer a salary, we can offer you _____."
+    },
+    {
+      "pick": 1,
+      "text": "Dance like there's nobody watching, love like you'll never be hurt, and live like you're _____."
+    },
+    {
+      "pick": 1,
+      "text": "Errbody in the club _____."
+    },
+    {
+      "pick": 1,
+      "text": "Feeling so grateful! #amazing #mylife #_____."
+    },
+    {
+      "pick": 1,
+      "text": "Girls just wanna have _____."
+    },
+    {
+      "pick": 1,
+      "text": "Google Calendar alert: _____ in 10 minutes."
+    },
+    {
+      "pick": 1,
+      "text": "I don't believe in God. I believe in _____."
+    },
+    {
+      "pick": 1,
+      "text": "I got rhythm, I've got music, I've got _____. Who could ask for anything more?"
+    },
+    {
+      "pick": 1,
+      "text": "I may not be much to look at, but I fuck like _____."
+    },
+    {
+      "pick": 1,
+      "text": "I tell you, it was a non-stop fuckfest. When it was over, my asshole looked like _____."
+    },
+    {
+      "pick": 1,
+      "text": "I'll take the BBQ bacon burger with fried egg and fuck it how about _____."
+    },
+    {
+      "pick": 1,
+      "text": "I'm sorry, sir, but your insurance plan doesn't cover injuries caused by _____."
+    },
+    {
+      "pick": 1,
+      "text": "I've had a horrible vision, father. I saw mountains crumbling, stars falling from the sky. I saw _____."
+    },
+    {
+      "pick": 1,
+      "text": "If at first you don't succeed, try _____."
+    },
+    {
+      "pick": 1,
+      "text": "In the 1950s, psychologists prescribed _____ as a cure for homosexually."
+    },
+    {
+      "pick": 1,
+      "text": "LSD + _____ = really bad time."
+    },
+    {
+      "pick": 1,
+      "text": "Most Americans would not vote for a candidate who is openly _____."
+    },
+    {
+      "pick": 1,
+      "text": "No, no, no, no, no, no, NO! I will NOT let _____ ruin this wedding."
+    },
+    {
+      "pick": 1,
+      "text": "Oh no! Siri, how do I fix _____?"
+    },
+    {
+      "pick": 1,
+      "text": "One more thing. Watch out for Big Mike. They say he killed a man with _____."
+    },
+    {
+      "pick": 1,
+      "text": "Ooo, daddy like _____."
+    },
+    {
+      "pick": 1,
+      "text": "Poor Brandon, still living in his parent's basement. I heard he never got over _____."
+    },
+    {
+      "pick": 1,
+      "text": "Run, run, as fast as you can! You can't catch me, I'm _____!"
+    },
+    {
+      "pick": 1,
+      "text": "She's a lady in the streets, _____ in the sheets."
+    },
+    {
+      "pick": 1,
+      "text": "She's just one of the guys, you know? She likes beer, and football, and _____."
+    },
+    {
+      "pick": 1,
+      "text": "Son, take it from someone who's been around the block a few times. Nothin' puts her in the mood like _____."
+    },
+    {
+      "pick": 1,
+      "text": "Summer lovin', had me a blast. _____, happened so fast."
+    },
+    {
+      "pick": 1,
+      "text": "Then the princess kissed the frog, and all of a sudden the frog was _____!"
+    },
+    {
+      "pick": 1,
+      "text": "There is no God. It's just _____ and then you die."
+    },
+    {
+      "pick": 1,
+      "text": "This Friday at the Liquid Lounge, it's _____ Night! Ladies drink free."
+    },
+    {
+      "pick": 1,
+      "text": "We do not shake with our left hands in this country. That is the hand we use for _____."
+    },
+    {
+      "pick": 1,
+      "text": "Well if _____ is a crime, then lock me up!"
+    },
+    {
+      "pick": 1,
+      "text": "Well, shit. My eyes ain't so good, but I'll eat my own boot if that ain't _____!"
+    },
+    {
+      "pick": 1,
+      "text": "What are all those whales singing about?"
+    },
+    {
+      "pick": 1,
+      "text": "What sucks balls?"
+    },
+    {
+      "pick": 1,
+      "text": "What totally destroyed my asshole?"
+    },
+    {
+      "pick": 1,
+      "text": "What turned me into a Republican?"
+    },
+    {
+      "pick": 1,
+      "text": "What will end racism once and for all?"
+    },
+    {
+      "pick": 1,
+      "text": "What's a total waste of Hillary Clinton's time?"
+    },
+    {
+      "pick": 1,
+      "text": "What's about to take dance floor to the next level?"
+    },
+    {
+      "pick": 1,
+      "text": "What's the gayest?"
+    },
+    {
+      "pick": 1,
+      "text": "What's the most problematic?"
+    },
+    {
+      "pick": 1,
+      "text": "Why am I laughing and crying and taking off my clothes?"
+    },
+    {
+      "pick": 1,
+      "text": "With a one-time gift of just $10, you can save this child from _____."
+    },
+    {
+      "pick": 1,
+      "text": "You know who else liked _____? Hitler."
+    },
     {
       "pick": 1,
       "text": "You won't believe what's in K-Ville. It's _____."
@@ -1257,7 +1217,6 @@ module.exports = {
     "Altar boys.",
     "Ambiguous sarcasm.",
     "Amputees.",
-    "An all-midget production of Shakespeare's <i>Richard III</i>.",
     "An army of skeletons.",
     "An arrangement wherein I give a person money they have sex with me.",
     "An ass disaster.",
@@ -1909,7 +1868,6 @@ module.exports = {
     "Pretending to be one of the guys but actually being the spider god.",
     "Pretending to care.",
     "Pretty Pretty Princess Dress-Up Board Game&reg;.",
-    "Prince Ali,<br>fabulous he,<br>Ali Ababwa.",
     "Puberty.",
     "Public ridicule.",
     "Pulling out.",
