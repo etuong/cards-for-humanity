@@ -105,6 +105,6 @@ export default defineComponent({
 <style scoped>
 .body-content {
   flex: 1 0 auto;
-  padding-top: 80px;
+  padding-top: 50px;
 }
 </style>

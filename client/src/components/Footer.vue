@@ -23,11 +23,11 @@ export default defineComponent({
 <style scoped>
 .border-top {
   border-top: 1px solid #dee2e6;
-  padding-top: 15px;
+  padding: 10px;
 }
 
 footer {
   flex-shrink: 0;
-  padding: 20px;
+  padding: 5px 20px;
 }
 </style>

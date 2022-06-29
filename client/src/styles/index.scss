@@ -29,5 +29,9 @@ html, body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 15px;
+}
+
+.splitpanes--vertical > .splitpanes__splitter {
+  min-width: 20px;
+  background: linear-gradient(90deg, whitesmoke, lightgray);
 }

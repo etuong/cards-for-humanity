@@ -36,12 +36,12 @@ export default defineComponent({
 
 <style scoped>
 .navbar {
-  padding: 15px;
+  padding: 0px 15px;
 }
 
 .logo {
-  width: 64px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
   max-height: auto;
 }
 
