@@ -1,14 +1,12 @@
 <template>
-  <footer class="section">
-    <div class="container border-top">
-      <div class="is-flex-tablet is-justify-content-end is-align-items-center">
+  <footer class="section border-top">
+      <div class="is-flex-tablet is-justify-content-end">
         <p>
           Created by
           <a href="https://github.com/etuong/cards-for-humanity">Ethan Uong</a>
           👨‍💻
         </p>
       </div>
-    </div>
   </footer>
 </template>
 
@@ -29,5 +27,7 @@ export default defineComponent({
 footer {
   flex-shrink: 0;
   padding: 5px 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

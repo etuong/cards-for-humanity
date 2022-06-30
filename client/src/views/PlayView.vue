@@ -2,9 +2,13 @@
   <section class="section">
     <splitpanes class="default-theme">
       <pane>
-        <div class="container" id="test">
-          <div v-for="index in 10" :key="index" class="white-card box">
-            <p>Who really did 9/11</p>
+        <div v-if="test && test.cards" class="container" id="card-panel">
+          <div
+            v-for="(card, index) in test.cards"
+            :key="index"
+            class="white-card"
+          >
+            <p>{{ card }}</p>
             <div className="card-logo">
               <img src="../assets/logo.png" alt="card logo" />
               <span>Cards For Humanity</span>
@@ -14,15 +18,7 @@
       </pane>
 
       <pane>
-        <div class="container">
-          <div v-for="index in 10" :key="index" class="black-card box">
-            <p>A finger for a thumb</p>
-            <div className="card-logo">
-              <img src="../assets/logo.png" alt="card logo" />
-              <span>Cards For Humanity</span>
-            </div>
-          </div>
-        </div>
+        <div class="container"></div>
       </pane>
     </splitpanes>
   </section>
@@ -40,44 +36,31 @@ export default defineComponent({
     Pane,
   },
   props: {
-    msg: String,
+    currentPlayer: Object,
   },
   data() {
-    return {};
+    return {
+      test: { cards: ["a", "b", "c", "d", "e", "f", "g", "h", "i"] },
+    };
   },
   methods: {},
   mounted() {
-    $(`.box`).draggable({
-      stack: "div",
-      containment: "parent",
-    });
-
-    var divs = document.querySelectorAll(".box");
-    // var winWidth = document.querySelector("#test").clientWidth;
-    // var winHeight = document.querySelector("#test").clientHeight;
-
-    // i stands for "index". you could also call this banana or haircut. it's a variable
-    for (var i = 0; i < divs.length; i++) {
-      // // shortcut! the current div in the list
-      var thisDiv = divs[i];
-
-      // // get random numbers for each element
-      // let randomTop = getRandomNumber(0, winHeight);
-      // let randomLeft = getRandomNumber(0, winWidth);
-
-      // // update top and left position
-      // thisDiv.style.top = randomTop + "px";
-      // thisDiv.style.left = randomLeft + "px";
-
-      $(thisDiv).css({
-        left: Math.random() * ($("#test").width() - $(thisDiv).width()),
-        top: Math.random() * ($("#test").height() - $(thisDiv).height()),
+    $(`.white-card`)
+      .draggable({
+        stack: "div",
+        containment: "parent",
+      })
+      .mousedown(function () {
+        $(".selected-card").css("z-index", "0").removeClass("selected-card");
+        $(this).addClass("selected-card").css("z-index", "100");
+      });
+    var cards = document.querySelectorAll(".white-card");
+    for (var card of cards) {
+      $(card).css({
+        left: Math.random() * ($("#card-panel").width() - $(card).width()),
+        top: Math.random() * ($("#card-panel").height() - $(card).height()),
       });
     }
-
-    // function getRandomNumber(min, max) {
-    //   return Math.random() * (max - min) + min;
-    // }
   },
 });
 </script>
@@ -129,5 +112,9 @@ export default defineComponent({
 .card-logo img {
   height: 14px;
   margin-right: 3px;
+}
+
+.selected-card {
+  border: 0.15em solid black;
 }
 </style>

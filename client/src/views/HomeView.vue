@@ -2,10 +2,13 @@
   <section class="section">
     <div class="container">
       <game-creator
-        @close="toggleGameCreatorModal"
+        @close="showGameCreatorModal = false"
         v-if="showGameCreatorModal"
       />
-      <game-joiner @close="toggleGameJoinerModal" v-if="showGameJoinerModal" />
+      <game-joiner
+        @close="showGameJoinerModal = false"
+        v-if="showGameJoinerModal"
+      />
       <div class="mb-6 pb-3 is-multiline">
         <div class="column is-12 is-9-desktop mx-auto has-text-centered">
           <h2 class="mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">
@@ -20,13 +23,13 @@
         <div class="buttons is-centered">
           <button
             class="button is-primary is-medium"
-            @click="toggleGameCreatorModal"
+            @click="showGameCreatorModal = !showGameCreatorModal"
           >
             <strong>Create a Game</strong>
           </button>
           <button
             class="button is-primary is-medium"
-            @click="toggleGameJoinerModal"
+            @click="showGameJoinerModal = !showGameJoinerModal"
           >
             <strong>Join a Game</strong>
           </button>
@@ -92,14 +95,7 @@ export default defineComponent({
       showGameJoinerModal: false,
     };
   },
-  methods: {
-    toggleGameCreatorModal() {
-      this.showGameCreatorModal = !this.showGameCreatorModal;
-    },
-    toggleGameJoinerModal() {
-      this.showGameJoinerModal = !this.showGameJoinerModal;
-    },
-  },
+  methods: {},
 });
 </script>
 
@@ -114,5 +110,9 @@ ol {
 
 .section {
   padding: 0em;
+}
+
+.columns {
+  margin: 5px;
 }
 </style>

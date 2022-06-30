@@ -7,7 +7,7 @@
       :playersData="playersData"
       :currentPlayer="currentPlayer"
     ></lobby>
-    <play v-if="showPlayView"></play>
+    <play v-if="showPlayView" :currentPlayer="currentPlayer"></play>
   </div>
   <FooterComponent />
 </template>
@@ -83,6 +83,12 @@ export default defineComponent({
     room_existed() {
       this.showToast(
         "Room with your password has been created! Please try again.",
+        "is-danger"
+      );
+    },
+    player_name_exist() {
+      this.showToast(
+        "Name has been taken. Please choose another name!",
         "is-danger"
       );
     },

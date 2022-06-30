@@ -22,6 +22,7 @@
             <button
               class="button is-success is-medium"
               @click="setGameReady"
+              :class="{ pulse: playersData?.isGameReady }"
               :disabled="!playersData?.isGameReady"
             >
               <strong>Start!</strong>
@@ -118,6 +119,19 @@ export default defineComponent({
 @keyframes blinker {
   50% {
     opacity: 0;
+  }
+}
+
+.pulse {
+  animation: pulse-animation 1s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 222, 89, 0.636);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(23, 154, 29, 0.2);
   }
 }
 </style>
