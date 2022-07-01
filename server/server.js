@@ -22,7 +22,7 @@ server.listen(port, () => {
 
 const io = require('socket.io')(server, {
   cors: {
-    origin:["http://localhost:8080"],
+    origin: ["http://localhost:8080"],
     credentials: true
   },
   transports: ['polling', 'websocket'],
@@ -74,6 +74,8 @@ io.on('connection', (socket) => {
     } else if (gameRoom.players.length == 10) {
       socket.emit("room_full");
       console.log(`${data.name} tries to join room ${roomId} but room is full`);
+    } else if (gameRoom.isDuplicatePlayerName(data.name)) {
+      socket.emit("player_name_exist");
     } else if (gameRoom.isGameInSession) {
       socket.emit("game_in_session");
       console.log(`${data.name} tries to join room ${roomId} but game is in session`);
@@ -110,14 +112,14 @@ io.on('connection', (socket) => {
     console.log(`${player.name} is ready to play in room ${player.roomId}!`);
   });
 
-  socket.on('game_ready', roomId=> {
+  socket.on('game_ready', roomId => {
     const gameRoom = gameRooms.get(roomId);
     gameRoom.startGame();
     io.sockets.in(roomId).emit('game_start', {
       players: gameRoom.players,
       isGameReady: gameRoom.isGameReady()
     });
-    console.log(`Room ${roomId} is ready to play!`);
+    console.log(`Room ${roomId} is playing!`);
   });
 
   socket.on('disconnect', () => {
@@ -134,7 +136,6 @@ io.on('connection', (socket) => {
             isGameReady: gameRoom.isGameReady()
           });
           console.log(`${player.name} just left room ${roomId}!`);
-          socket.emit("test");
           break;
         }
       }

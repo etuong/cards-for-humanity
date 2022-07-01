@@ -1,24 +1,29 @@
 <template>
   <section class="section">
     <splitpanes class="default-theme">
-      <pane>
-        <div v-if="test && test.cards" class="container" id="card-panel">
-          <div
+      <pane :size="70">
+        <div
+          v-if="test && test.cards"
+          class="container"
+          id="card-panel"
+          :class="{ 'white-cards': isMobile }"
+        >
+          <card
             v-for="(card, index) in test.cards"
             :key="index"
-            class="white-card"
-          >
-            <p>{{ card }}</p>
-            <div className="card-logo">
-              <img src="../assets/logo.png" alt="card logo" />
-              <span>Cards For Humanity</span>
-            </div>
-          </div>
+            :isWhite="true"
+            :text="card"
+            :hoverable="isMobile"
+          ></card>
         </div>
       </pane>
 
-      <pane>
-        <div class="container"></div>
+      <pane v-if="!isMobile" :size="30">
+        <div class="container">
+          <div class="black-card-container">
+            <card :isWhite="false" :text="black"></card>
+          </div>
+        </div>
       </pane>
     </splitpanes>
   </section>
@@ -27,6 +32,7 @@
 <script>
 import { defineComponent } from "vue";
 import { Splitpanes, Pane } from "splitpanes";
+import Card from "../components/Card.vue";
 import "splitpanes/dist/splitpanes.css";
 
 export default defineComponent({
@@ -34,32 +40,36 @@ export default defineComponent({
   components: {
     Splitpanes,
     Pane,
+    Card,
   },
   props: {
     currentPlayer: Object,
   },
   data() {
     return {
+      isMobile: false,
       test: { cards: ["a", "b", "c", "d", "e", "f", "g", "h", "i"] },
+      black: "b",
     };
   },
   methods: {},
   mounted() {
-    $(`.white-card`)
-      .draggable({
+    $(`.white-card`).mousedown(function () {
+      $(".selected-card").removeClass("selected-card").css("z-index", "0");
+      $(this).addClass("selected-card").css("z-index", "100");
+    });
+    if (!this.isMobile) {
+      $(`.white-card`).draggable({
         stack: "div",
         containment: "parent",
-      })
-      .mousedown(function () {
-        $(".selected-card").css("z-index", "0").removeClass("selected-card");
-        $(this).addClass("selected-card").css("z-index", "100");
       });
-    var cards = document.querySelectorAll(".white-card");
-    for (var card of cards) {
-      $(card).css({
-        left: Math.random() * ($("#card-panel").width() - $(card).width()),
-        top: Math.random() * ($("#card-panel").height() - $(card).height()),
-      });
+      var cards = document.querySelectorAll(".white-card");
+      for (var card of cards) {
+        $(card).css({
+          left: Math.random() * ($("#card-panel").width() - $(card).width()),
+          top: Math.random() * ($("#card-panel").height() - $(card).height()),
+        });
+      }
     }
   },
 });
@@ -76,45 +86,23 @@ export default defineComponent({
   height: 100%;
 }
 
-.white-card,
-.black-card {
-  position: absolute;
-  cursor: grab;
-  font-weight: 700;
-  padding: 13px;
-  height: 225px;
-  width: 163px;
-  border-radius: 12px;
-  border: 1px solid black;
-  box-sizing: border-box;
-}
-
-.white-card {
-  background-color: white;
-}
-
-.black-card {
-  background-color: black;
-  color: white;
-  text-align: left;
-  box-sizing: border-box;
-}
-
-.card-logo {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  font-size: 6px;
-  bottom: 10px;
-  left: 15px;
-}
-
-.card-logo img {
-  height: 14px;
-  margin-right: 3px;
-}
-
 .selected-card {
   border: 0.15em solid black;
+}
+
+.black-card-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.white-cards {
+  width: 100%;
+  overflow-y: auto;
+  flex: 1;
+  padding: 10px 0;
+}
+
+.white-cards .white-card {
+  margin: 0 auto;
 }
 </style>

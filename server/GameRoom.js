@@ -9,7 +9,7 @@ class GameRoom {
     this.blackDeck = deck.getBlackCards();
     this.players = [];
     this.currentBlackCard = null;
-    this.currentCzar = null;
+    this.currentCzarIndex = -1;
     this.playerSelections = [];
     this.winningCards = [];
     this.isGameInSession = false;
@@ -18,6 +18,10 @@ class GameRoom {
   addPlayerToRoom(newPlayer) {
     newPlayer.refillWhiteCards(this.whiteDeck);
     this.players.push(newPlayer);
+  }
+
+  isDuplicatePlayerName(name) {
+    return this.players.find(player => player.name === name);
   }
 
   isGameReady() {
@@ -37,8 +41,6 @@ class GameRoom {
     return this.players.length == 0 ? true : false;
   }
 
-  // takes player selections and puts them into the discard
-  // this is important because discard must be emptied back into whiteDeck for reshuffle
   discardSelections() {
     this.playerSelections.forEach((el) => {
       el.selection.forEach((card) => {
@@ -49,17 +51,16 @@ class GameRoom {
   }
 
   getNextCzar() {
-    if (this.cardCzarIndex + 1 === this.length) {
-      this.cardCzarIndex = 0;
+    if (this.currentCzarIndex + 1 === this.players.length) {
+      this.currentCzarIndex = 0;
     } else {
-      this.cardCzarIndex += 1;
+      this.currentCzarIndex += 1;
     }
   }
 
   startGame() {
     this.currentBlackCard = this.blackDeck.pop();
-    this.currentCardCzar = Object.values(this.playerList.players)[this.playerList.cardCzarIndex];
-    this.playerList.resetReady();
+    this.getNextCzar();
     this.isGameInSession = true;
   }
 }

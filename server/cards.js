@@ -389,10 +389,6 @@ module.exports = {
       "pick": 1
     },
     {
-      "text": "I thought it would be easy fitting In. But after the _____ incident, I’m having a hard time transitioning to campus.",
-      "pick": 1
-    },
-    {
       "text": "I learned the hard way that you can't cheer up a grieving friend with _____.",
       "pick": 1
     },
@@ -553,10 +549,6 @@ module.exports = {
       "pick": 1
     },
     {
-      "text": "Ahletes outside of basketball players at duke don’t get enough attention. I say we bring extra _____ to every home game. ",
-      "pick": 1
-    },
-    {
       "text": "I would’ve graduated debt and stress free if I didn’t get a _____ addiction sophomore year. .",
       "pick": 1
     },
@@ -569,7 +561,6 @@ module.exports = {
       "pick": 1
     },
     {
-     {
       "text": "In the seventh circle of Hell, sinners must endure _____ for all eternity.",
       "pick": 1
     },
@@ -591,10 +582,6 @@ module.exports = {
     },
     {
       "text": "Man, this is bullshit. Fuck _____.",
-      "pick": 1
-    },
-    {
-      "text": "Alright, bros. Our frat house is condemned, and all the hot slam pieces are over at Gamma Phi. The time has come to commence Operation _____.",
       "pick": 1
     },
     {
@@ -638,15 +625,7 @@ module.exports = {
       "pick": 1
     },
     {
-      "text": "Armani suit: $1,000. Dinner for two at that swanky restaurant: $300. The look on her face when you surprise her with _____: priceless.",
-      "pick": 1
-    },
-    {
       "text": "In his new action comedy, Jackie Chan must fend off ninjas while also dealing with _____.",
-      "pick": 1
-    },
-    {
-      "text": "Well what do you have to say for yourself, Casey? This is the third time you've been sent to the principal's office for _____.",
       "pick": 1
     },
     {
