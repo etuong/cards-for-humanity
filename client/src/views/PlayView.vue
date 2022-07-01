@@ -1,10 +1,10 @@
 <template>
   <section class="section">
     <splitpanes class="default-theme">
-      <pane :size="70">
+      <pane :size="65">
         <div
           v-if="test && test.cards"
-          class="container"
+          class="container player-selection"
           id="card-panel"
           :class="{ 'white-cards': isMobile }"
         >
@@ -14,14 +14,26 @@
             :isWhite="true"
             :text="card"
             :hoverable="isMobile"
+            :style="{ position: isMobile ? 'relative' : 'absolute'}"
           ></card>
         </div>
       </pane>
 
-      <pane v-if="!isMobile" :size="30">
-        <div class="container">
+      <pane v-if="!isMobile" :size="35">
+        <div class="czar container">
           <div class="black-card-container">
             <card :isWhite="false" :text="black"></card>
+          </div>
+          <div class="czar-selections">
+            <div class="prev-selection">
+              <card :isWhite="true" text="black asdf"></card>
+            </div>
+            <div class="current-selection">
+              <card :isWhite="true" text="sadf black"></card>
+            </div>
+            <div class="next-selection">
+              <card :isWhite="true" text="asdf ert cvb"></card>
+            </div>
           </div>
         </div>
       </pane>
@@ -48,22 +60,24 @@ export default defineComponent({
   data() {
     return {
       isMobile: false,
+      // Test data
       test: { cards: ["a", "b", "c", "d", "e", "f", "g", "h", "i"] },
+      playerSelections: { cards: ["a", "b", "c", "d", "e", "f", "g", "h", "i"] },
       black: "b",
     };
   },
   methods: {},
   mounted() {
-    $(`.white-card`).mousedown(function () {
+    $(`.player-selection .white-card`).mousedown(function () {
       $(".selected-card").removeClass("selected-card").css("z-index", "0");
       $(this).addClass("selected-card").css("z-index", "100");
     });
     if (!this.isMobile) {
-      $(`.white-card`).draggable({
+      $(`.player-selection .white-card`).draggable({
         stack: "div",
         containment: "parent",
       });
-      var cards = document.querySelectorAll(".white-card");
+      var cards = document.querySelectorAll(".player-selection .white-card");
       for (var card of cards) {
         $(card).css({
           left: Math.random() * ($("#card-panel").width() - $(card).width()),
@@ -93,6 +107,7 @@ export default defineComponent({
 .black-card-container {
   display: flex;
   justify-content: space-evenly;
+  height: 250px;
 }
 
 .white-cards {
@@ -104,5 +119,40 @@ export default defineComponent({
 
 .white-cards .white-card {
   margin: 0 auto;
+}
+
+.czar.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.czar-selections {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* width: 100vw; */
+  transform-origin: bottom;
+  animation: flyup 0.5s;
+}
+
+.czar-selections .white-card {
+  margin-bottom: -70%;
+  animation: none;
+  position: relative !important;
+}
+
+.prev-selection,
+.next-selection {
+  filter: blur(4px);
+  transform: scale(0.8);
+  cursor: pointer;
+}
+
+@keyframes flyup {
+  0% {
+    transform: translateY(100vh);
+  }
 }
 </style>

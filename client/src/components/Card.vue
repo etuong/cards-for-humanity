@@ -1,15 +1,12 @@
 <template>
   <div
     :class="isWhite ? 'white-card' : 'black-card'"
-    @mouseenter="handleHover"
-    @mouseleave="handleHover"
     :style="[
       hoverable
         ? {
-            position: 'relative',
             'margin-bottom': '-160px',
           }
-        : { 'margin-bottom': '0', position: 'absolute' },
+        : { 'margin-bottom': '0' },
     ]"
   >
     <p>{{ text }}</p>
@@ -52,6 +49,7 @@ export default defineComponent({
 <style scoped>
 .white-card,
 .black-card {
+  position: relative;
   cursor: grab;
   font-weight: 700;
   padding: 13px;
