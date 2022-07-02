@@ -14,7 +14,7 @@
             :isWhite="true"
             :text="card"
             :hoverable="isMobile"
-            :style="{ position: isMobile ? 'relative' : 'absolute'}"
+            :style="{ position: isMobile ? 'relative' : 'absolute' }"
           ></card>
         </div>
       </pane>
@@ -25,14 +25,23 @@
             <card :isWhite="false" :text="black"></card>
           </div>
           <div class="czar-selections">
-            <div class="prev-selection">
-              <card :isWhite="true" text="black asdf"></card>
+            <div class="prev-selection" @click="changeSelection(-1)">
+              <card
+                :isWhite="true"
+                :text="playerSelections[czarPrevSelectionIndex]"
+              ></card>
             </div>
             <div class="current-selection">
-              <card :isWhite="true" text="sadf black"></card>
+              <card
+                :isWhite="true"
+                :text="playerSelections[czarCurrSelectionIndex]"
+              ></card>
             </div>
-            <div class="next-selection">
-              <card :isWhite="true" text="asdf ert cvb"></card>
+            <div class="next-selection" @click="changeSelection(1)">
+              <card
+                :isWhite="true"
+                :text="playerSelections[czarNextSelectionIndex]"
+              ></card>
             </div>
           </div>
         </div>
@@ -59,14 +68,49 @@ export default defineComponent({
   },
   data() {
     return {
-      isMobile: false,
+      isMobile:
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ),
       // Test data
       test: { cards: ["a", "b", "c", "d", "e", "f", "g", "h", "i"] },
-      playerSelections: { cards: ["a", "b", "c", "d", "e", "f", "g", "h", "i"] },
+      playerSelections: ["a", "b", "c", "d", "e", "f", "g", "h", "i"],
       black: "b",
+      czarPrevSelectionIndex: 0,
+      czarCurrSelectionIndex: 1,
+      czarNextSelectionIndex: 2,
     };
   },
-  methods: {},
+  methods: {
+    changeSelection(iteration) {
+      let length = this.playerSelections.length;
+
+      const updateSelection = (index, iteration) => {
+        index = index + iteration;
+
+        if (index < 0) {
+          index = length - 1;
+        } else if (index === length) {
+          index = 0;
+        }
+
+        return index;
+      };
+
+      this.czarPrevSelectionIndex = updateSelection(
+        this.czarPrevSelectionIndex,
+        iteration
+      );
+      this.czarCurrSelectionIndex = updateSelection(
+        this.czarCurrSelectionIndex,
+        iteration
+      );
+      this.czarNextSelectionIndex = updateSelection(
+        this.czarNextSelectionIndex,
+        iteration
+      );
+    },
+  },
   mounted() {
     $(`.player-selection .white-card`).mousedown(function () {
       $(".selected-card").removeClass("selected-card").css("z-index", "0");
@@ -132,7 +176,6 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* width: 100vw; */
   transform-origin: bottom;
   animation: flyup 0.5s;
 }
@@ -140,13 +183,17 @@ export default defineComponent({
 .czar-selections .white-card {
   margin-bottom: -70%;
   animation: none;
-  position: relative !important;
 }
 
 .prev-selection,
 .next-selection {
   filter: blur(4px);
   transform: scale(0.8);
+}
+
+.current-selection .white-card,
+.prev-selection .white-card,
+.next-selection .white-card {
   cursor: pointer;
 }
 
