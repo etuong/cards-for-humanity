@@ -10,12 +10,20 @@
         :key="index"
         :isWhite="true"
         :text="card"
+        @click="selectCard(index, card)"
         :hoverable="isMobile"
         :style="{ position: isMobile ? 'relative' : 'absolute' }"
       ></card>
     </div>
     <div class="player-bar">
-      <p>Test</p>
+      <p>{{ message }}</p>
+      <button
+        :disabled="!enableConfirmationBtn"
+        class="button is-primary is-small"
+        @click="submitSelection"
+      >
+        <strong>Select!</strong>
+      </button>
     </div>
   </div>
 </template>
@@ -32,14 +40,38 @@ export default defineComponent({
     isMobile: Boolean,
   },
   data() {
-    return {};
+    return {
+      message: "Please choose a white card to fill in the blank",
+      selected_card: [],
+      enableConfirmationBtn: false,
+      hasPlayerSelected: false,
+    };
   },
 
-  methods: {},
+  methods: {
+    selectCard(id, card) {
+      if (!this.hasPlayerSelected) {
+        this.selected_card = [id, card];
+        this.message = card;
+        this.enableConfirmationBtn = true;
+      }
+    },
+    submitSelection() {
+      // Emit
+      this.message = "Waiting on other players";
+      this.enableConfirmationBtn = false;
+      this.hasPlayerSelected = true;
+      document.querySelector(".clicked-card").classList.add("selected-card");
+    },
+  },
   mounted() {
-    $(".card-container .white-card").mousedown(function () {
-      $(".selected-card").removeClass("selected-card").css("z-index", "0");
-      $(this).addClass("selected-card").css("z-index", "100");
+    $(".card-container .white-card").mousedown((e) => {
+      $(".clicked-card").css("z-index", "0");
+      $(e.target).css("z-index", "100");
+      if (!this.hasPlayerSelected) {
+        $(".clicked-card").removeClass("clicked-card");
+        $(e.target).addClass("clicked-card");
+      }
     });
     if (!this.isMobile) {
       $(".card-container .white-card").draggable({
@@ -67,12 +99,16 @@ export default defineComponent({
   position: relative;
 
   .card-container {
-    padding: 10px 10px 30px 10px;
+    padding: 5px 5px 40px 5px;
     height: 100%;
   }
 
-  .selected-card {
+  .clicked-card {
     border: 0.15em solid black;
+  }
+
+  .selected-card {
+    border: 0.15em solid red;
   }
 
   .white-cards {
@@ -94,6 +130,11 @@ export default defineComponent({
     z-index: 10000;
     position: absolute;
     bottom: 0;
+    display: flex;
+    align-items: center;
+    .button {
+      margin-left: auto;
+    }
   }
 }
 </style>

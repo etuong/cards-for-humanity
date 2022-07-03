@@ -115,10 +115,13 @@ io.on('connection', (socket) => {
   socket.on('game_ready', roomId => {
     const gameRoom = gameRooms.get(roomId);
     gameRoom.startGame();
-    io.sockets.in(roomId).emit('game_start', {
-      players: gameRoom.players,
-      isGameReady: gameRoom.isGameReady()
-    });
+    io.sockets.in(roomId).emit('game_start');
+    setTimeout(() => io.sockets.in(roomId).emit('update_playground', {
+      currentBlackCard: gameRoom.currentBlackCard,
+      currentCzar: gameRoom.currentCzar,
+      publicMessage: `${gameRoom.currentCzar.name} is the current Czar.`,
+      czarMessage: "Please wait for other players to select a white card",
+    }), 30);
     console.log(`Room ${roomId} is playing!`);
   });
 
@@ -145,13 +148,15 @@ io.on('connection', (socket) => {
   socket.on('mock', () => {
     const { player1, gameRoom } = require("./Mock");
 
-    socket.emit('update_player', player1);
     socket.emit('game_start');
+    socket.emit('update_player', player1);
 
-    // io.sockets.in(roomId).emit('update_players', {
-    //   players: gameRoom.players,
-    //   isGameReady: gameRoom.isGameReady()
-    // });
+    setTimeout(() => socket.emit('update_playground', {
+      currentBlackCard: gameRoom.currentBlackCard,
+      currentCzar:"",
+      publicMessage: `${gameRoom.currentCzar.name} is the current Czar.`,
+      czarMessage: "Please wait for other players to select a white card",
+    }), 10);
 
   });
 });

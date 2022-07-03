@@ -1,4 +1,7 @@
-const CardDeck = require("./CardDeck");
-const deck = new CardDeck();
-const blackCards = deck.getBlackCards()
-const whiteCards = deck.getWhiteCards();
+const cards = require("./FamilyPack.js")
+const blacks = cards.black;
+
+const stack = [];
+for (let black of blacks) {
+  console.log(`"${black.text}",`)
+}

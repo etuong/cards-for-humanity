@@ -58,8 +58,12 @@ class GameRoom {
     }
   }
 
+  get currentCzar() {
+    return this.players[this.currentCzarIndex];
+  }
+
   startGame() {
-    this.currentBlackCard = this.blackDeck.pop();
+    this.currentBlackCard = this.blackDeck.pop().text;
     this.getNextCzar();
     this.isGameInSession = true;
   }

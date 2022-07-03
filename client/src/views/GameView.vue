@@ -1,13 +1,10 @@
 <template>
   <div class="is-fixed-top message-bar">
-    <p>
-      Today is a good day, tomorrow is a bad day, how about yesterday? Let's add
-      a little more text to add space.
-    </p>
+    <p>{{ message }}</p>
   </div>
   <section class="section">
     <splitpanes class="default-theme">
-      <pane :size="65">
+      <pane :size="65" v-if="!amICurrentCzar">
         <player-view
           :currentPlayer="currentPlayer"
           :isMobile="isMobile"
@@ -17,7 +14,7 @@
       <pane v-if="!isMobile" :size="35">
         <czar-view
           :playerSelections="playerSelections"
-          :black="black"
+          :currentBlackCard="currentBlackCard"
         ></czar-view>
       </pane>
     </splitpanes>
@@ -49,12 +46,22 @@ export default defineComponent({
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
         ),
-      // Test data
-      playerSelections: ["a", "b", "c", "d", "e", "f", "g", "h", "i"],
-      black: "b",
+      amICurrentCzar: false,
+      currentCzar: "",
+      currentBlackCard: "",
+      message: "",
+      playerSelections: [],
     };
   },
   methods: {},
+  sockets: {
+    update_playground(data) {
+      this.currentCzar = data.currentCzar;
+      this.currentBlackCard = data.currentBlackCard;
+      this.amICurrentCzar = this.currentPlayer.name === data.currentCzar.name;
+      this.message = `${data.publicMessage}`;
+    },
+  },
 });
 </script>
 
@@ -72,5 +79,6 @@ export default defineComponent({
   padding: 5px;
   z-index: 10000;
   position: fixed;
+  height: 32px;
 }
 </style>

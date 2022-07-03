@@ -1,1013 +1,256 @@
 module.exports = {
   "blackCards": [
-    {
-      "text": "Why can't I sleep at night?",
-      "pick": 1
-    },
-    {
-      "text": "My favorite WU Resturant is _____?",
-      "pick": 1
-    },
-    {
-      "text": "Late night in Perkins, I forget about everything except _____.",
-      "pick": 1
-    },
-    {
-      "text": "Why does Craven always smell funny?",
-      "pick": 1
-    },
-    {
-      "text": "Why did I live in 300 Swift?",
-      "pick": 1
-    },
-    {
-      "text": "The workers at Marketplace love me. They slide me some _____ at closing time.",
-      "pick": 1
-    },
-    {
-      "text": "When I go to RDU, I make sure to wear my Duke hat and my_____",
-      "pick": 1
-    },
-    {
-      "text": "What ended my last relationship?",
-      "pick": 1
-    },
-    {
-      "text": "MTV's new reality show features eight Duke Alums and _____.",
-      "pick": 1
-    },
-    {
-      "text": "I love _____ and people-watching on BC plaza ",
-      "pick": 1
-    },
-    {
-      "text": "I'm sorry, Professor, but I couldn't complete my homework because of _____.",
-      "pick": 1
-    },
-    {
-      "text": "I went to ER during O-Week due to:",
-      "pick": 1
-    },
-    {
-      "text": "What's that sound coming from downstairs Marketplace?",
-      "pick": 1
-    },
-    {
-      "text": "Today's featured Happy & Hale bowl: The _____",
-      "pick": 1
-    },
-    {
-      "text": "Living off campus makes it easier to have _____.",
-      "pick": 1
-    },
-    {
-      "text": "Every freshman struggles with _____ for the first time.",
-      "pick": 1
-    },
-    {
-      "text": "I want to be a FAC so I can have an impact and share my experience on _____",
-      "pick": 1
-    },
-    {
-      "text": "Stay away from the bus loop. _____ is there!",
-      "pick": 1
-    },
-    {
-      "text": "I hated living on east campus. I couldn't handle the NO- _____.",
-      "pick": 1
-    },
-    {
-      "text": "Me and my RA don’t talk anymore because _____.",
-      "pick": 1
-    },
-    {
-      "text": "I meant to go to the career fair but I was caught up with _____.",
-      "pick": 1
-    },
-    {
-      "text": "How did I break the Community Standard this time?",
-      "pick": 1
-    },
-    {
-      "text": "I don't study in the Link or Bostock. That's where _____ work.",
-      "pick": 1
-    },
-    {
-      "text": "I got cancelled in Duke Memes for posting _____.",
-      "pick": 1
-    },
-    {
-      "text": "I love third floor Perkins. There's no _____.",
-      "pick": 1
-    },
-    {
-      "text": "_____ happened and I became a Public Pol major.",
-      "pick": 1
-    },
-    {
-      "text": "During sex, I like to think about _____.",
-      "pick": 1
-    },
-    {
-      "text": "I double in Computer Science and Electrical Engineering because _____.",
-      "pick": 1
-    },
-    {
-      "text": "We're now able to afford tutiton because my parents invested in _____.",
-      "pick": 1
-    },
-    {
-      "text": "What will always get you laid?",
-      "pick": 1
-    },
-    {
-      "text": "What would grandma find disturbing, yet oddly charming?",
-      "pick": 1
-    },
-    {
-      "text": "What helps President Price unwind?",
-      "pick": 1
-    },
-    {
-      "text": "What pisses Larry Moneta off more than rap music?",
-      "pick": 1
-    },
-    {
-      "text": "What's there a ton of in Bell Tower?",
-      "pick": 1
-    },
-    {
-      "text": "NCAA has banned _____ for giving players an unfair advantage.",
-      "pick": 1
-    },
-    {
-      "text": "I didn’t rush freshman year because they wanted me to give up _____.",
-      "pick": 1
-    },
-    {
-      "text": "Duke Alert: _____ found on East Campus.",
-      "pick": 1
-    },
-    {
-      "text": "On LDOC, I finally got _____.",
-      "pick": 1
-    },
-    {
-      "text": "Key Three. Core Four. _____.",
-      "pick": 1
-    },
-    {
-      "text": "How am I maintaining my relationship status?",
-      "pick": 1
-    },
-    {
-      "text": " love my SLG, _____is always in the common room.",
-      "pick": 1
-    },
-    {
-      "text": "I don't know where my Duke hoodie is, the last time I saw I got _____.",
-      "pick": 1
-    },
-    {
-      "text": "Coming to Paige Auditorium this August, _____: The Musical.",
-      "pick": 1
-    },
-    {
-      "text": "The line for getting mail is so long I could finish _____",
-      "pick": 1
-    },
-    {
-      "text": "How did I do 3 final exams back to back?",
-      "pick": 1
-    },
-    {
-      "text": "But before I kill you, Dean Sue, I must show you _____.",
-      "pick": 1
-    },
-    {
-      "text": "I love Shooters. They get me _____.",
-      "pick": 1
-    },
-    {
-      "text": "I love Devines. They have _____ more than Shooters.",
-      "pick": 1
-    },
-    {
-      "text": "At the last darty I got pie all over my _____.",
-      "pick": 1
-    },
-    {
-      "text": "Every time we take a trip the Eno we get _____.",
-      "pick": 1
-    },
-    {
-      "text": "I almost jumped off the chapel but then I thought about _____.",
-      "pick": 1
-    },
-    {
-      "text": "I ran out food points so fast freshman year I ate _____ everyday for a month.",
-      "pick": 1
-    },
-    {
-      "text": "I’d lie, cheat and _____ for 500 more food points￼!",
-      "pick": 1
-    },
-    {
-      "text": "At first I was an Econ major but then I switched to studying _____",
-      "pick": 1
-    },
-    {
-      "text": "Why do I hurt all over?",
-      "pick": 1
-    },
-    {
-      "text": "Studies show that Duke Students perform 50% faster after being exposed with _____ for 24 hours.",
-      "pick": 1
-    },
-    {
-      "text": "Why am I sticky?",
-      "pick": 1
-    },
-    {
-      "text": "I did all the graduation requirements except _____.",
-      "pick": 1
-    },
-    {
-      "text": "We would’ve gotten all the grad requirements if it weren’t for _____.",
-      "pick": 1
-    },
-    {
-      "text": "I love living on west. It's conveniently close to _____",
-      "pick": 1
-    },
-    {
-      "text": "We love Big Mike. Once, he let me _____ on the bus.",
-      "pick": 1
-    },
-    {
-      "text": "What does Larry Monetta hate the most?",
-      "pick": 1
-    },
-    {
-      "text": "Take it from a Duke Alum. Nothing gets a Blue Devil going like _____",
-      "pick": 1
-    },
-    {
-      "text": "Erybody in Shooters _____",
-      "pick": 1
-    },
-    {
-      "text": "What gets better with age?",
-      "pick": 1
-    },
-    {
-      "text": "What’s about to take The Barn to next level?",
-      "pick": 1
-    },
-    {
-      "text": "We learned about _____ in my Gender Studies class.",
-      "pick": 1
-    },
-    {
-      "text": "What's wrong with DSG?",
-      "pick": 1
-    },
-    {
-      "text": "Most Duke students wouldn’t vote for a YT candidate who is openly _____.",
-      "pick": 1
-    },
-    {
-      "text": "Duke is a top 10 school because of our basketball, our academics and our _____.",
-      "pick": 1
-    },
-    {
-      "text": "Oooo, Coach K like _____",
-      "pick": 1
-    },
-    {
-      "text": "I made the headline of The Chronicle for _____.",
-      "pick": 1
-    },
-    {
-      "text": "When I was tripping on shrooms, The Gardens told me I could _____.",
-      "pick": 1
-    },
-    {
-      "text": "I walked onto the basketball team but never played because Coach K says I'm too _____.",
-      "pick": 1
-    },
-    {
-      "text": "Anytime I pet Nugget or Peaches they _____.",
-      "pick": 1
-    },
-    {
-      "text": "_____, Coming to the Mary Lou Center for Black Culture this Friday.",
-      "pick": 1
-    },
-    {
-      "text": "No one liked my Duke Memes post about _____.",
-      "pick": 1
-    },
-    {
-      "text": "I got a single sophomore year because my freshman year roomate had a bad case of _____.",
-      "pick": 1
-    },
-    {
-      "text": "Sorry I can't go. I need to go to office hours to get help with _____.",
-      "pick": 1
-    },
-    {
-      "text": "We traded art from the Nasher Museum for _____.",
-      "pick": 1
-    },
-    {
-      "text": "Every time I go to the Arts Annex I get the worst case _____",
-      "pick": 1
-    },
-    {
-      "text": "Did u hear about the Duke Startup Challenge Winner who invented _____ ?",
-      "pick": 1
-    },
-    {
-      "text": "Living in Epworth sucked, but not as bad as _____.",
-      "pick": 1
-    },
-    {
-      "text": "No,No,NO!! I will not let _____ ruin LDOC this year.",
-      "pick": 1
-    },
-    {
-      "text": "What’s the most problematic?",
-      "pick": 1
-    },
-    {
-      "text": "Breaking news! Pratt students discover _____.",
-      "pick": 1
-    },
-    {
-      "text": "Why am I laughing and crying and taking off my clothes?",
-      "pick": 1
-    },
-    {
-      "text": "Congratulations! You’ve been accepted to Duke. While we can’t offer you financial aid, we can offer you _____.",
-      "pick": 1
-    },
-    {
-      "text": "Duke Vans service sucks more than _____.",
-      "pick": 1
-    },
-    {
-      "text": "As James Buchanan Duke once said, the 3 scholarly virtues are perseverance, integrity and _____.",
-      "pick": 1
-    },
-    {
-      "text": "Why did I stop going to the Wellness Center?",
-      "pick": 1
-    },
-    {
-      "text": "Study like you’re a duke student, party like you’re a duke student and live like you’re _____.",
-      "pick": 1
-    },
-    {
-      "text": "I may not be much to look at but my gpa is  _____.",
-      "pick": 1
-    },
-    {
-      "text": "Why did I stop going to CAPS?",
-      "pick": 1
-    },
-    {
-      "text": "I heard the the blue devil mascot got #cancelled for _____.",
-      "pick": 1
-    },
-    {
-      "text": "Siri, remind me to stop _____ at Wilson gym.",
-      "pick": 1
-    },
-    {
-      "text": "Best you go back where you came from. We don’t take too kindly to _____ in Perkins.",
-      "pick": 1
-    },
-    {
-      "text": "I learned the hard way that you can't cheer up a grieving friend with _____.",
-      "pick": 1
-    },
-    {
-      "text": "I am a proponent of hook up culture. I believe in sex positivity and _____.",
-      "pick": 1
-    },
-    {
-      "text": "An contraband of Duke alumni were found guilty of _____.",
-      "pick": 1
-    },
-    {
-      "text": "Summer Session, had me blast! _____, happened so fast...",
-      "pick": 1
-    },
-    {
-      "text": "Our blue is better! We have _____!",
-      "pick": 1
-    },
-    {
-      "text": "I black tented but missed the game because of _____.",
-      "pick": 1
-    },
-    {
-      "text": "He who controls _____ controls the world.",
-      "pick": 1
-    },
-    {
-      "text": "What totally destroyed my gpa?.",
-      "pick": 1
-    },
-    {
-      "text": "Graduated from Duke and all of a sudden I was _____!",
-      "pick": 1
-    },
-    {
-      "text": "Call the RA, _____ again...",
-      "pick": 1
-    },
-    {
-      "text": "I can’t wait til campus enterprises releases their new app. A  _____ service made for and by students.",
-      "pick": 1
-    },
-    {
-      "text": "It’s _____ night at the Loop. Students get a free drink. ",
-      "pick": 1
-    },
-    {
-      "text": "One duke student prescribed _____ as a cure for coronavirus.",
-      "pick": 1
-    },
-    {
-      "text": "Every time I take the C1, I’m reminded of _____.",
-      "pick": 1
-    },
-    {
-      "text": "t’s game day! We do not smile in Cameron Indoor stadium. Smiling is for _____.",
-      "pick": 1
-    },
-    {
-      "text": "Our football team would be better if Coach would let our players _____.",
-      "pick": 1
-    },
-    {
-      "text": "I got rejected from Defmo because I auditioned with _____.",
-      "pick": 1
-    },
-    {
-      "text": "Members of Duke's social elite are paying thousands of dollars just to experience _____.",
-      "pick": 1
-    },
-    {
-      "text": "My entire class saw me _____ in Baldwin Auditorium.",
-      "pick": 1
-    },
-    {
-      "text": "This month's Devil Deal: _____ for 5 food points",
-      "pick": 1
-    },
-    {
-      "text": "Duke _____ turned me into a Republican.",
-      "pick": 1
-    },
-    {
-      "text": "Racism still exists on campus. You can find a great example of it in _____.",
-      "pick": 1
-    },
-    {
-      "text": "Borrowed $2000 to my flex from the bursar so I could finally buy _____.",
-      "pick": 1
-    },
-    {
-      "text": "I would've been better prepared for Duke if I knew about all the _____.",
-      "pick": 1
-    },
-    {
-      "text": "I’ll never forget the time we ____________________ in E-Quad.",
-      "pick": 1
-    },
-    {
-      "text": "Everyone down on the ground! We don't want to hurt anyone. We're just here for _____.",
-      "pick": 1
-    },
-    {
-      "text": "Duke hospital is by far the best hospital I’ve ever been too. They even have _____!",
-      "pick": 1
-    },
-    {
-      "text": "I heard they kicked that fraternity off for having too much _____",
-      "pick": 1
-    },
-    {
-      "text": "Alright, fine. Franklin st. is better than 9th st. But at least we have _____.",
-      "pick": 1
-    },
-    {
-      "text": "There’s not enough light on campus. Last night I got away with _____ on main quad.",
-      "pick": 1
-    },
-    {
-      "text": "I had to switch out of Jarvis dorm, I realized their 'No- __________' policy doesn’t really work for me.",
-      "pick": 1
-    },
-    {
-      "text": "You're not truly a Blue Devil until you've experienced _____.",
-      "pick": 1
-    },
-    {
-      "text": "Hey baby, come back to my place and I'll show you _____.",
-      "pick": 1
-    },
-    {
-      "text": "My TA  got fired for adding _____ to problem set.",
-      "pick": 1
-    },
-    {
-      "text": "Finally! A service that delivers _____ right to your dorm.",
-      "pick": 1
-    },
-    {
-      "text": "I want to create a new SLG to create a safe and empowering place to explore _____.",
-      "pick": 1
-    },
-    {
-      "text": "I dropped my sorority because I couldn’t connect with the girls. They’re all into _____.",
-      "pick": 1
-    },
-    {
-      "text": "I dropped my fraternity because the dues were getting too high. They wanted $1000 a semester so we could _____.",
-      "pick": 1
-    },
-    {
-      "text": "I heard 40% of the Duke endowment funds came from _____.",
-      "pick": 1
-    },
-    {
-      "text": "This may sound crazy. But what if we donated a portion of profits generated by Duke Men's Basketball to  _____.",
-      "pick": 1
-    },
-    {
-      "text": "I would’ve graduated debt and stress free if I didn’t get a _____ addiction sophomore year. .",
-      "pick": 1
-    },
-    {
-      "text": "What left this stain on my couch?",
-      "pick": 1
-    },
-    {
-      "text": "Turns out that _____-Man was neither the hero we needed nor wanted.",
-      "pick": 1
-    },
-    {
-      "text": "In the seventh circle of Hell, sinners must endure _____ for all eternity.",
-      "pick": 1
-    },
-    {
-      "text": "As part of his daily regimen, Anderson Cooper sets aside 15 minutes for _____.",
-      "pick": 1
-    },
-    {
-      "text": "I'm not like the rest of you. I'm too rich and busy for _____.",
-      "pick": 1
-    },
-    {
-      "text": "_____. Awesome in theory, kind of a mess in practice.",
-      "pick": 1
-    },
-    {
-      "text": "As part of his contract, Prince won't perform without _____ in his dressing room.",
-      "pick": 1
-    },
-    {
-      "text": "Man, this is bullshit. Fuck _____.",
-      "pick": 1
-    },
-    {
-      "text": "The Japanese have developed a smaller, more efficient version of _____.",
-      "pick": 1
-    },
-    {
-      "text": "Wes Anderson's new film tells the story of a precocious child coming to terms with _____.",
-      "pick": 1
-    },
-    {
-      "text": "What's fun until it gets weird?",
-      "pick": 1
-    },
-    {
-      "text": "How am I compensating for my tiny penis?",
-      "pick": 1
-    },
-    {
-      "text": "I'm sorry, sir, but we don't allow _____ at the country club.",
-      "pick": 1
-    },
-    {
-      "text": "As king, how will I keep the peasants in line?",
-      "pick": 1
-    },
-    {
-      "text": "It lurks in the night. It hungers for flesh. This summer, no one is safe from _____.",
-      "pick": 1
-    },
-    {
-      "text": "This is the prime of my life. I'm young, hot, and full of _____.",
-      "pick": 1
-    },
-    {
-      "text": "I'm pretty sure I'm high right now, because I'm absolutely mesmerized by _____.",
-      "pick": 1
-    },
-    {
-      "text": "Do the Dew &reg; with our most extreme flavor yet! Get ready for Mountain Dew _____!",
-      "pick": 1
-    },
-    {
-      "text": "In his new action comedy, Jackie Chan must fend off ninjas while also dealing with _____.",
-      "pick": 1
-    },
-    {
-      "text": "Here at the Academy for Gifted Children, we allow students to explore _____ at their own pace.",
-      "pick": 1
-    },
-    {
-      "text": "I don't mean to brag, but they call me the Michael Jordan of _____.",
-      "pick": 1
-    },
-    {
-      "text": "Why am I broke?",
-      "pick": 1
-    },
-    {
-      "text": "Help me doctor, I've got _____ in my butt!",
-      "pick": 1
-    },
-    {
-      "text": "Hi MTV! My name is Kendra, I live in Malibu, I'm into _____, and I love to have a good time.",
-      "pick": 1
-    },
-    {
-      "text": "Life's pretty tough in the fast lane. That's why I never leave the house without _____.",
-      "pick": 1
-    },
-    {
-      "text": "What's making things awkward in the sauna?",
-      "pick": 1
-    },
-    {
-      "text": "Get ready for the movie of the summer! One cop plays by the book. The other's only interested in one thing: _____.",
-      "pick": 1
-    },
-    {
-      "text": "Having the worst day EVER. #_____",
-      "pick": 1
-    },
-    {
-      "text": "In his farewell address, George Washington famously warned Americans about the dangers of _____.",
-      "pick": 1
-    },
-    {
-      "text": "Don't forget! Beginning this week, Casual Friday will officially become \"_____ Friday.\"",
-      "pick": 1
-    },
-    {
-      "text": "What killed my boner?",
-      "pick": 1
-    },
-    {
-      "text": "Yo' mama so fat she _____!",
-      "pick": 1
-    },
-    {
-      "text": "Hi, this is Jim from accounting. We noticed a $1,200 charge labeled \"_____\". Can you explain?",
-      "pick": 1
-    },
-    {
-      "text": "Do you lack energy? Does it sometimes feel like the whole world is _____? Zoloft.&reg;",
-      "pick": 1
-    },
-    {
-      "text": "WHOOO! God damn I love _____!",
-      "pick": 1
-    },
-    {
-      "text": "Now in bookstores: \"The Audacity of _____\", by Barack Obama.",
-      "pick": 1
-    },
-    {
-      "text": "And today's soup is Cream of _____.",
-      "pick": 1
-    },
-    {
-      "pick": 1,
-      "text": "I work my ass off all day for this family, and this is what I come home to? _____!?"
-    },
-    {
-      "pick": 1,
-      "text": "I have a strict policy. First date, dinner. Second date, kiss. Third date, _____."
-    },
-    {
-      "pick": 1,
-      "text": "When I was a kid, we used to play Cowboys and _____."
-    },
-    {
-      "pick": 1,
-      "text": "This is America. If you don't work hard, you don't succeed. I don't care if you're black, white, purple, or _____."
-    },
-    {
-      "pick": 1,
-      "text": "You Won't Believe These 15 Hilarious _____ Bloopers!"
-    },
-    {
-      "pick": 1,
-      "text": "James is a lonely boy. But when he discovers a secret door in his attic, he meets a magical new friend: _____."
-    },
-    {
-      "pick": 1,
-      "text": "Don't worry kid. It gets better. I've been living with _____ for 20 years."
-    },
-    {
-      "pick": 1,
-      "text": "My grandfather worked his way up from nothing. When he came to this country, all he had was the shoes on his feet and _____."
-    },
-    {
-      "pick": 1,
-      "text": "Behind every powerful man is _____."
-    },
-    {
-      "pick": 1,
-      "text": "You are not alone. Millions of Americans struggle with _____ every day."
-    },
-    {
-      "pick": 1,
-      "text": "Come to Dubai, where you can relax in our world famous spas, experience the nightlife, or simply enjoy _____ by the poolside."
-    },
-    {
-      "pick": 1,
-      "text": "\"This is madness.\" \"No, THIS IS _____!\""
-    },
-    {
-      "pick": 1,
-      "text": "Listen Gary, I like you. But if you want that corner office, you're going to have to show me _____."
-    },
-    {
-      "pick": 1,
-      "text": "I went to the desert and ate of the peyote cactus. Turns out my spirit animal is _____."
-    },
-    {
-      "pick": 1,
-      "text": "And would you like those buffalo wings mild, hot, or _____?"
-    },
-    {
-      "pick": 1,
-      "text": "The six things I could never do without: oxygen, Facebook, chocolate, Netflix, friends, and _____ LOL!"
-    },
-    {
-      "pick": 1,
-      "text": "Why won't you make love to me anymore? Is it _____?"
-    },
-    {
-      "pick": 1,
-      "text": "Puberty is a time of change. You might notice hair growing in new places. You might develop an interest in _____. This is normal."
-    },
-    {
-      "pick": 1,
-      "text": "I'm sorry, Mrs. Chen, but there was nothing we could do. At 4:15 this morning, your son succumbed to _____."
-    },
-    {
-      "pick": 1,
-      "text": "I'm Miss Tennessee, and if I could make the world better by changing one thing, I would get rid of _____."
-    },
-    {
-      "pick": 1,
-      "text": "Tonight we will have sex. And afterwards, If you'd like, a little bit of _____."
-    },
-    {
-      "pick": 1,
-      "text": "Everybody join hands and close your eyes. Do you sense that? That's the presence of _____ in this room."
-    },
-    {
-      "pick": 1,
-      "text": "To become a true Yanomama warrior, you must prove that you can withstand _____ without crying out."
-    },
-    {
-      "pick": 1,
-      "text": "Y'all ready to get this thing started? I'm Nick Cannon, and this is America's Got _____."
-    },
-    {
-      "pick": 1,
-      "text": "If you had to describe the Card Czar, using only one of the cards in your hand, which one would it be?"
-    },
-    {
-      "pick": 1,
-      "text": "Art isn't just a painting in a stuffy museum. Art is alive. Art is _____."
-    },
-    {
-      "pick": 1,
-      "text": "As reparations for slavery, all African Americans will receive _____."
-    },
-    {
-      "pick": 1,
-      "text": "As Teddy Roosevelt said, the four manly virtues are honor, temperance, industry, and _____."
-    },
-    {
-      "pick": 1,
-      "text": "Best you go back where you came from, now. We don't take too kindly to _____ in these parts."
-    },
-    {
-      "pick": 1,
-      "text": "CNN breaking news! Scientists discover _____."
-    },
-    {
-      "pick": 1,
-      "text": "Coming to Red Lobster&reg; this month, _____."
-    },
-    {
-      "pick": 1,
-      "text": "Congratulations! You have been selected for our summer internship program. While we are unable to offer a salary, we can offer you _____."
-    },
-    {
-      "pick": 1,
-      "text": "Dance like there's nobody watching, love like you'll never be hurt, and live like you're _____."
-    },
-    {
-      "pick": 1,
-      "text": "Errbody in the club _____."
-    },
-    {
-      "pick": 1,
-      "text": "Feeling so grateful! #amazing #mylife #_____."
-    },
-    {
-      "pick": 1,
-      "text": "Girls just wanna have _____."
-    },
-    {
-      "pick": 1,
-      "text": "Google Calendar alert: _____ in 10 minutes."
-    },
-    {
-      "pick": 1,
-      "text": "I don't believe in God. I believe in _____."
-    },
-    {
-      "pick": 1,
-      "text": "I got rhythm, I've got music, I've got _____. Who could ask for anything more?"
-    },
-    {
-      "pick": 1,
-      "text": "I may not be much to look at, but I fuck like _____."
-    },
-    {
-      "pick": 1,
-      "text": "I tell you, it was a non-stop fuckfest. When it was over, my asshole looked like _____."
-    },
-    {
-      "pick": 1,
-      "text": "I'll take the BBQ bacon burger with fried egg and fuck it how about _____."
-    },
-    {
-      "pick": 1,
-      "text": "I'm sorry, sir, but your insurance plan doesn't cover injuries caused by _____."
-    },
-    {
-      "pick": 1,
-      "text": "I've had a horrible vision, father. I saw mountains crumbling, stars falling from the sky. I saw _____."
-    },
-    {
-      "pick": 1,
-      "text": "If at first you don't succeed, try _____."
-    },
-    {
-      "pick": 1,
-      "text": "In the 1950s, psychologists prescribed _____ as a cure for homosexually."
-    },
-    {
-      "pick": 1,
-      "text": "LSD + _____ = really bad time."
-    },
-    {
-      "pick": 1,
-      "text": "Most Americans would not vote for a candidate who is openly _____."
-    },
-    {
-      "pick": 1,
-      "text": "No, no, no, no, no, no, NO! I will NOT let _____ ruin this wedding."
-    },
-    {
-      "pick": 1,
-      "text": "Oh no! Siri, how do I fix _____?"
-    },
-    {
-      "pick": 1,
-      "text": "One more thing. Watch out for Big Mike. They say he killed a man with _____."
-    },
-    {
-      "pick": 1,
-      "text": "Ooo, daddy like _____."
-    },
-    {
-      "pick": 1,
-      "text": "Poor Brandon, still living in his parent's basement. I heard he never got over _____."
-    },
-    {
-      "pick": 1,
-      "text": "Run, run, as fast as you can! You can't catch me, I'm _____!"
-    },
-    {
-      "pick": 1,
-      "text": "She's a lady in the streets, _____ in the sheets."
-    },
-    {
-      "pick": 1,
-      "text": "She's just one of the guys, you know? She likes beer, and football, and _____."
-    },
-    {
-      "pick": 1,
-      "text": "Son, take it from someone who's been around the block a few times. Nothin' puts her in the mood like _____."
-    },
-    {
-      "pick": 1,
-      "text": "Summer lovin', had me a blast. _____, happened so fast."
-    },
-    {
-      "pick": 1,
-      "text": "Then the princess kissed the frog, and all of a sudden the frog was _____!"
-    },
-    {
-      "pick": 1,
-      "text": "There is no God. It's just _____ and then you die."
-    },
-    {
-      "pick": 1,
-      "text": "This Friday at the Liquid Lounge, it's _____ Night! Ladies drink free."
-    },
-    {
-      "pick": 1,
-      "text": "We do not shake with our left hands in this country. That is the hand we use for _____."
-    },
-    {
-      "pick": 1,
-      "text": "Well if _____ is a crime, then lock me up!"
-    },
-    {
-      "pick": 1,
-      "text": "Well, shit. My eyes ain't so good, but I'll eat my own boot if that ain't _____!"
-    },
-    {
-      "pick": 1,
-      "text": "What are all those whales singing about?"
-    },
-    {
-      "pick": 1,
-      "text": "What sucks balls?"
-    },
-    {
-      "pick": 1,
-      "text": "What totally destroyed my asshole?"
-    },
-    {
-      "pick": 1,
-      "text": "What turned me into a Republican?"
-    },
-    {
-      "pick": 1,
-      "text": "What will end racism once and for all?"
-    },
-    {
-      "pick": 1,
-      "text": "What's a total waste of Hillary Clinton's time?"
-    },
-    {
-      "pick": 1,
-      "text": "What's about to take dance floor to the next level?"
-    },
-    {
-      "pick": 1,
-      "text": "What's the gayest?"
-    },
-    {
-      "pick": 1,
-      "text": "What's the most problematic?"
-    },
-    {
-      "pick": 1,
-      "text": "Why am I laughing and crying and taking off my clothes?"
-    },
-    {
-      "pick": 1,
-      "text": "With a one-time gift of just $10, you can save this child from _____."
-    },
-    {
-      "pick": 1,
-      "text": "You know who else liked _____? Hitler."
-    },
-    {
-      "pick": 1,
-      "text": "You won't believe what's in K-Ville. It's _____."
-    }
+    "_____ happened and I became a Public Pol major.",
+    "_____, Coming to the Mary Lou Center for Black Culture this Friday.",
+    "_____. Awesome in theory, kind of a mess in practice.",
+    "\"This is madness.\" \"No, THIS IS _____!\"",
+    "Alright, fine. Franklin st. is better than 9th st. But at least we have _____.",
+    "An contraband of Duke alumni were found guilty of _____.",
+    "And today's soup is Cream of _____.",
+    "And would you like those buffalo wings mild, hot, or _____?",
+    "Anytime I pet Nugget or Peaches they _____.",
+    "Art isn't just a painting in a stuffy museum. Art is alive. Art is _____.",
+    "As James Buchanan Duke once said, the 3 scholarly virtues are perseverance, integrity and _____.",
+    "As king, how will I keep the peasants in line?",
+    "As part of his contract, Prince won't perform without _____ in his dressing room.",
+    "As part of his daily regimen, Anderson Cooper sets aside 15 minutes for _____.",
+    "As reparations for slavery, all African Americans will receive _____.",
+    "As Teddy Roosevelt said, the four manly virtues are honor, temperance, industry, and _____.",
+    "At first I was an Econ major but then I switched to studying _____",
+    "At the last darty I got pie all over my _____.",
+    "Behind every powerful man is _____.",
+    "Best you go back where you came from, now. We don't take too kindly to _____ in these parts.",
+    "Best you go back where you came from. We don’t take too kindly to _____ in Perkins.",
+    "Borrowed $2000 to my flex from the bursar so I could finally buy _____.",
+    "Breaking news! Pratt students discover _____.",
+    "But before I kill you, Dean Sue, I must show you _____.",
+    "Call the RA, _____ again...",
+    "CNN breaking news! Scientists discover _____.",
+    "Come to Dubai, where you can relax in our world famous spas, experience the nightlife, or simply enjoy _____ by the poolside.",
+    "Coming to Paige Auditorium this August, _____: The Musical.",
+    "Coming to Red Lobster&reg; this month, _____.",
+    "Congratulations! You have been selected for our summer internship program. While we are unable to offer a salary, we can offer you _____.",
+    "Congratulations! You’ve been accepted to Duke. While we can’t offer you financial aid, we can offer you _____.",
+    "Dance like there's nobody watching, love like you'll never be hurt, and live like you're _____.",
+    "Did u hear about the Duke Startup Challenge Winner who invented _____ ?",
+    "Do the Dew &reg; with our most extreme flavor yet! Get ready for Mountain Dew _____!",
+    "Do you lack energy? Does it sometimes feel like the whole world is _____? Zoloft.&reg;",
+    "Don't forget! Beginning this week, Casual Friday will officially become \"_____ Friday.\"",
+    "Don't worry kid. It gets better. I've been living with _____ for 20 years.",
+    "Duke _____ turned me into a Republican.",
+    "Duke Alert: _____ found on East Campus.",
+    "Duke hospital is by far the best hospital I’ve ever been too. They even have _____!",
+    "Duke is a top 10 school because of our basketball, our academics and our _____.",
+    "Duke Vans service sucks more than _____.",
+    "During sex, I like to think about _____.",
+    "Errbody in the club _____.",
+    "Erybody in Shooters _____",
+    "Every freshman struggles with _____ for the first time.",
+    "Every time I go to the Arts Annex I get the worst case _____",
+    "Every time I take the C1, I’m reminded of _____.",
+    "Every time we take a trip the Eno we get _____.",
+    "Everybody join hands and close your eyes. Do you sense that? That's the presence of _____ in this room.",
+    "Everyone down on the ground! We don't want to hurt anyone. We're just here for _____.",
+    "Feeling so grateful! #amazing #mylife #_____.",
+    "Finally! A service that delivers _____ right to your dorm.",
+    "Get ready for the movie of the summer! One cop plays by the book. The other's only interested in one thing: _____.",
+    "Girls just wanna have _____.",
+    "Google Calendar alert: _____ in 10 minutes.",
+    "Graduated from Duke and all of a sudden I was _____!",
+    "Having the worst day EVER. #_____",
+    "He who controls _____ controls the world.",
+    "Help me doctor, I've got _____ in my butt!",
+    "Here at the Academy for Gifted Children, we allow students to explore _____ at their own pace.",
+    "Hey baby, come back to my place and I'll show you _____.",
+    "Hi MTV! My name is Kendra, I live in Malibu, I'm into _____, and I love to have a good time.",
+    "Hi, this is Jim from accounting. We noticed a $1,200 charge labeled \"_____\". Can you explain?",
+    "How am I compensating for my tiny penis?",
+    "How am I maintaining my relationship status?",
+    "How did I break the Community Standard this time?",
+    "How did I do 3 final exams back to back?",
+    "I almost jumped off the chapel but then I thought about _____.",
+    "I am a proponent of hook up culture. I believe in sex positivity and _____.",
+    "I black tented but missed the game because of _____.",
+    "I can’t wait til campus enterprises releases their new app. A  _____ service made for and by students.",
+    "I did all the graduation requirements except _____.",
+    "I didn’t rush freshman year because they wanted me to give up _____.",
+    "I don't believe in God. I believe in _____.",
+    "I don't know where my Duke hoodie is, the last time I saw I got _____.",
+    "I don't mean to brag, but they call me the Michael Jordan of _____.",
+    "I don't study in the Link or Bostock. That's where _____ work.",
+    "I double in Computer Science and Electrical Engineering because _____.",
+    "I dropped my fraternity because the dues were getting too high. They wanted $1000 a semester so we could _____.",
+    "I dropped my sorority because I couldn’t connect with the girls. They’re all into _____.",
+    "I got a single sophomore year because my freshman year roomate had a bad case of _____.",
+    "I got cancelled in Duke Memes for posting _____.",
+    "I got rejected from Defmo because I auditioned with _____.",
+    "I got rhythm, I've got music, I've got _____. Who could ask for anything more?",
+    "I had to switch out of Jarvis dorm, I realized their 'No- __________' policy doesn’t really work for me.",
+    "I hated living on east campus. I couldn't handle the NO- _____.",
+    "I have a strict policy. First date, dinner. Second date, kiss. Third date, _____.",
+    "I heard 40% of the Duke endowment funds came from _____.",
+    "I heard the the blue devil mascot got #cancelled for _____.",
+    "I heard they kicked that fraternity off for having too much _____",
+    "I learned the hard way that you can't cheer up a grieving friend with _____.",
+    "I love _____ and people-watching on BC plaza ",
+    "I love Devines. They have _____ more than Shooters.",
+    "I love living on west. It's conveniently close to _____",
+    "I love Shooters. They get me _____.",
+    "I love third floor Perkins. There's no _____.",
+    "I made the headline of The Chronicle for _____.",
+    "I may not be much to look at but my gpa is  _____.",
+    "I may not be much to look at, but I fuck like _____.",
+    "I meant to go to the career fair but I was caught up with _____.",
+    "I ran out food points so fast freshman year I ate _____ everyday for a month.",
+    "I tell you, it was a non-stop fuckfest. When it was over, my asshole looked like _____.",
+    "I walked onto the basketball team but never played because Coach K says I'm too _____.",
+    "I want to be a FAC so I can have an impact and share my experience on _____",
+    "I want to create a new SLG to create a safe and empowering place to explore _____.",
+    "I went to ER during O-Week due to:",
+    "I went to the desert and ate of the peyote cactus. Turns out my spirit animal is _____.",
+    "I work my ass off all day for this family, and this is what I come home to? _____!?",
+    "I would've been better prepared for Duke if I knew about all the _____.",
+    "I would’ve graduated debt and stress free if I didn’t get a _____ addiction sophomore year. .",
+    "I'll take the BBQ bacon burger with fried egg and fuck it how about _____.",
+    "I'm Miss Tennessee, and if I could make the world better by changing one thing, I would get rid of _____.",
+    "I'm not like the rest of you. I'm too rich and busy for _____.",
+    "I'm pretty sure I'm high right now, because I'm absolutely mesmerized by _____.",
+    "I'm sorry, Mrs. Chen, but there was nothing we could do. At 4:15 this morning, your son succumbed to _____.",
+    "I'm sorry, Professor, but I couldn't complete my homework because of _____.",
+    "I'm sorry, sir, but we don't allow _____ at the country club.",
+    "I'm sorry, sir, but your insurance plan doesn't cover injuries caused by _____.",
+    "I've had a horrible vision, father. I saw mountains crumbling, stars falling from the sky. I saw _____.",
+    "I’d lie, cheat and _____ for 500 more food points￼!",
+    "I’ll never forget the time we ____________________ in E-Quad.",
+    "If at first you don't succeed, try _____.",
+    "If you had to describe the Card Czar, using only one of the cards in your hand, which one would it be?",
+    "In his farewell address, George Washington famously warned Americans about the dangers of _____.",
+    "In his new action comedy, Jackie Chan must fend off ninjas while also dealing with _____.",
+    "In the 1950s, psychologists prescribed _____ as a cure for homosexually.",
+    "In the seventh circle of Hell, sinners must endure _____ for all eternity.",
+    "It lurks in the night. It hungers for flesh. This summer, no one is safe from _____.",
+    "It’s _____ night at the Loop. Students get a free drink. ",
+    "James is a lonely boy. But when he discovers a secret door in his attic, he meets a magical new friend: _____.",
+    "Key Three. Core Four. _____.",
+    "Late night in Perkins, I forget about everything except _____.",
+    "Life's pretty tough in the fast lane. That's why I never leave the house without _____.",
+    "Listen Gary, I like you. But if you want that corner office, you're going to have to show me _____.",
+    "Living in Epworth sucked, but not as bad as _____.",
+    "Living off campus makes it easier to have _____.",
+    "LSD + _____ = really bad time.",
+    "Man, this is bullshit. Fuck _____.",
+    "Me and my RA don’t talk anymore because _____.",
+    "Members of Duke's social elite are paying thousands of dollars just to experience _____.",
+    "Most Americans would not vote for a candidate who is openly _____.",
+    "Most Duke students wouldn’t vote for a YT candidate who is openly _____.",
+    "MTV's new reality show features eight Duke Alums and _____.",
+    "My entire class saw me _____ in Baldwin Auditorium.",
+    "My favorite WU Resturant is _____?",
+    "My grandfather worked his way up from nothing. When he came to this country, all he had was the shoes on his feet and _____.",
+    "My TA  got fired for adding _____ to problem set.",
+    "NCAA has banned _____ for giving players an unfair advantage.",
+    "No one liked my Duke Memes post about _____.",
+    "No, no, no, no, no, no, NO! I will NOT let _____ ruin this wedding.",
+    "No,No,NO!! I will not let _____ ruin LDOC this year.",
+    "Now in bookstores: \"The Audacity of _____\", by Barack Obama.",
+    "Oh no! Siri, how do I fix _____?",
+    "On LDOC, I finally got _____.",
+    "One duke student prescribed _____ as a cure for coronavirus.",
+    "One more thing. Watch out for Big Mike. They say he killed a man with _____.",
+    "Ooo, daddy like _____.",
+    "Oooo, Coach K like _____",
+    "Our blue is better! We have _____!",
+    "Our football team would be better if Coach would let our players _____.",
+    "Poor Brandon, still living in his parent's basement. I heard he never got over _____.",
+    "Puberty is a time of change. You might notice hair growing in new places. You might develop an interest in _____. This is normal.",
+    "Racism still exists on campus. You can find a great example of it in _____.",
+    "Run, run, as fast as you can! You can't catch me, I'm _____!",
+    "She's a lady in the streets, _____ in the sheets.",
+    "She's just one of the guys, you know? She likes beer, and football, and _____.",
+    "Siri, remind me to stop _____ at Wilson gym.",
+    "Son, take it from someone who's been around the block a few times. Nothin' puts her in the mood like _____.",
+    "Sorry I can't go. I need to go to office hours to get help with _____.",
+    "Stay away from the bus loop. _____ is there!",
+    "Studies show that Duke Students perform 50% faster after being exposed with _____ for 24 hours.",
+    "Study like you’re a duke student, party like you’re a duke student and live like you’re _____.",
+    "Summer lovin', had me a blast. _____, happened so fast.",
+    "Summer Session, had me blast! _____, happened so fast...",
+    "t’s game day! We do not smile in Cameron Indoor stadium. Smiling is for _____.",
+    "Take it from a Duke Alum. Nothing gets a Blue Devil going like _____",
+    "The Japanese have developed a smaller, more efficient version of _____.",
+    "The line for getting mail is so long I could finish _____",
+    "The six things I could never do without: oxygen, Facebook, chocolate, Netflix, friends, and _____ LOL!",
+    "The workers at Marketplace love me. They slide me some _____ at closing time.",
+    "Then the princess kissed the frog, and all of a sudden the frog was _____!",
+    "There is no God. It's just _____ and then you die.",
+    "There’s not enough light on campus. Last night I got away with _____ on main quad.",
+    "This Friday at the Liquid Lounge, it's _____ Night! Ladies drink free.",
+    "This is America. If you don't work hard, you don't succeed. I don't care if you're black, white, purple, or _____.",
+    "This is the prime of my life. I'm young, hot, and full of _____.",
+    "This may sound crazy. But what if we donated a portion of profits generated by Duke Men's Basketball to  _____.",
+    "This month's Devil Deal: _____ for 5 food points",
+    "To become a true Yanomama warrior, you must prove that you can withstand _____ without crying out.",
+    "Today's featured Happy & Hale bowl: The _____",
+    "Tonight we will have sex. And afterwards, If you'd like, a little bit of _____.",
+    "Turns out that _____-Man was neither the hero we needed nor wanted.",
+    "We do not shake with our left hands in this country. That is the hand we use for _____.",
+    "We learned about _____ in my Gender Studies class.",
+    "We love Big Mike. Once, he let me _____ on the bus.",
+    "We traded art from the Nasher Museum for _____.",
+    "We would’ve gotten all the grad requirements if it weren’t for _____.",
+    "We're now able to afford tutiton because my parents invested in _____.",
+    "Well if _____ is a crime, then lock me up!",
+    "Well, shit. My eyes ain't so good, but I'll eat my own boot if that ain't _____!",
+    "Wes Anderson's new film tells the story of a precocious child coming to terms with _____.",
+    "What are all those whales singing about?",
+    "What does Larry Monetta hate the most?",
+    "What ended my last relationship?",
+    "What gets better with age?",
+    "What helps President Price unwind?",
+    "What killed my boner?",
+    "What left this stain on my couch?",
+    "What pisses Larry Moneta off more than rap music?",
+    "What sucks balls?",
+    "What totally destroyed my asshole?",
+    "What totally destroyed my gpa?.",
+    "What turned me into a Republican?",
+    "What will always get you laid?",
+    "What will end racism once and for all?",
+    "What would grandma find disturbing, yet oddly charming?",
+    "What's a total waste of Hillary Clinton's time?",
+    "What's about to take dance floor to the next level?",
+    "What's fun until it gets weird?",
+    "What's making things awkward in the sauna?",
+    "What's that sound coming from downstairs Marketplace?",
+    "What's the gayest?",
+    "What's the most problematic?",
+    "What's there a ton of in Bell Tower?",
+    "What's wrong with DSG?",
+    "What’s about to take The Barn to next level?",
+    "What’s the most problematic?",
+    "When I go to RDU, I make sure to wear my Duke hat and my_____",
+    "When I was a kid, we used to play Cowboys and _____.",
+    "When I was tripping on shrooms, The Gardens told me I could _____.",
+    "WHOOO! God damn I love _____!",
+    "Why am I broke?",
+    "Why am I laughing and crying and taking off my clothes?",
+    "Why am I laughing and crying and taking off my clothes?",
+    "Why am I sticky?",
+    "Why can't I sleep at night?",
+    "Why did I live in 300 Swift?",
+    "Why did I stop going to CAPS?",
+    "Why did I stop going to the Wellness Center?",
+    "Why do I hurt all over?",
+    "Why does Craven always smell funny?",
+    "Why won't you make love to me anymore? Is it _____?",
+    "With a one-time gift of just $10, you can save this child from _____.",
+    "Y'all ready to get this thing started? I'm Nick Cannon, and this is America's Got _____.",
+    "Yo' mama so fat she _____!",
+    "You are not alone. Millions of Americans struggle with _____ every day.",
+    "You know who else liked _____? Hitler.",
+    "You Won't Believe These 15 Hilarious _____ Bloopers!",
+    "You won't believe what's in K-Ville. It's _____.",
+    "You're not truly a Blue Devil until you've experienced _____.",
   ],
   "whiteCards": [
     "10 football players with erections barreling towards you at full speed.",

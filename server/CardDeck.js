@@ -1,4 +1,4 @@
-const cards = require('./Cards.js');
+const cards = require('./ClassicPack.js');
 
 // CardDeck contains all cards, black and white
 class CardDeck {

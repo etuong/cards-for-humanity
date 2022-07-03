@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="black-card-container">
-      <card :isWhite="false" :text="black"></card>
+      <card :isWhite="false" :text="currentBlackCard"></card>
     </div>
-    <div class="czar-selections fade">
+    <div class="czar-selections" v-if="playerSelections.length > 0">
       <div class="prev-selection">
         <card
           :isWhite="true"
@@ -37,8 +37,8 @@ export default defineComponent({
   name: "CzarView",
   components: { Card },
   props: {
-    black: String,
-    playerSelections: Array
+    currentBlackCard: String,
+    playerSelections: Array,
   },
   data() {
     return {
