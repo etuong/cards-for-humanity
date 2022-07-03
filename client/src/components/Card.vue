@@ -58,6 +58,8 @@ export default defineComponent({
   border-radius: 12px;
   border: 1px solid black;
   box-sizing: border-box;
+  user-select: none;
+  margin: 0px auto;
 }
 
 .white-card {

@@ -7,7 +7,7 @@
       :playersData="playersData"
       :currentPlayer="currentPlayer"
     ></lobby>
-    <play v-if="showPlayView" :currentPlayer="currentPlayer"></play>
+    <game v-if="showGameView" :currentPlayer="currentPlayer"></game>
   </div>
   <FooterComponent />
 </template>
@@ -17,7 +17,7 @@ import FooterComponent from "@/components/Footer.vue";
 import NavBar from "@/components/NavBar.vue";
 import Home from "@/views/HomeView.vue";
 import Lobby from "@/views/LobbyView.vue";
-import Play from "@/views/PlayView.vue";
+import Game from "@/views/GameView.vue";
 import { defineComponent } from "vue";
 import { toast } from "bulma-toast";
 
@@ -27,13 +27,13 @@ export default defineComponent({
     NavBar,
     Home,
     Lobby,
-    Play,
+    Game,
   },
   data() {
     return {
-      showHomeView: false,
+      showHomeView: true,
       showLobbyView: false,
-      showPlayView: true,
+      showGameView: false,
       playersData: undefined,
       currentPlayer: undefined,
     };
@@ -42,7 +42,7 @@ export default defineComponent({
     showView(view) {
       this.showHomeView = false;
       this.showLobbyView = false;
-      this.showPlayView = false;
+      this.showGameView = false;
       switch (view) {
         case "Home":
           this.showHomeView = true;
@@ -50,8 +50,8 @@ export default defineComponent({
         case "Lobby":
           this.showLobbyView = true;
           break;
-        case "Play":
-          this.showPlayView = true;
+        case "Game":
+          this.showGameView = true;
           break;
         default:
       }
@@ -78,7 +78,7 @@ export default defineComponent({
       this.currentPlayer = currentPlayer;
     },
     game_start() {
-      this.showView("Play");
+      this.showView("Game");
     },
     room_existed() {
       this.showToast(
@@ -104,6 +104,10 @@ export default defineComponent({
     game_in_session() {
       this.showToast("Looks like the game has started!", "is-danger");
     },
+  },
+  mounted() {
+    // Uncomment to call a mock server
+    this.$socket.emit("mock");
   },
 });
 </script>

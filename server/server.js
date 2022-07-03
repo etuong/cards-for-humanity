@@ -140,7 +140,20 @@ io.on('connection', (socket) => {
         }
       }
     })
-  })
+  });
+
+  socket.on('mock', () => {
+    const { player1, gameRoom } = require("./Mock");
+
+    socket.emit('update_player', player1);
+    socket.emit('game_start');
+
+    // io.sockets.in(roomId).emit('update_players', {
+    //   players: gameRoom.players,
+    //   isGameReady: gameRoom.isGameReady()
+    // });
+
+  });
 });
 
 process.on("exit", function (code) {
