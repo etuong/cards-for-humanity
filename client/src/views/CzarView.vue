@@ -30,7 +30,7 @@
         >&#10095;</a
       >
     </div>
-    <div class="czar-bar">
+    <div class="czar-bar" v-if="amICurrentCzar">
       <p>{{ message }}</p>
       <button
         :disabled="!enableConfirmationBtn"
@@ -55,6 +55,7 @@ export default defineComponent({
     playerSelections: Array,
     amICurrentCzar: Boolean,
     czarMessage: String,
+    roomId: String,
   },
   data() {
     return {
@@ -89,6 +90,22 @@ export default defineComponent({
       this.czarNextSelectionIndex = updateSelection(
         this.czarNextSelectionIndex
       );
+
+      this.$socket.emit("slide_player_selections", {
+        czarPrevSelectionIndex: this.czarPrevSelectionIndex,
+        czarCurrSelectionIndex: this.czarCurrSelectionIndex,
+        czarNextSelectionIndex: this.czarNextSelectionIndex,
+        roomId: this.roomId,
+      });
+    },
+  },
+  sockets: {
+    slide_player_selections(data) {
+      if (!this.amICurrentCzar) {
+        this.czarPrevSelectionIndex = data.czarPrevSelectionIndex;
+        this.czarCurrSelectionIndex = data.czarCurrSelectionIndex;
+        this.czarNextSelectionIndex = data.czarNextSelectionIndex;
+      }
     },
   },
   watch: {
@@ -167,11 +184,11 @@ export default defineComponent({
 }
 
 .next {
-  right: 0;
+  margin-left: 205px;
 }
 
 .prev {
-  left: 0;
+  margin-right: 205px;
 }
 
 @keyframes flyup {

@@ -12,12 +12,13 @@
         ></player-view>
       </pane>
 
-      <pane v-if="!isMobile" :size="35">
+      <pane v-if="!isMobile || amICurrentCzar" :size="35">
         <czar-view
           :playerSelections="playerSelections"
           :currentBlackCard="currentBlackCard"
           :amICurrentCzar="amICurrentCzar"
           :czarMessage="czarMessage"
+          :roomId="currentPlayer.roomId"
         ></czar-view>
       </pane>
     </splitpanes>
@@ -69,8 +70,8 @@ export default defineComponent({
     },
     czar_chooses(data) {
       this.playerSelections = data.playerSelections;
-      this.message = `All players have selected a white card. Czar ${this.currentCzar} will now choose his favorite!`;
-      this.playerMessage = `Waiting on Czar ${this.currentCzar}`;
+      this.message = `All players have selected a white card. Czar ${this.currentCzar.name} will now choose his favorite!`;
+      this.playerMessage = `Waiting on Czar ${this.currentCzar.name}`;
       this.czarMessage = "Please select your favorite answer!";
     },
   },
@@ -91,6 +92,5 @@ export default defineComponent({
   padding: 5px;
   z-index: 10000;
   position: fixed;
-  height: 32px;
 }
 </style>

@@ -126,7 +126,7 @@ io.on('connection', (socket) => {
     console.log(`Room ${roomId} is playing!`);
   });
 
-  socket.on("white_card_submission", (data) => {
+  socket.on("white_card_submission", data => {
     const roomId = data.roomId;
     const gameRoom = gameRooms.get(roomId);
     const submitted_player = gameRoom.getPlayerById(data.playerId);
@@ -143,14 +143,16 @@ io.on('connection', (socket) => {
     });
 
     const sanitizedSelections = playerSelections.map(el => el.selection);
-    // if (playerSelections.length === players.length - 1) {
-    console.log(`Sending cards to Czar: ${sanitizedSelections}`)
-    socket.emit('czar_chooses', {
-      playerSelections: sanitizedSelections,
+    if (playerSelections.length === players.length - 1) {
+      console.log(`Sending cards to Czar: ${sanitizedSelections}`)
+      io.sockets.in(roomId).emit('czar_chooses', {
+        playerSelections: sanitizedSelections,
+      });
+    }
+  })
 
-
-    });
-    // }
+  socket.on("slide_player_selections", data => {
+    io.sockets.in(data.roomId).emit("slide_player_selections", data);
   })
 
   socket.on('disconnect', () => {
@@ -162,10 +164,12 @@ io.on('connection', (socket) => {
           if (gameRoom.removePlayerFromRoom(player)) {
             gameRooms.delete(roomId);
           }
-          io.sockets.in(roomId).emit('update_players', {
-            players: gameRoom.players,
-            isGameReady: gameRoom.isGameReady()
-          });
+          if (!gameRoom.isGameInSession) {
+            io.sockets.in(roomId).emit('update_players', {
+              players: gameRoom.players,
+              isGameReady: gameRoom.isGameReady()
+            });
+          }
           console.log(`${player.name} just left room ${roomId}!`);
           break;
         }
