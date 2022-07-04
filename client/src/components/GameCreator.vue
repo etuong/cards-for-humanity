@@ -55,9 +55,9 @@ export default defineComponent({
   },
   data() {
     return {
+      errors: { name: false, password: false },
       name: "",
       password: "",
-      errors: { name: false, password: false },
     };
   },
   methods: {

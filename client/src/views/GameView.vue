@@ -9,37 +9,42 @@
           :currentPlayer="currentPlayer"
           :playerMessage="playerMessage"
           :isMobile="isMobile"
-        ></player-view>
+        />
       </pane>
 
       <pane v-if="!isMobile || amICurrentCzar" :size="35">
-        <czar-view
-          :playerSelections="playerSelections"
-          :currentBlackCard="currentBlackCard"
-          :amICurrentCzar="amICurrentCzar"
-          :czarMessage="czarMessage"
-          :roomId="currentPlayer.roomId"
-        ></czar-view>
+        <div class="czar-container">
+          <status />
+          <czar-view
+            :playerSelections="playerSelections"
+            :currentBlackCard="currentBlackCard"
+            :amICurrentCzar="amICurrentCzar"
+            :czarMessage="czarMessage"
+            :roomId="currentPlayer.roomId"
+          />
+        </div>
       </pane>
     </splitpanes>
   </section>
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import PlayerView from "./PlayerView.vue";
-import CzarView from "./CzarView.vue";
-import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
+import { defineComponent } from "vue";
+import { Splitpanes, Pane } from "splitpanes";
+import CzarView from "./CzarView.vue";
+import PlayerView from "./PlayerView.vue";
+import Status from "./Status.vue";
 
 export default defineComponent({
   name: "PlayView",
   components: {
-    PlayerView,
     CzarView,
-    Splitpanes,
+    CzarView,
     Pane,
-    CzarView,
+    PlayerView,
+    Splitpanes,
+    Status,
   },
   props: {
     currentPlayer: Object,
@@ -92,5 +97,15 @@ export default defineComponent({
   padding: 5px;
   z-index: 10000;
   position: fixed;
+}
+
+.czar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  height: 100%;
 }
 </style>

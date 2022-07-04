@@ -19,6 +19,7 @@ export default defineComponent({
 <style scoped>
 .navbar {
   padding: 0px 15px;
+  z-index: 0;
 }
 
 .logo {

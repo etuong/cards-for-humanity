@@ -39,7 +39,7 @@ class GameRoom {
       this.players.splice(index, 1);
     }
 
-    return this.players.length == 0 ? true : false;
+    return this.players.length;
   }
 
   discardSelections() {

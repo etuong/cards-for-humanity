@@ -1,45 +1,34 @@
 <template>
-  <div class="czar-container">
-    <div class="black-card-container">
-      <card :isWhite="false" :text="currentBlackCard"></card>
+  <div class="black-card-container">
+    <card :isWhite="false" :text="currentBlackCard" />
+  </div>
+  <div class="czar-selections">
+    <div class="prev-selection">
+      <card :isWhite="true" :text="playerSelections[czarPrevSelectionIndex]" />
     </div>
-    <div class="czar-selections" v-if="playerSelections.length > 0">
-      <div class="prev-selection">
-        <card
-          :isWhite="true"
-          :text="playerSelections[czarPrevSelectionIndex]"
-        ></card>
-      </div>
-      <div class="current-selection fade">
-        <card
-          :isWhite="true"
-          :text="playerSelections[czarCurrSelectionIndex]"
-        ></card>
-      </div>
-      <div class="next-selection fade">
-        <card
-          :isWhite="true"
-          :text="playerSelections[czarNextSelectionIndex]"
-        ></card>
-      </div>
+    <div class="current-selection fade">
+      <card :isWhite="true" :text="playerSelections[czarCurrSelectionIndex]" />
+    </div>
+    <div class="next-selection fade">
+      <card :isWhite="true" :text="playerSelections[czarNextSelectionIndex]" />
+    </div>
 
-      <a v-if="amICurrentCzar" class="prev" @click="changeSelection(-1)"
-        >&#10094;</a
-      >
-      <a v-if="amICurrentCzar" class="next" @click="changeSelection(1)"
-        >&#10095;</a
-      >
-    </div>
-    <div class="czar-bar" v-if="amICurrentCzar">
-      <p>{{ message }}</p>
-      <button
-        :disabled="!enableConfirmationBtn"
-        class="button is-primary is-small"
-        @click="submitSelection"
-      >
-        <strong>Select!</strong>
-      </button>
-    </div>
+    <a v-if="amICurrentCzar" class="prev" @click="changeSelection(-1)"
+      >&#10094;</a
+    >
+    <a v-if="amICurrentCzar" class="next" @click="changeSelection(1)"
+      >&#10095;</a
+    >
+  </div>
+  <div class="czar-bar" v-if="amICurrentCzar">
+    <p>{{ message }}</p>
+    <button
+      :disabled="!readyToSelect"
+      class="button is-primary is-small"
+      @click="submitSelection"
+    >
+      <strong>Select!</strong>
+    </button>
   </div>
 </template>
 
@@ -51,18 +40,19 @@ export default defineComponent({
   name: "CzarView",
   components: { Card },
   props: {
-    currentBlackCard: String,
-    playerSelections: Array,
     amICurrentCzar: Boolean,
+    currentBlackCard: String,
     czarMessage: String,
+    playerSelections: Array,
     roomId: String,
   },
   data() {
     return {
-      czarPrevSelectionIndex: this.playerSelections.length - 1,
       czarCurrSelectionIndex: 0,
       czarNextSelectionIndex: 1 || 0,
+      czarPrevSelectionIndex: this.playerSelections.length - 1,
       message: this.czarMessage,
+      readyToSelect: false,
     };
   },
   methods: {
@@ -81,31 +71,20 @@ export default defineComponent({
         return index;
       };
 
-      this.czarPrevSelectionIndex = updateSelection(
-        this.czarPrevSelectionIndex
-      );
-      this.czarCurrSelectionIndex = updateSelection(
-        this.czarCurrSelectionIndex
-      );
-      this.czarNextSelectionIndex = updateSelection(
-        this.czarNextSelectionIndex
-      );
-
       this.$socket.emit("slide_player_selections", {
-        czarPrevSelectionIndex: this.czarPrevSelectionIndex,
-        czarCurrSelectionIndex: this.czarCurrSelectionIndex,
-        czarNextSelectionIndex: this.czarNextSelectionIndex,
+        czarPrevSelectionIndex: updateSelection(this.czarPrevSelectionIndex),
+        czarCurrSelectionIndex: updateSelection(this.czarCurrSelectionIndex),
+        czarNextSelectionIndex: updateSelection(this.czarNextSelectionIndex),
         roomId: this.roomId,
       });
     },
+    submitSelection() {},
   },
   sockets: {
     slide_player_selections(data) {
-      if (!this.amICurrentCzar) {
-        this.czarPrevSelectionIndex = data.czarPrevSelectionIndex;
-        this.czarCurrSelectionIndex = data.czarCurrSelectionIndex;
-        this.czarNextSelectionIndex = data.czarNextSelectionIndex;
-      }
+      this.czarPrevSelectionIndex = data.czarPrevSelectionIndex;
+      this.czarCurrSelectionIndex = data.czarCurrSelectionIndex;
+      this.czarNextSelectionIndex = data.czarNextSelectionIndex;
     },
   },
   watch: {
@@ -114,25 +93,15 @@ export default defineComponent({
     },
     playerSelections(newPlayerSections) {
       this.czarPrevSelectionIndex = newPlayerSections.length - 1;
+      this.readyToSelect = true;
     },
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.czar-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  height: 100%;
-}
-
 .black-card-container {
-  display: flex;
-  justify-content: space-evenly;
+  margin-top: auto;
   height: 250px;
 }
 
@@ -143,6 +112,7 @@ export default defineComponent({
   transform-origin: bottom;
   animation: flyup 0.5s;
   position: relative;
+  margin-bottom: auto;
   .white-card {
     margin-bottom: -70%;
     animation: none;

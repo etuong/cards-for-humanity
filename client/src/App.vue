@@ -1,41 +1,41 @@
 <template>
   <nav-bar @show-view="showView"></nav-bar>
   <div class="body-content">
-    <home v-if="showHomeView"></home>
+    <home v-if="showHomeView" />
     <lobby
       v-if="showLobbyView"
       :playersData="playersData"
       :currentPlayer="currentPlayer"
-    ></lobby>
-    <game v-if="showGameView" :currentPlayer="currentPlayer"></game>
+    />
+    <game v-if="showGameView" :currentPlayer="currentPlayer" />
   </div>
   <FooterComponent />
 </template>
 
 <script>
-import FooterComponent from "@/components/Footer.vue";
-import NavBar from "@/components/NavBar.vue";
-import Home from "@/views/HomeView.vue";
-import Lobby from "@/views/LobbyView.vue";
-import Game from "@/views/GameView.vue";
 import { defineComponent } from "vue";
 import { toast } from "bulma-toast";
+import FooterComponent from "@/components/Footer.vue";
+import Game from "@/views/GameView.vue";
+import Home from "@/views/HomeView.vue";
+import Lobby from "@/views/LobbyView.vue";
+import NavBar from "@/components/NavBar.vue";
 
 export default defineComponent({
   components: {
     FooterComponent,
-    NavBar,
+    Game,
     Home,
     Lobby,
-    Game,
+    NavBar,
   },
   data() {
     return {
+      currentPlayer: undefined,
+      playersData: undefined,
+      showGameView: false,
       showHomeView: true,
       showLobbyView: false,
-      showGameView: false,
-      playersData: undefined,
-      currentPlayer: undefined,
     };
   },
   methods: {
@@ -72,13 +72,25 @@ export default defineComponent({
     },
     update_players(data) {
       this.playersData = data;
-      this.showView("Lobby");
     },
     update_player(currentPlayer) {
       this.currentPlayer = currentPlayer;
     },
+    show_home() {
+      this.showView("Home");
+      this.showToast(
+        `Not enough players to play! Need at least 3 people :(`,
+        "is-danger"
+      );
+    },
+    show_lobby() {
+      this.showView("Lobby");
+    },
     game_start() {
       this.showView("Game");
+    },
+    player_disconnect(quitter) {
+      this.showToast(`Player ${quitter} has left the room`, "is-warning");
     },
     room_existed() {
       this.showToast(
@@ -107,7 +119,7 @@ export default defineComponent({
   },
   mounted() {
     // Uncomment to call a mock server
-    // this.$socket.emit("mock");
+    this.$socket.emit("mock");
   },
 });
 </script>

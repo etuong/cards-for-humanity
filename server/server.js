@@ -33,6 +33,7 @@ const io = require('socket.io')(server, {
 const Player = require("./Player");
 const GameRoom = require("./GameRoom");
 const gameRooms = new Map();
+const shuffleArray = require("./Utility.js");
 
 io.on('connection', (socket) => {
   socket.emit('connected');
@@ -58,6 +59,8 @@ io.on('connection', (socket) => {
         players: newGameRoom.players,
         isGameReady: newGameRoom.isGameReady()
       });
+
+      socket.emit('show_lobby');
 
       gameRooms.set(roomId, newGameRoom);
 
@@ -93,6 +96,8 @@ io.on('connection', (socket) => {
         players: gameRoom.players,
         isGameReady: gameRoom.isGameReady()
       });
+
+      socket.emit('show_lobby');
 
       console.log(`${data.name} has joined room ${roomId}`);
     }
@@ -143,6 +148,7 @@ io.on('connection', (socket) => {
     });
 
     const sanitizedSelections = playerSelections.map(el => el.selection);
+    shuffleArray(sanitizedSelections);
     if (playerSelections.length === players.length - 1) {
       console.log(`Sending cards to Czar: ${sanitizedSelections}`)
       io.sockets.in(roomId).emit('czar_chooses', {
@@ -161,16 +167,22 @@ io.on('connection', (socket) => {
       for (let player of players) {
         if (player.id === socket.id) {
           socket.leave(roomId);
-          if (gameRoom.removePlayerFromRoom(player)) {
+          socket.emit('player_disconnect', player.name);
+          console.log(`${player.name} just left room ${roomId}!`);
+
+          const number_of_current_players = gameRoom.removePlayerFromRoom(player);
+
+          if (gameRoom.isGameInSession && number_of_current_players < 3) {
             gameRooms.delete(roomId);
-          }
-          if (!gameRoom.isGameInSession) {
+            socket.emit("show_home");
+            console.log(`Deleting room ${roomId} because not enough players`);
+          } else {
             io.sockets.in(roomId).emit('update_players', {
               players: gameRoom.players,
               isGameReady: gameRoom.isGameReady()
             });
           }
-          console.log(`${player.name} just left room ${roomId}!`);
+
           break;
         }
       }

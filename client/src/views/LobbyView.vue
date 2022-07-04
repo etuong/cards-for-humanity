@@ -72,8 +72,8 @@ export default defineComponent({
   name: "LobbyView",
   components: {},
   props: {
-    playersData: Object,
     currentPlayer: Object,
+    playersData: Object,
   },
   methods: {
     setPlayerReady() {

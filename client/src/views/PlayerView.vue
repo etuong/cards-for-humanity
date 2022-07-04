@@ -13,7 +13,7 @@
         @click="selectCard(index, card)"
         :hoverable="isMobile"
         :style="{ position: isMobile ? 'relative' : 'absolute' }"
-      ></card>
+      />
     </div>
     <div class="player-bar">
       <p>{{ message }}</p>
@@ -42,10 +42,10 @@ export default defineComponent({
   },
   data() {
     return {
-      message: this.playerMessage,
-      selected_card: [],
       enableConfirmationBtn: false,
       hasPlayerSelected: false,
+      message: this.playerMessage,
+      selected_card: [],
     };
   },
 
@@ -70,7 +70,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    $(".white-card").mousedown((e) => {
+    $(".card-container .white-card").mousedown((e) => {
       $(".clicked-card").css("z-index", "0");
       $(e.currentTarget).css("z-index", "100");
       if (!this.hasPlayerSelected) {
@@ -79,13 +79,13 @@ export default defineComponent({
       }
     });
     if (!this.isMobile) {
-      $(".white-card").draggable({
+      $(".card-container .white-card").draggable({
         stack: "div",
         containment: "parent",
       });
 
       // Randomly place white cards on the table
-      var cards = document.querySelectorAll(".white-card");
+      var cards = document.querySelectorAll(".card-container .white-card");
       for (var card of cards) {
         $(card).css({
           left: Math.random() * ($("#card-panel").width() - $(card).width()),

@@ -23,9 +23,9 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Card",
   props: {
-    text: String,
-    isWhite: Boolean,
     hoverable: Boolean,
+    isWhite: Boolean,
+    text: String,
   },
   data() {
     return { offset: 0 };
