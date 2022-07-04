@@ -38,10 +38,11 @@ export default defineComponent({
   props: {
     currentPlayer: Object,
     isMobile: Boolean,
+    playerMessage: String,
   },
   data() {
     return {
-      message: "Please choose a white card to fill in the blank",
+      message: this.playerMessage,
       selected_card: [],
       enableConfirmationBtn: false,
       hasPlayerSelected: false,
@@ -57,7 +58,11 @@ export default defineComponent({
       }
     },
     submitSelection() {
-      // Emit
+      this.$socket.emit("white_card_submission", {
+        roomId: this.currentPlayer.roomId,
+        playerId: this.currentPlayer.id,
+        selection: this.selected_card[1],
+      });
       this.message = "Waiting on other players";
       this.enableConfirmationBtn = false;
       this.hasPlayerSelected = true;
@@ -65,22 +70,22 @@ export default defineComponent({
     },
   },
   mounted() {
-    $(".card-container .white-card").mousedown((e) => {
+    $(".white-card").mousedown((e) => {
       $(".clicked-card").css("z-index", "0");
-      $(e.target).css("z-index", "100");
+      $(e.currentTarget).css("z-index", "100");
       if (!this.hasPlayerSelected) {
         $(".clicked-card").removeClass("clicked-card");
-        $(e.target).addClass("clicked-card");
+        $(e.currentTarget).addClass("clicked-card");
       }
     });
     if (!this.isMobile) {
-      $(".card-container .white-card").draggable({
+      $(".white-card").draggable({
         stack: "div",
         containment: "parent",
       });
 
       // Randomly place white cards on the table
-      var cards = document.querySelectorAll(".card-container .white-card");
+      var cards = document.querySelectorAll(".white-card");
       for (var card of cards) {
         $(card).css({
           left: Math.random() * ($("#card-panel").width() - $(card).width()),
@@ -88,6 +93,11 @@ export default defineComponent({
         });
       }
     }
+  },
+  watch: {
+    playerMessage(newMessage) {
+      this.message = newMessage;
+    },
   },
 });
 </script>

@@ -26,7 +26,8 @@ const io = require('socket.io')(server, {
     credentials: true
   },
   transports: ['polling', 'websocket'],
-  allowEIO3: true
+  allowEIO3: true,
+  pingTimeout: 30000
 });
 
 const Player = require("./Player");
@@ -121,9 +122,36 @@ io.on('connection', (socket) => {
       currentCzar: gameRoom.currentCzar,
       publicMessage: `${gameRoom.currentCzar.name} is the current Czar.`,
       czarMessage: "Please wait for other players to select a white card",
-    }), 30);
+    }), 80);
     console.log(`Room ${roomId} is playing!`);
   });
+
+  socket.on("white_card_submission", (data) => {
+    const roomId = data.roomId;
+    const gameRoom = gameRooms.get(roomId);
+    const submitted_player = gameRoom.getPlayerById(data.playerId);
+    const { playerSelections, players } = gameRoom;
+
+    console.log(`${submitted_player.name} submitted: ${data.selection}`);
+
+    submitted_player.cards.splice(submitted_player.cards.indexOf(data.selection), 1);
+
+    playerSelections.push({
+      name: submitted_player.name,
+      id: submitted_player.id,
+      selection: data.selection,
+    });
+
+    const sanitizedSelections = playerSelections.map(el => el.selection);
+    // if (playerSelections.length === players.length - 1) {
+    console.log(`Sending cards to Czar: ${sanitizedSelections}`)
+    socket.emit('czar_chooses', {
+      playerSelections: sanitizedSelections,
+
+
+    });
+    // }
+  })
 
   socket.on('disconnect', () => {
     gameRooms.forEach((gameRoom, roomId) => {
@@ -146,17 +174,18 @@ io.on('connection', (socket) => {
   });
 
   socket.on('mock', () => {
-    const { player1, gameRoom } = require("./Mock");
+    const { player1, gameRoom, roomId } = require("./Mock");
+    gameRooms.set(roomId, gameRoom);
 
     socket.emit('game_start');
     socket.emit('update_player', player1);
 
     setTimeout(() => socket.emit('update_playground', {
       currentBlackCard: gameRoom.currentBlackCard,
-      currentCzar:"",
+      currentCzar: "",//gameRoom.currentCzar, // Leave blank to test the Czar view
       publicMessage: `${gameRoom.currentCzar.name} is the current Czar.`,
       czarMessage: "Please wait for other players to select a white card",
-    }), 10);
+    }), 400);
 
   });
 });

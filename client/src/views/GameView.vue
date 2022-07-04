@@ -7,6 +7,7 @@
       <pane :size="65" v-if="!amICurrentCzar">
         <player-view
           :currentPlayer="currentPlayer"
+          :playerMessage="playerMessage"
           :isMobile="isMobile"
         ></player-view>
       </pane>
@@ -15,6 +16,8 @@
         <czar-view
           :playerSelections="playerSelections"
           :currentBlackCard="currentBlackCard"
+          :amICurrentCzar="amICurrentCzar"
+          :czarMessage="czarMessage"
         ></czar-view>
       </pane>
     </splitpanes>
@@ -50,6 +53,9 @@ export default defineComponent({
       currentCzar: "",
       currentBlackCard: "",
       message: "",
+      playerMessage: "Please choose a white card to fill in the blank",
+      czarMessage:
+        "Please wait for the other players to select their white card",
       playerSelections: [],
     };
   },
@@ -60,6 +66,12 @@ export default defineComponent({
       this.currentBlackCard = data.currentBlackCard;
       this.amICurrentCzar = this.currentPlayer.name === data.currentCzar.name;
       this.message = `${data.publicMessage}`;
+    },
+    czar_chooses(data) {
+      this.playerSelections = data.playerSelections;
+      this.message = `All players have selected a white card. Czar ${this.currentCzar} will now choose his favorite!`;
+      this.playerMessage = `Waiting on Czar ${this.currentCzar}`;
+      this.czarMessage = "Please select your favorite answer!";
     },
   },
 });

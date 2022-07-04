@@ -13,6 +13,7 @@ class GameRoom {
     this.playerSelections = [];
     this.winningCards = [];
     this.isGameInSession = false;
+    this.playerSelections = [];
   }
 
   addPlayerToRoom(newPlayer) {
@@ -63,7 +64,7 @@ class GameRoom {
   }
 
   startGame() {
-    this.currentBlackCard = this.blackDeck.pop().text;
+    this.currentBlackCard = this.blackDeck.pop();
     this.getNextCzar();
     this.isGameInSession = true;
   }

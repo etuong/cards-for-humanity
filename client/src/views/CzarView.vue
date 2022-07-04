@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="czar-container">
     <div class="black-card-container">
       <card :isWhite="false" :text="currentBlackCard"></card>
     </div>
@@ -23,8 +23,22 @@
         ></card>
       </div>
 
-      <a class="prev" @click="changeSelection(-1)">&#10094;</a>
-      <a class="next" @click="changeSelection(1)">&#10095;</a>
+      <a v-if="amICurrentCzar" class="prev" @click="changeSelection(-1)"
+        >&#10094;</a
+      >
+      <a v-if="amICurrentCzar" class="next" @click="changeSelection(1)"
+        >&#10095;</a
+      >
+    </div>
+    <div class="czar-bar">
+      <p>{{ message }}</p>
+      <button
+        :disabled="!enableConfirmationBtn"
+        class="button is-primary is-small"
+        @click="submitSelection"
+      >
+        <strong>Select!</strong>
+      </button>
     </div>
   </div>
 </template>
@@ -39,12 +53,15 @@ export default defineComponent({
   props: {
     currentBlackCard: String,
     playerSelections: Array,
+    amICurrentCzar: Boolean,
+    czarMessage: String,
   },
   data() {
     return {
-      czarPrevSelectionIndex: 0,
-      czarCurrSelectionIndex: 1,
-      czarNextSelectionIndex: 2,
+      czarPrevSelectionIndex: this.playerSelections.length - 1,
+      czarCurrSelectionIndex: 0,
+      czarNextSelectionIndex: 1 || 0,
+      message: this.czarMessage,
     };
   },
   methods: {
@@ -74,11 +91,20 @@ export default defineComponent({
       );
     },
   },
+  watch: {
+    czarMessage(newMessage) {
+      this.message = newMessage;
+    },
+    playerSelections(newPlayerSections) {
+      this.czarPrevSelectionIndex = newPlayerSections.length - 1;
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-.container {
+.czar-container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,6 +143,7 @@ export default defineComponent({
 
 .current-selection .white-card {
   cursor: default;
+  border: 0.15em solid black;
 }
 
 .prev,
@@ -150,6 +177,22 @@ export default defineComponent({
 @keyframes flyup {
   0% {
     transform: translateX(100vh);
+  }
+}
+
+.czar-bar {
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  padding: 5px;
+  z-index: 10000;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  .button {
+    margin-left: auto;
   }
 }
 </style>
