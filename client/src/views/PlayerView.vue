@@ -19,7 +19,7 @@
       <p>{{ message }}</p>
       <button
         :disabled="!enableConfirmationBtn"
-        class="button is-primary is-small"
+        class="button is-success is-small"
         @click="submitSelection"
       >
         <strong>Select!</strong>

@@ -34,7 +34,7 @@ import { defineComponent } from "vue";
 import { Splitpanes, Pane } from "splitpanes";
 import CzarView from "./CzarView.vue";
 import PlayerView from "./PlayerView.vue";
-import Status from "./Status.vue";
+import Status from "../components/Status.vue";
 
 export default defineComponent({
   name: "PlayView",
@@ -71,12 +71,14 @@ export default defineComponent({
       this.currentCzar = data.currentCzar;
       this.currentBlackCard = data.currentBlackCard;
       this.amICurrentCzar = this.currentPlayer.name === data.currentCzar.name;
-      this.message = `${data.publicMessage}`;
+      this.message = `${this.amICurrentCzar ? "You" : data.currentCzar.name} ${
+        this.amICurrentCzar ? "are" : "is"
+      } the current Czar.`;
     },
     czar_chooses(data) {
       this.playerSelections = data.playerSelections;
       this.message = `All players have selected a white card. Czar ${this.currentCzar.name} will now choose his favorite!`;
-      this.playerMessage = `Waiting on Czar ${this.currentCzar.name}`;
+      this.playerMessage = `Waiting on Czar ${this.currentCzar.name} to select his favorite response`;
       this.czarMessage = "Please select your favorite answer!";
     },
   },
@@ -105,7 +107,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 10px 40px 10px;
   height: 100%;
 }
 </style>

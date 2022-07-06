@@ -2,7 +2,7 @@
   <div class="black-card-container">
     <card :isWhite="false" :text="currentBlackCard" />
   </div>
-  <div class="czar-selections">
+  <div class="czar-selections" v-if="playerSelections.length > 1">
     <div class="prev-selection">
       <card :isWhite="true" :text="playerSelections[czarPrevSelectionIndex]" />
     </div>
@@ -24,7 +24,7 @@
     <p>{{ message }}</p>
     <button
       :disabled="!readyToSelect"
-      class="button is-primary is-small"
+      class="button is-success is-small"
       @click="submitSelection"
     >
       <strong>Select!</strong>
@@ -102,6 +102,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .black-card-container {
   margin-top: auto;
+  margin-bottom: auto;
   height: 250px;
 }
 

@@ -2,11 +2,7 @@
   <nav-bar @show-view="showView"></nav-bar>
   <div class="body-content">
     <home v-if="showHomeView" />
-    <lobby
-      v-if="showLobbyView"
-      :playersData="playersData"
-      :currentPlayer="currentPlayer"
-    />
+    <lobby v-if="showLobbyView" :currentPlayer="currentPlayer" />
     <game v-if="showGameView" :currentPlayer="currentPlayer" />
   </div>
   <FooterComponent />
@@ -32,7 +28,6 @@ export default defineComponent({
   data() {
     return {
       currentPlayer: undefined,
-      playersData: undefined,
       showGameView: false,
       showHomeView: true,
       showLobbyView: false,
@@ -56,11 +51,11 @@ export default defineComponent({
         default:
       }
     },
-    showToast(message, type) {
+    showToast(message, type, duration = 3500) {
       toast({
         message,
         type,
-        duration: 3500,
+        duration: duration,
         position: "bottom-right",
         animate: { in: "fadeIn", out: "fadeOut" },
       });
@@ -70,9 +65,6 @@ export default defineComponent({
     connected() {
       console.log("Application socket is connected!");
     },
-    update_players(data) {
-      this.playersData = data;
-    },
     update_player(currentPlayer) {
       this.currentPlayer = currentPlayer;
     },
@@ -80,7 +72,8 @@ export default defineComponent({
       this.showView("Home");
       this.showToast(
         `Not enough players to play! Need at least 3 people :(`,
-        "is-danger"
+        "is-danger",
+        5000
       );
     },
     show_lobby() {
@@ -119,7 +112,7 @@ export default defineComponent({
   },
   mounted() {
     // Uncomment to call a mock server
-    this.$socket.emit("mock");
+    // this.$socket.emit("mock");
   },
 });
 </script>

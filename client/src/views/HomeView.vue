@@ -22,13 +22,13 @@
         </div>
         <div class="buttons is-centered">
           <button
-            class="button is-primary is-medium"
+            class="button is-success is-medium"
             @click="showGameCreatorModal = !showGameCreatorModal"
           >
             <strong>Create a Game</strong>
           </button>
           <button
-            class="button is-primary is-medium"
+            class="button is-success is-medium"
             @click="showGameJoinerModal = !showGameJoinerModal"
           >
             <strong>Join a Game</strong>

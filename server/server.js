@@ -53,6 +53,8 @@ io.on('connection', (socket) => {
 
       socket.join(roomId);
 
+      socket.emit('show_lobby');
+
       socket.emit('update_player', newPlayer);
 
       socket.emit('update_players', {
@@ -60,7 +62,7 @@ io.on('connection', (socket) => {
         isGameReady: newGameRoom.isGameReady()
       });
 
-      socket.emit('show_lobby');
+
 
       gameRooms.set(roomId, newGameRoom);
 
@@ -90,6 +92,8 @@ io.on('connection', (socket) => {
 
       socket.join(roomId);
 
+      socket.emit('show_lobby');
+
       socket.emit('update_player', newPlayer);
 
       io.sockets.in(roomId).emit('update_players', {
@@ -97,7 +101,6 @@ io.on('connection', (socket) => {
         isGameReady: gameRoom.isGameReady()
       });
 
-      socket.emit('show_lobby');
 
       console.log(`${data.name} has joined room ${roomId}`);
     }
@@ -125,7 +128,6 @@ io.on('connection', (socket) => {
     setTimeout(() => io.sockets.in(roomId).emit('update_playground', {
       currentBlackCard: gameRoom.currentBlackCard,
       currentCzar: gameRoom.currentCzar,
-      publicMessage: `${gameRoom.currentCzar.name} is the current Czar.`,
       czarMessage: "Please wait for other players to select a white card",
     }), 80);
     console.log(`Room ${roomId} is playing!`);
@@ -167,14 +169,14 @@ io.on('connection', (socket) => {
       for (let player of players) {
         if (player.id === socket.id) {
           socket.leave(roomId);
-          socket.emit('player_disconnect', player.name);
+          io.sockets.in(roomId).emit('player_disconnect', player.name);
           console.log(`${player.name} just left room ${roomId}!`);
 
           const number_of_current_players = gameRoom.removePlayerFromRoom(player);
 
           if (gameRoom.isGameInSession && number_of_current_players < 3) {
             gameRooms.delete(roomId);
-            socket.emit("show_home");
+            io.sockets.in(roomId).emit("show_home");
             console.log(`Deleting room ${roomId} because not enough players`);
           } else {
             io.sockets.in(roomId).emit('update_players', {
@@ -199,7 +201,6 @@ io.on('connection', (socket) => {
     setTimeout(() => socket.emit('update_playground', {
       currentBlackCard: gameRoom.currentBlackCard,
       currentCzar: "",//gameRoom.currentCzar, // Leave blank to test the Czar view
-      publicMessage: `${gameRoom.currentCzar.name} is the current Czar.`,
       czarMessage: "Please wait for other players to select a white card",
     }), 400);
 

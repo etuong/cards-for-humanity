@@ -73,7 +73,11 @@ export default defineComponent({
   components: {},
   props: {
     currentPlayer: Object,
-    playersData: Object,
+  },
+  data() {
+    return {
+      playersData: undefined,
+    }
   },
   methods: {
     setPlayerReady() {
@@ -83,6 +87,11 @@ export default defineComponent({
       this.$socket.emit("game_ready", this.currentPlayer.roomId);
     },
   },
+  sockets: {
+     update_players(data) {
+      this.playersData = data;
+    },
+  }
 });
 </script>
 
