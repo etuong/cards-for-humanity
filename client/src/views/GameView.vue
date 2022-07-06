@@ -20,7 +20,7 @@
             :currentBlackCard="currentBlackCard"
             :amICurrentCzar="amICurrentCzar"
             :czarMessage="czarMessage"
-            :roomId="currentPlayer.roomId"
+            :roomId="currentPlayer && currentPlayer.roomId"
           />
         </div>
       </pane>

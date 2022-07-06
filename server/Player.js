@@ -7,6 +7,7 @@ class Player {
     this.roomId = roomId;
     this.cards = [];
     this.ready = false;
+    this.cardSelected = false;
     this.winningCards = [];
   }
 

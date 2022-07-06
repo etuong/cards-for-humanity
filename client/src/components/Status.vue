@@ -9,13 +9,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="index in 7">
-        <td>Rebecca Bauch</td>
-        <td>2</td>
+      <tr v-for="(player, index) in playersStatus" :key="index">
+        <td>{{player.name}}</td>
+        <td>{{player.winningCards.length}}</td>
         <td>
           <input
             type="checkbox"
-            checked
+            :checked="player.cardSelected"
             class="switch is-rounded is-outlined is-success"
           />
           <label class="switch-label"></label>
@@ -42,13 +42,13 @@ export default defineComponent({
   props: {},
   data() {
     return {
-      playersData: undefined,
+      playersStatus: undefined,
     };
   },
   methods: {},
   sockets: {
-    update_players(data) {
-      this.playersData = data;
+    update_game_status(data) {
+      this.playersStatus = data;
     },
   },
 });

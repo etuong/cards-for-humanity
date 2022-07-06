@@ -77,7 +77,7 @@ export default defineComponent({
   data() {
     return {
       playersData: undefined,
-    }
+    };
   },
   methods: {
     setPlayerReady() {
@@ -88,10 +88,10 @@ export default defineComponent({
     },
   },
   sockets: {
-     update_players(data) {
+    update_preparation(data) {
       this.playersData = data;
     },
-  }
+  },
 });
 </script>
 

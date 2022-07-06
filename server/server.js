@@ -57,12 +57,10 @@ io.on('connection', (socket) => {
 
       socket.emit('update_player', newPlayer);
 
-      socket.emit('update_players', {
+      socket.emit('update_preparation', {
         players: newGameRoom.players,
         isGameReady: newGameRoom.isGameReady()
       });
-
-
 
       gameRooms.set(roomId, newGameRoom);
 
@@ -96,7 +94,7 @@ io.on('connection', (socket) => {
 
       socket.emit('update_player', newPlayer);
 
-      io.sockets.in(roomId).emit('update_players', {
+      io.sockets.in(roomId).emit('update_preparation', {
         players: gameRoom.players,
         isGameReady: gameRoom.isGameReady()
       });
@@ -113,7 +111,7 @@ io.on('connection', (socket) => {
 
     socket.emit('update_player', selected_player);
 
-    io.sockets.in(player.roomId).emit('update_players', {
+    io.sockets.in(player.roomId).emit('update_preparation', {
       players: gameRoom.players,
       isGameReady: gameRoom.isGameReady()
     });
@@ -149,9 +147,12 @@ io.on('connection', (socket) => {
       selection: data.selection,
     });
 
-    const sanitizedSelections = playerSelections.map(el => el.selection);
-    shuffleArray(sanitizedSelections);
+    submitted_player.cardSelected = true;
+    io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
+
     if (playerSelections.length === players.length - 1) {
+      const sanitizedSelections = playerSelections.map(el => el.selection);
+      shuffleArray(sanitizedSelections);
       console.log(`Sending cards to Czar: ${sanitizedSelections}`)
       io.sockets.in(roomId).emit('czar_chooses', {
         playerSelections: sanitizedSelections,
@@ -179,7 +180,7 @@ io.on('connection', (socket) => {
             io.sockets.in(roomId).emit("show_home");
             console.log(`Deleting room ${roomId} because not enough players`);
           } else {
-            io.sockets.in(roomId).emit('update_players', {
+            io.sockets.in(roomId).emit('update_preparation', {
               players: gameRoom.players,
               isGameReady: gameRoom.isGameReady()
             });
@@ -195,6 +196,7 @@ io.on('connection', (socket) => {
     const { player1, gameRoom, roomId } = require("./Mock");
     gameRooms.set(roomId, gameRoom);
 
+    socket.join(roomId);
     socket.emit('game_start');
     socket.emit('update_player', player1);
 
