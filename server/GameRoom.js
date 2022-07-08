@@ -40,22 +40,13 @@ class GameRoom {
     return this.players.length;
   }
 
-  discardSelections() {
-    this.playerSelections.forEach(el => {
-      el.selection.forEach(card => {
-        this.whiteDeck.discard.push(card);
-      })
-    })
-    this.playerSelections = [];
-  }
-
   resetRound() {
     this.players.forEach(player => {
       player.cardSelected = false;
       player.refillWhiteCards(this.whiteDeck);
     });
 
-    this.discardSelections();
+    this.playerSelections = [];
     this.startGame();
   }
 
