@@ -192,6 +192,8 @@ io.on('connection', (socket) => {
     setTimeout(() => {
       io.sockets.in(roomId).emit('new_round');
 
+      // socket.emit('update_player', newPlayer);
+
       gameRoom.resetRound();
 
       io.sockets.in(roomId).emit('update_playground', {

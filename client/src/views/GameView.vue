@@ -62,28 +62,27 @@ export default defineComponent({
       currentCzar: "",
       currentBlackCard: "",
       message: "",
-      playerMessage: "Please choose a white card to fill in the blank",
-      czarMessage:
-        "Please wait for the other players to select their white card",
+      playerMessage: "",
+      czarMessage: "",
       playerSelections: [],
     };
   },
   methods: {
     setDefault() {
-      this.amICurrentCzar= false;
-      this.currentCzar= "";
-      this.currentBlackCard= "";
-      this.message= "";
-      this.playerMessage= "Please choose a white card to fill in the blank";
-      this.czarMessage:
+      this.amICurrentCzar = false;
+      this.currentCzar = "";
+      this.currentBlackCard = "";
+      this.message = "";
+      this.playerMessage = "Please choose a white card to fill in the blank";
+      this.czarMessage =
         "Please wait for the other players to select their white card";
-      this.playerSelections=[];
-    }
+      this.playerSelections = [];
+    },
   },
   sockets: {
     update_playground(data) {
       this.currentCzar = data.currentCzar;
-            this.currentBlackCard = data.currentBlackCard;
+      this.currentBlackCard = data.currentBlackCard;
       this.amICurrentCzar = this.currentPlayer.name === data.currentCzar.name;
       this.message = `${this.amICurrentCzar ? "You" : data.currentCzar.name} ${
         this.amICurrentCzar ? "are" : "is"
@@ -96,8 +95,11 @@ export default defineComponent({
       this.czarMessage = "Please select your favorite answer!";
     },
     new_round() {
-      setDefault();
-    }
+      this.setDefault();
+    },
+  },
+  mounted() {
+    this.setDefault();
   },
 });
 </script>

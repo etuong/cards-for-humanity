@@ -1,12 +1,12 @@
 <template>
   <div
-    v-if="currentPlayer && currentPlayer.cards"
+    v-if="playerCards"
     class="player-selection"
     :class="{ 'white-cards': isMobile }"
   >
     <div class="card-container" id="card-panel">
       <card
-        v-for="(card, index) in currentPlayer.cards"
+        v-for="(card, index) in playerCards"
         :key="index"
         :isWhite="true"
         :text="card"
@@ -46,10 +46,15 @@ export default defineComponent({
       hasPlayerSelected: false,
       message: this.playerMessage,
       selected_card: [],
+      playerCards: this.currentPlayer?.cards,
     };
   },
-
   methods: {
+    setDefault() {
+      this.nableConfirmationBtn = false;
+      this.hasPlayerSelected = false;
+      this.selected_card = [];
+    },
     selectCard(id, card) {
       if (!this.hasPlayerSelected) {
         this.selected_card = [id, card];
@@ -67,6 +72,11 @@ export default defineComponent({
       this.enableConfirmationBtn = false;
       this.hasPlayerSelected = true;
       document.querySelector(".clicked-card").classList.add("selected-card");
+    },
+  },
+  sockets: {
+    new_round() {
+      this.setDefault();
     },
   },
   mounted() {
@@ -97,6 +107,9 @@ export default defineComponent({
   watch: {
     playerMessage(newMessage) {
       this.message = newMessage;
+    },
+    currentPlayer(newCurrentPlayer) {
+      this.playerCards = newCurrentPlayer?.cards;
     },
   },
 });

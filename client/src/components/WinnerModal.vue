@@ -51,14 +51,14 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-::v-deep .modal-container {
+<style lang="scss" scoped>
+:deep(.modal-container) {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-::v-deep .modal-content {
+:deep(.modal-content) {
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -90,7 +90,7 @@ export default defineComponent({
   display: flex;
 }
 
-.dark-mode div::v-deep .modal-content {
+.dark-mode div:deep(.modal-content) {
   border-color: #2d3748;
   background-color: #1a202c;
 }
