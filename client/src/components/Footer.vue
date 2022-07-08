@@ -1,12 +1,12 @@
 <template>
   <footer class="section border-top">
-      <div class="is-flex-tablet is-justify-content-end">
-        <p>
-          Created by
-          <a href="https://github.com/etuong/cards-for-humanity">Ethan Uong</a>
-          👨‍💻
-        </p>
-      </div>
+    <div class="is-flex-tablet is-justify-content-end">
+      <p>
+        Created by
+        <a href="https://github.com/etuong/cards-for-humanity">Ethan Uong</a>
+        👨‍💻
+      </p>
+    </div>
   </footer>
 </template>
 

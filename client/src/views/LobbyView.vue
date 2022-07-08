@@ -32,10 +32,7 @@
             <div class="container">
               <div
                 v-if="playersData && playersData.players"
-                class="
-                  list
-                  has-hoverable-list-items has-visible-pointer-controls
-                "
+                class="list has-hoverable-list-items has-visible-pointer-controls"
               >
                 <div
                   v-for="(player, index) in playersData.players"
