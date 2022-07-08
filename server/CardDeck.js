@@ -6,6 +6,13 @@ class CardDeck {
   constructor() {
     shuffleArray(cards.blackCards);
     shuffleArray(cards.whiteCards);
+    this.discard = [];
+  }
+
+  // dumps discard into cards, shuffles cards
+  reshuffle() {
+    this.cards.concat(this.discard);
+    this.cards = this.shuffle(this.cards);
   }
 
   get count() {

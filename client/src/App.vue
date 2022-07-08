@@ -1,8 +1,5 @@
 <template>
-  <nav-bar
-    @show-view="showView"
-    :playerName="currentPlayer && currentPlayer.name"
-  />
+  <nav-bar @show-view="showView"></nav-bar>
   <div class="body-content">
     <home v-if="showHomeView" />
     <lobby v-if="showLobbyView" :currentPlayer="currentPlayer" />

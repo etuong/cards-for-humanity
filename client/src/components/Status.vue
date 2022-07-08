@@ -12,16 +12,16 @@
       <tr v-for="(player, index) in playersStatus" :key="index">
         <td>{{ player.name }}</td>
         <td>{{ player.winningCards.length }}</td>
-        <td v-if="czarName === player.name">
-          <h3>Czar</h3>
-        </td>
-        <td v-else>
+        <td v-if="!amICurrentCzar">
           <input
             type="checkbox"
             :checked="player.cardSelected"
             class="switch is-rounded is-outlined is-success"
           />
           <label class="switch-label"></label>
+        </td>
+        <td v-if="amICurrentCzar">
+          <h3>Czar</h3>
         </td>
         <td>
           <button
@@ -42,7 +42,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Status",
-  props: { czarName: String },
+  props: { amICurrentCzar: Boolean },
   data() {
     return {
       playersStatus: undefined,

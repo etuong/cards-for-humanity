@@ -3,9 +3,6 @@
     <div class="navbar-brand">
       <img src="../assets/logo.png" class="logo" />
       <a class="navbar-item site-title" href="#">Cards For Humanity </a>
-      <a class="navbar-item site-title player-name" href="#">{{
-        playerName
-      }}</a>
     </div>
   </nav>
 </template>
@@ -15,7 +12,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "NavBar",
-  props: { playerName: String },
   methods: {},
 });
 </script>
@@ -24,10 +20,6 @@ export default defineComponent({
 .navbar {
   padding: 0px 15px;
   z-index: 0;
-}
-
-.navbar-brand {
-  width: 100%;
 }
 
 .logo {
@@ -42,10 +34,5 @@ export default defineComponent({
   text-decoration: none;
   color: black;
   font-size: larger;
-}
-
-.player-name {
-  margin-left: auto;
-  font-weight: bold;
 }
 </style>
