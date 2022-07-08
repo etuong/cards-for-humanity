@@ -3,6 +3,7 @@
     <p>{{ message }}</p>
   </div>
   <section class="section">
+    <winner-modal />
     <splitpanes class="default-theme">
       <pane :size="65" v-if="!amICurrentCzar">
         <player-view
@@ -14,7 +15,7 @@
 
       <pane v-if="!isMobile || amICurrentCzar" :size="35">
         <div class="czar-container">
-          <status />
+          <status :amICurrentCzar="amICurrentCzar" />
           <czar-view
             :playerSelections="playerSelections"
             :currentBlackCard="currentBlackCard"
@@ -35,6 +36,7 @@ import { Splitpanes, Pane } from "splitpanes";
 import CzarView from "./CzarView.vue";
 import PlayerView from "./PlayerView.vue";
 import Status from "../components/Status.vue";
+import WinnerModal from "../components/WinnerModal.vue";
 
 export default defineComponent({
   name: "PlayView",
@@ -45,6 +47,7 @@ export default defineComponent({
     PlayerView,
     Splitpanes,
     Status,
+    WinnerModal,
   },
   props: {
     currentPlayer: Object,

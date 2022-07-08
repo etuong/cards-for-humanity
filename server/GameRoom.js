@@ -11,9 +11,7 @@ class GameRoom {
     this.currentBlackCard = null;
     this.currentCzarIndex = -1;
     this.playerSelections = [];
-    this.winningCards = [];
     this.isGameInSession = false;
-    this.playerSelections = [];
   }
 
   addPlayerToRoom(newPlayer) {
@@ -43,12 +41,22 @@ class GameRoom {
   }
 
   discardSelections() {
-    this.playerSelections.forEach((el) => {
-      el.selection.forEach((card) => {
+    this.playerSelections.forEach(el => {
+      el.selection.forEach(card => {
         this.whiteDeck.discard.push(card);
       })
     })
     this.playerSelections = [];
+  }
+
+  resetRound() {
+    this.players.forEach(player => {
+      player.cardSelected = false;
+      player.refillWhiteCards(this.whiteDeck);
+    });
+
+    this.discardSelections();
+    this.startGame();
   }
 
   getNextCzar() {

@@ -112,7 +112,7 @@ export default defineComponent({
   },
   mounted() {
     // Uncomment to call a mock server
-    this.$socket.emit("mock");
+    // this.$socket.emit("mock");
   },
 });
 </script>

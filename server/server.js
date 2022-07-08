@@ -128,6 +128,9 @@ io.on('connection', (socket) => {
       currentCzar: gameRoom.currentCzar,
       czarMessage: "Please wait for other players to select a white card",
     }), 80);
+
+    io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
+
     console.log(`Room ${roomId} is playing!`);
   });
 
@@ -162,6 +165,42 @@ io.on('connection', (socket) => {
 
   socket.on("slide_player_selections", data => {
     io.sockets.in(data.roomId).emit("slide_player_selections", data);
+  })
+
+  socket.on("czar_selection", data => {
+    const roomId = data.roomId;
+    const gameRoom = gameRooms.get(roomId);
+    const { playerSelections, players } = gameRoom;
+    let winner = {};
+
+    console.log(`Czar ${gameRoom.currentCzar} chose "${data.czarSelection}"`);
+
+    for (let item of playerSelections) {
+      if (item.selection === data.czarSelection) {
+        winner.id = item.id;
+        winner.name = item.name;
+        winner.white = data.czarSelection;
+        winner.black = gameRoom.currentBlackCard;
+        let winningPlayer = gameRoom.getPlayerById(item.id);
+        if (winningPlayer) {
+          winningPlayer.winningCards.push(winner)
+        }
+        break;
+      }
+    }
+
+    io.sockets.in(roomId).emit('winner_announced', winner);
+
+    gameRoom.resetRound();
+
+    io.sockets.in(roomId).emit('update_playground', {
+      currentBlackCard: gameRoom.currentBlackCard,
+      currentCzar: gameRoom.currentCzar,
+      czarMessage: "Please wait for other players to select a white card",
+    });
+
+    io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
+
   })
 
   socket.on('disconnect', () => {

@@ -1,0 +1,97 @@
+<template>
+  <div>
+    <vue-final-modal
+      v-model="showModal"
+      classes="modal-container"
+      content-class="modal-content"
+      @click-outside="showModal = false"
+      :drag="true"
+    >
+      <button class="modal__close" @click="showModal = false">&#x2715</button>
+      <span class="modal__title">Congratulations, {{winner}}!</span>
+      <span class="modal__subtitle">You've won this round.</span>
+      <div class="modal__content">
+         <card :isWhite="false" :text="blackCard" />
+        <card :isWhite="true" :text="whiteCard" />
+      </div>
+    </vue-final-modal>
+  </div>
+</template>
+
+<script>
+import { defineComponent } from "vue";
+import { $vfm, VueFinalModal, ModalsContainer } from "vue-final-modal";
+import Card from "./Card.vue";
+
+export default defineComponent({
+  name: "WinnerModal",
+  components: {
+    VueFinalModal,
+    ModalsContainer,
+    Card,
+  },
+  props: {},
+  data() {
+    return {
+      showModal: false,
+      winner: "",
+      blackCard: "",
+      whiteCard: "",
+    };
+  },
+  methods: {},
+  sockets: {
+    winner_announced(data) {
+      this.winner = data.name;
+      this.blackCard = data.black;
+      this.whiteCard = data.white;
+      this.showModal = true;
+    },
+  },
+});
+</script>
+
+<style scoped>
+::v-deep .modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::v-deep .modal-content {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid black;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.modal__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modal__subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.modal__content {
+  display: flex;
+}
+
+.dark-mode div::v-deep .modal-content {
+  border-color: #2d3748;
+  background-color: #1a202c;
+}
+</style>

@@ -78,7 +78,12 @@ export default defineComponent({
         roomId: this.roomId,
       });
     },
-    submitSelection() {},
+    submitSelection() {
+      this.$socket.emit("czar_selection", {
+        czarSelection: this.playerSelections[this.czarCurrSelectionIndex],
+        roomId: this.roomId,
+      });
+    },
   },
   sockets: {
     slide_player_selections(data) {
