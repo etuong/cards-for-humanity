@@ -75,14 +75,14 @@ io.on('connection', (socket) => {
     if (!gameRoom) {
       socket.emit('room_does_not_exist')
       console.log(`${data.name} tries to join room ${roomId} but room does not exist`);
+    } else if (gameRoom.isGameInSession) {
+      socket.emit("game_in_session");
+      console.log(`${data.name} tries to join room ${roomId} but game is in session`);
     } else if (gameRoom.players.length == 10) {
       socket.emit("room_full");
       console.log(`${data.name} tries to join room ${roomId} but room is full`);
     } else if (gameRoom.isDuplicatePlayerName(data.name)) {
       socket.emit("player_name_exist");
-    } else if (gameRoom.isGameInSession) {
-      socket.emit("game_in_session");
-      console.log(`${data.name} tries to join room ${roomId} but game is in session`);
     } else {
       const newPlayer = new Player(data.name, socket.id, roomId);
 
@@ -98,7 +98,6 @@ io.on('connection', (socket) => {
         players: gameRoom.players,
         isGameReady: gameRoom.isGameReady()
       });
-
 
       console.log(`${data.name} has joined room ${roomId}`);
     }
@@ -173,11 +172,10 @@ io.on('connection', (socket) => {
     const { playerSelections, players } = gameRoom;
     let winner = {};
 
-    console.log(`Czar ${gameRoom.currentCzar} chose "${data.czarSelection}"`);
+    console.log(`Czar ${gameRoom.currentCzar.name} chose "${data.czarSelection}"`);
 
     for (let item of playerSelections) {
       if (item.selection === data.czarSelection) {
-        winner.id = item.id;
         winner.name = item.name;
         winner.white = data.czarSelection;
         winner.black = gameRoom.currentBlackCard;
@@ -191,16 +189,19 @@ io.on('connection', (socket) => {
 
     io.sockets.in(roomId).emit('winner_announced', winner);
 
-    gameRoom.resetRound();
+    setTimeout(() => {
+      io.sockets.in(roomId).emit('new_round');
 
-    io.sockets.in(roomId).emit('update_playground', {
-      currentBlackCard: gameRoom.currentBlackCard,
-      currentCzar: gameRoom.currentCzar,
-      czarMessage: "Please wait for other players to select a white card",
-    });
+      gameRoom.resetRound();
 
-    io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
+      io.sockets.in(roomId).emit('update_playground', {
+        currentBlackCard: gameRoom.currentBlackCard,
+        currentCzar: gameRoom.currentCzar,
+        czarMessage: "Please wait for other players to select a white card",
+      });
 
+      io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
+    }, 3000)
   })
 
   socket.on('disconnect', () => {
@@ -241,10 +242,11 @@ io.on('connection', (socket) => {
 
     setTimeout(() => socket.emit('update_playground', {
       currentBlackCard: gameRoom.currentBlackCard,
-      currentCzar: "",//gameRoom.currentCzar, // Leave blank to test the Czar view
+      currentCzar: gameRoom.currentCzar, // Leave blank to test the Czar view
       czarMessage: "Please wait for other players to select a white card",
     }), 400);
 
+    io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
   });
 });
 
