@@ -4,16 +4,21 @@
       v-model="showModal"
       classes="modal-container"
       content-class="modal-content"
-      @click-outside="showModal = false"
+      :click-to-close="false"
       :drag="true"
     >
-      <button class="modal__close" @click="showModal = false">&#x2715</button>
-      <span class="modal__title">Congratulations, {{winner}}!</span>
+      <span class="modal__title">Congratulations, {{ winner }}!</span>
       <span class="modal__subtitle">You've won this round.</span>
       <div class="modal__content">
-         <card :isWhite="false" :text="blackCard" />
+        <card :isWhite="false" :text="blackCard" />
         <card :isWhite="true" :text="whiteCard" />
       </div>
+      <button
+        class="button is-success is-medium next-round-btn"
+        @click="handleNextRound"
+      >
+        <strong>Next Round</strong>
+      </button>
     </vue-final-modal>
   </div>
 </template>
@@ -39,7 +44,12 @@ export default defineComponent({
       whiteCard: "",
     };
   },
-  methods: {},
+  methods: {
+    handleNextRound() {
+      this.showModal = !this.showModal;
+      this.$emit("handleNextRound");
+    },
+  },
   sockets: {
     winner_announced(data) {
       this.winner = data.name;
@@ -56,6 +66,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: default;
 }
 
 :deep(.modal-content) {
@@ -80,12 +91,6 @@ export default defineComponent({
   margin: 10px 0px;
 }
 
-.modal__close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
 .modal__content {
   display: flex;
 }
@@ -93,5 +98,10 @@ export default defineComponent({
 .dark-mode div:deep(.modal-content) {
   border-color: #2d3748;
   background-color: #1a202c;
+}
+
+.next-round-btn {
+  width: 150px;
+  margin: 15px auto;
 }
 </style>

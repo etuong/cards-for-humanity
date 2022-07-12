@@ -7,7 +7,7 @@
     <div class="card-container" id="card-panel">
       <card
         v-for="(card, index) in playerCards"
-        :key="index"
+        :key="card"
         :isWhite="true"
         :text="card"
         @click="selectCard(index, card)"
@@ -73,35 +73,49 @@ export default defineComponent({
       this.hasPlayerSelected = true;
       document.querySelector(".clicked-card").classList.add("selected-card");
     },
+    attachCardStyle(selector) {
+      $(selector).mousedown((e) => {
+        $(".clicked-card").css("z-index", "0");
+        $(e.currentTarget).css("z-index", "100");
+        if (!this.hasPlayerSelected) {
+          $(".clicked-card").removeClass("clicked-card");
+          $(e.currentTarget).addClass("clicked-card");
+        }
+      });
+    },
+    attachDraggable(selector) {
+      $(selector).draggable({
+        stack: "div",
+        containment: "parent",
+      });
+    },
+    dropNewCards(selector) {
+      // Randomly place white cards on the table
+      var cards = document.querySelectorAll(selector);
+      for (var card of cards) {
+        $(card)
+          .css({
+            left: Math.random() * ($("#card-panel").width() - $(card).width()),
+            top: Math.random() * ($("#card-panel").height() - $(card).height()),
+          })
+          .addClass("attached");
+      }
+    },
   },
   sockets: {
     new_round() {
       this.setDefault();
+
+      const usedCard = document.querySelector(".selected-card");
+      usedCard.parentElement.removeChild(usedCard);
     },
   },
   mounted() {
-    $(".card-container .white-card").mousedown((e) => {
-      $(".clicked-card").css("z-index", "0");
-      $(e.currentTarget).css("z-index", "100");
-      if (!this.hasPlayerSelected) {
-        $(".clicked-card").removeClass("clicked-card");
-        $(e.currentTarget).addClass("clicked-card");
-      }
-    });
-    if (!this.isMobile) {
-      $(".card-container .white-card").draggable({
-        stack: "div",
-        containment: "parent",
-      });
+    this.attachCardStyle(".card-container .white-card");
 
-      // Randomly place white cards on the table
-      var cards = document.querySelectorAll(".card-container .white-card");
-      for (var card of cards) {
-        $(card).css({
-          left: Math.random() * ($("#card-panel").width() - $(card).width()),
-          top: Math.random() * ($("#card-panel").height() - $(card).height()),
-        });
-      }
+    if (!this.isMobile) {
+      this.attachDraggable(".card-container .white-card");
+      this.dropNewCards(".card-container .white-card");
     }
   },
   watch: {
@@ -110,6 +124,14 @@ export default defineComponent({
     },
     currentPlayer(newCurrentPlayer) {
       this.playerCards = newCurrentPlayer?.cards;
+      this.$forceUpdate();
+      setTimeout(() => {
+        this.attachCardStyle(".card-container .white-card:not(.attached)");
+
+        if (!this.isMobile) {
+          this.attachDraggable(".card-container .white-card:not(.attached)");
+        }
+      }, 100);
     },
   },
 });

@@ -169,7 +169,7 @@ io.on('connection', (socket) => {
   socket.on("czar_selection", data => {
     const roomId = data.roomId;
     const gameRoom = gameRooms.get(roomId);
-    const { playerSelections, players } = gameRoom;
+    const { playerSelections } = gameRoom;
     let winner = {};
 
     console.log(`Czar ${gameRoom.currentCzar.name} chose "${data.czarSelection}"`);
@@ -189,22 +189,27 @@ io.on('connection', (socket) => {
 
     io.sockets.in(roomId).emit('winner_announced', winner);
 
-    setTimeout(() => {
-      io.sockets.in(roomId).emit('new_round');
+    gameRoom.resetRound();
 
-      // socket.emit('update_player', newPlayer);
+    io.sockets.in(roomId).emit('new_round');
+  });
 
-      gameRoom.resetRound();
+  socket.on("next_round", data => {
+    const roomId = data.roomId;
+    const gameRoom = gameRooms.get(roomId);
 
-      io.sockets.in(roomId).emit('update_playground', {
-        currentBlackCard: gameRoom.currentBlackCard,
-        currentCzar: gameRoom.currentCzar,
-        czarMessage: "Please wait for other players to select a white card",
-      });
+    const updatedPlayer = gameRoom.getPlayerById(data.playerId);
 
-      io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
-    }, 3000)
-  })
+    socket.emit('update_player', updatedPlayer);
+
+    socket.emit('update_playground', {
+      currentBlackCard: gameRoom.currentBlackCard,
+      currentCzar: gameRoom.currentCzar,
+      czarMessage: "Please wait for other players to select a white card",
+    });
+
+    socket.emit('update_game_status', gameRoom.players);
+  });
 
   socket.on('disconnect', () => {
     gameRooms.forEach((gameRoom, roomId) => {

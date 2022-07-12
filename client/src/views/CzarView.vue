@@ -56,6 +56,12 @@ export default defineComponent({
     };
   },
   methods: {
+    setDefault() {
+      this.readyToSelect = false;
+      this.czarCurrSelectionIndex = 0;
+      this.czarNextSelectionIndex = 1 || 0;
+      this.czarPrevSelectionIndex = this.playerSelections.length - 1;
+    },
     changeSelection(iteration) {
       let length = this.playerSelections.length;
 
@@ -90,6 +96,9 @@ export default defineComponent({
       this.czarPrevSelectionIndex = data.czarPrevSelectionIndex;
       this.czarCurrSelectionIndex = data.czarCurrSelectionIndex;
       this.czarNextSelectionIndex = data.czarNextSelectionIndex;
+    },
+    new_round() {
+      this.setDefault();
     },
   },
   watch: {

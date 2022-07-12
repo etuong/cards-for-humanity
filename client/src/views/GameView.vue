@@ -3,7 +3,7 @@
     <p>{{ message }}</p>
   </div>
   <section class="section">
-    <winner-modal />
+    <winner-modal @handleNextRound="handleNextRound" />
     <splitpanes class="default-theme">
       <pane :size="65" v-if="!amICurrentCzar">
         <player-view
@@ -77,6 +77,12 @@ export default defineComponent({
       this.czarMessage =
         "Please wait for the other players to select their white card";
       this.playerSelections = [];
+    },
+    handleNextRound() {
+      this.$socket.emit("next_round", {
+        roomId: this.currentPlayer.roomId,
+        playerId: this.currentPlayer.id,
+      });
     },
   },
   sockets: {
