@@ -96,8 +96,8 @@ export default defineComponent({
     },
     czar_chooses(data) {
       this.playerSelections = data.playerSelections;
-      this.message = `All players have selected a white card. Czar ${this.currentCzar.name} will now choose his favorite!`;
-      this.playerMessage = `Waiting on Czar ${this.currentCzar.name} to select his favorite response`;
+      this.message = `All players have selected a white card. Czar ${this.currentCzar.name} will now choose their favorite!`;
+      this.playerMessage = `Waiting on Czar ${this.currentCzar.name} to select their favorite response`;
       this.czarMessage = "Please select your favorite answer!";
     },
     new_round() {

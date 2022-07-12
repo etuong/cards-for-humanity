@@ -1,4 +1,20 @@
 <template>
+  <div class="toggle">
+    <button @click="toggle">Toggle SlideIn</button>
+  </div>
+  <transition name="slide">
+    <div class="slidein" v-if="open">
+      <h1>Header</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cum,
+        harum, quaerat porro, maiores facilis molestias illum impedit quo
+        repellat enim provident perspiciatis molestiae in saepe id cupiditate
+        eveniet asperiores.
+      </p>
+      <button class="close-btn" @click="toggle">X</button>
+    </div>
+  </transition>
+
   <nav-bar
     @show-view="showView"
     :playerName="currentPlayer && currentPlayer.name"
@@ -34,9 +50,13 @@ export default defineComponent({
       showGameView: false,
       showHomeView: true,
       showLobbyView: false,
+      open: false,
     };
   },
   methods: {
+    toggle() {
+      this.open = !this.open;
+    },
     showView(view) {
       this.showHomeView = false;
       this.showLobbyView = false;
@@ -78,6 +98,7 @@ export default defineComponent({
         "is-danger",
         5000
       );
+      this.currentPlayer = undefined;
     },
     show_lobby() {
       this.showView("Lobby");
@@ -124,5 +145,49 @@ export default defineComponent({
 .body-content {
   flex: 1 0 auto;
   padding-top: 50px;
+}
+
+.slidein {
+  max-width: 600px;
+  padding: 2em 3em;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  background: #ddd;
+  height: 100%;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease-in-out;
+}
+
+/* before the element is shown, start off the screen to the right */
+.slide-enter,
+.slide-leave-active {
+  right: -100%;
+}
+
+.close-btn {
+  border: none;
+  font-weight: bold;
+  font-size: 2em;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5em;
+}
+
+.toggle {
+  margin: 1em;
+}
+
+button {
+  padding: 0.5em 1em;
+  border-radius: 3em;
+  font-size: 1.1em;
+}
+
+h1 {
+  font-weight: 200;
 }
 </style>

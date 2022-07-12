@@ -3,13 +3,13 @@
     <card :isWhite="false" :text="currentBlackCard" />
   </div>
   <div class="czar-selections" v-if="playerSelections.length > 1">
-    <div class="prev-selection">
+    <div class="prev-selection slide">
       <card :isWhite="true" :text="playerSelections[czarPrevSelectionIndex]" />
     </div>
-    <div class="current-selection fade">
+    <div class="current-selection slide">
       <card :isWhite="true" :text="playerSelections[czarCurrSelectionIndex]" />
     </div>
-    <div class="next-selection fade">
+    <div class="next-selection slide">
       <card :isWhite="true" :text="playerSelections[czarNextSelectionIndex]" />
     </div>
 
@@ -196,5 +196,9 @@ export default defineComponent({
   .button {
     margin-left: auto;
   }
+}
+
+.slide {
+  transition: all 0.5s ease-in-out;
 }
 </style>
