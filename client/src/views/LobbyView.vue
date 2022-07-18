@@ -1,5 +1,5 @@
 <template>
-  <section class="hero welcome is-small">
+  <section class="hero welcome is-small animate__animated animate__fadeIn">
     <div class="hero-body">
       <div class="container">
         <div class="columns">

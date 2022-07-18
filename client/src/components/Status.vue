@@ -1,4 +1,5 @@
 <template>
+  <victory-board-modal :victoryPairs="victoryPairs" />
   <table class="table is-striped is-hoverable is-fullwidth">
     <thead>
       <tr>
@@ -25,9 +26,10 @@
         </td>
         <td>
           <button
-            class="button jb-modal"
+            class="victory-button jb-modal"
             data-target="sample-modal"
             type="button"
+            @click="handleVictoryBoardClick(player)"
           >
             <span class="icon">&#128065;</span>
           </button>
@@ -39,16 +41,26 @@
 
 <script>
 import { defineComponent } from "vue";
+import VictoryBoardModal from "@/components/VictoryBoardModal.vue";
 
 export default defineComponent({
   name: "Status",
+  components: {
+    VictoryBoardModal,
+  },
   props: { czarName: String },
   data() {
     return {
       playersStatus: undefined,
+      openPlayerVictoryBoard: false,
+      victoryPairs: [],
     };
   },
-  methods: {},
+  methods: {
+    handleVictoryBoardClick(selectedPlayer) {
+      this.victoryPairs = [];
+    },
+  },
   sockets: {
     update_game_status(data) {
       this.playersStatus = data;
@@ -73,7 +85,7 @@ export default defineComponent({
   display: inline !important;
 }
 
-.button {
+.victory-button {
   font-size: 24px;
   height: 24px;
   border: none;

@@ -1,9 +1,10 @@
+import 'animate.css';
+import jquery from "jquery";
+import "jquery-ui-dist/jquery-ui";
 import { createApp } from "vue";
 import VueSocketIO from "vue-3-socket.io";
 import App from "./App.vue";
 import "./styles/index.scss";
-import jquery from "jquery";
-import "jquery-ui-dist/jquery-ui";
 
 window.$ = window.jQuery = jquery;
 

@@ -2,7 +2,7 @@
   <div class="is-fixed-top message-bar">
     <p>{{ message }}</p>
   </div>
-  <section class="section">
+  <section class="section animate__animated animate__fadeIn">
     <winner-modal @handleNextRound="handleNextRound" />
     <splitpanes class="default-theme">
       <pane :size="65" v-if="!amICurrentCzar">
