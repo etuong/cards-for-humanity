@@ -7,6 +7,7 @@
     <div class="card-container" id="card-panel">
       <card
         v-for="(card, index) in playerCards"
+        class="animate__animated"
         :key="card"
         :isWhite="true"
         :text="card"
@@ -84,21 +85,21 @@ export default defineComponent({
       });
     },
     attachDraggable(selector) {
-      $(selector).draggable({
-        stack: "div",
-        containment: "parent",
-      });
+      $(selector)
+        .draggable({
+          stack: "div",
+          containment: "parent",
+        })
+        .addClass("attached");
     },
     dropNewCards(selector) {
       // Randomly place white cards on the table
       var cards = document.querySelectorAll(selector);
       for (var card of cards) {
-        $(card)
-          .css({
-            left: Math.random() * ($("#card-panel").width() - $(card).width()),
-            top: Math.random() * ($("#card-panel").height() - $(card).height()),
-          })
-          .addClass("attached");
+        $(card).css({
+          left: Math.random() * ($("#card-panel").width() - $(card).width()),
+          top: Math.random() * ($("#card-panel").height() - $(card).height()),
+        });
       }
     },
   },
@@ -111,12 +112,15 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.attachCardStyle(".card-container .white-card");
+    this.attachCardStyle(this.SELECTOR);
 
     if (!this.isMobile) {
-      this.attachDraggable(".card-container .white-card");
+      this.attachDraggable(this.SELECTOR);
       this.dropNewCards(".card-container .white-card");
     }
+  },
+  created() {
+    this.SELECTOR = ".card-container .white-card:not(.attached)";
   },
   watch: {
     playerMessage(newMessage) {
@@ -126,10 +130,11 @@ export default defineComponent({
       this.playerCards = newCurrentPlayer?.cards;
       this.$forceUpdate();
       setTimeout(() => {
-        this.attachCardStyle(".card-container .white-card:not(.attached)");
+        this.attachCardStyle(this.SELECTOR);
 
         if (!this.isMobile) {
-          this.attachDraggable(".card-container .white-card:not(.attached)");
+          $(this.SELECTOR).addClass("animate__heartBeat");
+          this.attachDraggable(this.SELECTOR);
         }
       }, 100);
     },

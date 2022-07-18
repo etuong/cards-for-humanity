@@ -5,10 +5,10 @@
     transition="fade"
     class="section-xs"
     @cancel="close"
-    @ok="createRoom"
+    @ok="joinRoom"
     okText="OK"
   >
-    <form class="columns is-multiline">
+    <form class="columns is-multiline" @submit.prevent="joinRoom">
       <div class="field column is-6">
         <label class="label">Player's Name</label>
         <div class="control">
@@ -40,6 +40,8 @@
           Password needs to be at least 4 characters!
         </p>
       </div>
+
+      <input type="submit" style="display: none" />
     </form>
   </card-modal>
 </template>
@@ -61,7 +63,7 @@ export default defineComponent({
     };
   },
   methods: {
-    createRoom() {
+    joinRoom() {
       let flag = true;
 
       if (this.name.length < 1) {

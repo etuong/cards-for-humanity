@@ -8,7 +8,7 @@
     @ok="createRoom"
     okText="OK"
   >
-    <form class="columns is-multiline">
+    <form class="columns is-multiline" @submit.prevent="createRoom">
       <div class="field column is-6">
         <label class="label">Player's Name</label>
         <div class="control">
@@ -40,6 +40,8 @@
           Minimum password length is 4
         </p>
       </div>
+
+      <input type="submit" style="display:none"/>
     </form>
   </card-modal>
 </template>

@@ -11,10 +11,6 @@ class Player {
     this.winningCards = [];
   }
 
-  get score() {
-    return this.winningCards.length;
-  }
-
   refillWhiteCards(whiteDeck) {
     for (let i = this.cards.length; i < Constant.WHITE_CARDS_IN_HAND; i++) {
       this.cards.push(whiteDeck.pop());

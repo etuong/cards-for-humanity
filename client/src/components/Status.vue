@@ -1,5 +1,5 @@
 <template>
-  <victory-board-modal :victoryPairs="victoryPairs" />
+  <victory-board-modal :selectedPlayer="selectedPlayer" />
   <table class="table is-striped is-hoverable is-fullwidth">
     <thead>
       <tr>
@@ -29,6 +29,7 @@
             class="victory-button jb-modal"
             data-target="sample-modal"
             type="button"
+            :disabled="player.winningCards.length < 1"
             @click="handleVictoryBoardClick(player)"
           >
             <span class="icon">&#128065;</span>
@@ -53,12 +54,12 @@ export default defineComponent({
     return {
       playersStatus: undefined,
       openPlayerVictoryBoard: false,
-      victoryPairs: [],
+      selectedPlayer: undefined,
     };
   },
   methods: {
     handleVictoryBoardClick(selectedPlayer) {
-      this.victoryPairs = [];
+      this.selectedPlayer = selectedPlayer;
     },
   },
   sockets: {

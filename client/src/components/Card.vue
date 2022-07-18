@@ -9,7 +9,7 @@
         : { 'margin-bottom': '0' },
     ]"
   >
-    <p class="animate__animated animate__fadeIn">{{ text }}</p>
+    <p>{{ text }}</p>
     <div className="card-logo">
       <img src="../assets/logo.png" alt="card logo" />
       <span>Cards For Humanity</span>
