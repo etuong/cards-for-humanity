@@ -22,7 +22,7 @@ server.listen(port, () => {
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: ["http://localhost:8080", "https://etuong.github.io/cards-for-humanity/"],
+    origin: ["http://localhost:8080", "https://etuong.github.io"],
     credentials: true
   },
   transports: ['polling', 'websocket'],
