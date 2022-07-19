@@ -4,13 +4,23 @@ const CardDeck = require("./CardDeck");
 class GameRoom {
   constructor(roomId) {
     const deck = new CardDeck();
-    this.roomId = roomId;
     this.whiteDeck = deck.getWhiteCards();
     this.blackDeck = deck.getBlackCards();
+
+    // This is the unique ID for the room. It's the room's password
+    this.roomId = roomId;
+    
+    // All players in the game room
     this.players = [];
+
+    // Keep track of Czar
     this.currentBlackCard = null;
     this.currentCzarIndex = -1;
+
+    // All the selected white cards for the round
     this.playerSelections = [];
+
+    // So no new players can join once game starts
     this.isGameInSession = false;
   }
 
@@ -19,6 +29,7 @@ class GameRoom {
     this.players.push(newPlayer);
   }
 
+  // Have to enforce name uniqueness
   isDuplicatePlayerName(name) {
     return this.players.find(player => player.name === name);
   }
@@ -31,6 +42,7 @@ class GameRoom {
     return this.players.find(({ id }) => id === player_id);
   }
 
+  // When player's socket gets disconnected, remove the player
   removePlayerFromRoom(player) {
     const index = this.players.indexOf(player);
     if (index > -1) {

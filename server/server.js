@@ -3,6 +3,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const app = express();
 const server = require('http').createServer(app);
+const Constant = require("./Constants");
 
 app.use(logger('dev'));
 app.use(cors());
@@ -10,11 +11,11 @@ app.get("/", (_, res) => {
   res.redirect('https://etuong.github.io/cards-for-humanity/');
 });
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "*"); // Update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || Constant.PORT;
 
 server.listen(port, () => {
   console.log(`Server is listening on port: ${port}`);
@@ -27,7 +28,7 @@ const io = require('socket.io')(server, {
   },
   transports: ['polling', 'websocket'],
   allowEIO3: true,
-  pingTimeout: 30000
+  pingTimeout: 30000 // Shut down socket after 30 minutes of inactivity
 });
 
 const Player = require("./Player");
@@ -36,8 +37,10 @@ const gameRooms = new Map();
 const shuffleArray = require("./Utility.js");
 
 io.on('connection', (socket) => {
+  // Ping a response from handshake
   socket.emit('connected');
 
+  // From Home view when player creates a game
   socket.on('create_room', data => {
     const roomId = data.password.toUpperCase();
 
@@ -51,12 +54,16 @@ io.on('connection', (socket) => {
 
       newGameRoom.addPlayerToRoom(newPlayer);
 
+      // Add new player connection to game room socket
       socket.join(roomId);
 
+      // Take the player to the lobby to wait for other players
       socket.emit('show_lobby');
 
+      // Give player initial data like cards
       socket.emit('update_player', newPlayer);
 
+      // Inform all players of game status
       socket.emit('update_preparation', {
         players: newGameRoom.players,
         isGameReady: newGameRoom.isGameReady()
@@ -68,6 +75,7 @@ io.on('connection', (socket) => {
     }
   });
 
+  // From Home view when player joins an existing game
   socket.on('join_room', data => {
     const roomId = data.password.toUpperCase();
     const gameRoom = gameRooms.get(roomId);
@@ -103,6 +111,7 @@ io.on('connection', (socket) => {
     }
   });
 
+  // From Lobby view when player is ready to play
   socket.on('player_ready', player => {
     const gameRoom = gameRooms.get(player.roomId);
     const selected_player = gameRoom.getPlayerById(player.id);
@@ -141,6 +150,7 @@ io.on('connection', (socket) => {
 
     console.log(`${submitted_player.name} submitted: ${data.selection}`);
 
+    // Remove the player's selected card from their hand
     submitted_player.cards.splice(submitted_player.cards.indexOf(data.selection), 1);
 
     playerSelections.push({
@@ -153,19 +163,27 @@ io.on('connection', (socket) => {
     io.sockets.in(roomId).emit('update_game_status', gameRoom.players);
 
     if (playerSelections.length === players.length - 1) {
+      // Only get the texts
       const sanitizedSelections = playerSelections.map(el => el.selection);
+
+      // Randomize the selected white cards
       shuffleArray(sanitizedSelections);
+
       console.log(`Sending cards to Czar: ${sanitizedSelections}`)
+
+      // Ship randomized selected white cards to all players to see
       io.sockets.in(roomId).emit('czar_chooses', {
         playerSelections: sanitizedSelections,
       });
     }
   })
 
+  // Only the Czar can emit this. This is so every player can see what the Czar is seeing
   socket.on("slide_player_selections", data => {
     io.sockets.in(data.roomId).emit("slide_player_selections", data);
   })
 
+  // Only the Czar can emit this. 
   socket.on("czar_selection", data => {
     const roomId = data.roomId;
     const gameRoom = gameRooms.get(roomId);
@@ -222,6 +240,7 @@ io.on('connection', (socket) => {
 
           const number_of_current_players = gameRoom.removePlayerFromRoom(player);
 
+          // Kick the other two players out if the third last player quits
           if (gameRoom.isGameInSession && number_of_current_players < 3) {
             gameRooms.delete(roomId);
             io.sockets.in(roomId).emit("show_home");
@@ -239,6 +258,7 @@ io.on('connection', (socket) => {
     })
   });
 
+  // For testing purposes
   socket.on('mock', () => {
     const { player1, gameRoom, roomId } = require("./Mock");
     gameRooms.set(roomId, gameRoom);
