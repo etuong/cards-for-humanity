@@ -10,11 +10,7 @@
       :class="TRANSITIONS[Math.floor(Math.random() * TRANSITIONS.length)]"
     />
     <lobby v-if="showLobbyView" :currentPlayer="currentPlayer" />
-    <game
-      v-if="showGameView"
-      :currentPlayer="currentPlayer"
-      :class="TRANSITIONS[Math.floor(Math.random() * TRANSITIONS.length)]"
-    />
+    <game v-if="showGameView" :currentPlayer="currentPlayer" />
   </div>
   <FooterComponent />
 </template>

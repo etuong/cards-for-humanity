@@ -76,9 +76,11 @@ export default defineComponent({
     },
     attachCardStyle(selector) {
       $(selector).mousedown((e) => {
-        $(".clicked-card").css("z-index", "0");
-        $(e.currentTarget).css("z-index", "100");
-        if (!this.hasPlayerSelected) {
+        if (!this.isMobile) {
+          $(".clicked-card").css("z-index", "0");
+          $(e.currentTarget).css("z-index", "100");
+        }
+        if (!this.hasPlayerSelected || this.isMobile) {
           $(".clicked-card").removeClass("clicked-card");
           $(e.currentTarget).addClass("clicked-card");
         }
@@ -109,6 +111,8 @@ export default defineComponent({
 
       const usedCard = document.querySelector(".selected-card");
       usedCard.parentElement.removeChild(usedCard);
+
+      $(".clicked-card").removeClass("clicked-card");
     },
   },
   mounted() {

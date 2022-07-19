@@ -1,10 +1,13 @@
 <template>
   <div
     :class="isWhite ? 'white-card' : 'black-card'"
+    @mouseenter="handleHover"
+    @mouseleave="handleHover"
     :style="[
       hoverable
         ? {
-            'margin-bottom': '-160px',
+            position: 'relative',
+            'margin-bottom': [offset === 0 ? '-160px' : -(170 - offset) + 'px'],
           }
         : { 'margin-bottom': '0' },
     ]"

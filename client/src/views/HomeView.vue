@@ -69,6 +69,10 @@
                 Point
               </li>
               <li>Player with most points wins.</li>
+              <li>
+                It is recommended to use a teleconference software like Zoom to
+                chat.
+              </li>
             </ol>
           </icon-text>
           <icon-text title="House Rules">

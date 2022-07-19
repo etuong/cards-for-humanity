@@ -132,7 +132,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 10px 10px 40px 10px;
+  padding: 25px 10px 40px 10px;
   height: 100%;
 }
 </style>

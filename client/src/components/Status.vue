@@ -59,7 +59,7 @@ export default defineComponent({
   },
   methods: {
     handleVictoryBoardClick(selectedPlayer) {
-      this.selectedPlayer = selectedPlayer;
+      this.selectedPlayer = { ...selectedPlayer };
     },
   },
   sockets: {
@@ -82,6 +82,10 @@ export default defineComponent({
   }
 }
 
+.switch[type="checkbox"] + label {
+  cursor: default;
+}
+
 .switch-label {
   display: inline !important;
 }
@@ -91,5 +95,6 @@ export default defineComponent({
   height: 24px;
   border: none;
   background: transparent;
+  cursor: pointer;
 }
 </style>

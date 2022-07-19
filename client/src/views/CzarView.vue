@@ -106,8 +106,10 @@ export default defineComponent({
       this.message = newMessage;
     },
     playerSelections(newPlayerSections) {
-      this.czarPrevSelectionIndex = newPlayerSections.length - 1;
-      this.readyToSelect = true;
+      if (newPlayerSections.length > 0) {
+        this.czarPrevSelectionIndex = newPlayerSections.length - 1;
+        this.readyToSelect = true;
+      }
     },
   },
 });
@@ -197,5 +199,4 @@ export default defineComponent({
     margin-left: auto;
   }
 }
-
 </style>
