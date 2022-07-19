@@ -7,7 +7,7 @@ const server = require('http').createServer(app);
 app.use(logger('dev'));
 app.use(cors());
 app.get("/", (_, res) => {
-  res.redirect('https://etuong.github.io/pictionary.io');
+  res.redirect('https://etuong.github.io/cards-for-humanity/');
 });
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from

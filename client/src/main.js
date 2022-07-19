@@ -9,7 +9,7 @@ import "./styles/index.scss";
 window.$ = window.jQuery = jquery;
 
 const connection =
-  process.env.NODE_ENV === "development" ? "http://localhost:8081" : "not yet";
+  process.env.NODE_ENV === "development" ? "http://localhost:8081" : "https://cards-for-humanity.herokuapp.com/";
 const app = createApp(App);
 app.use(
   new VueSocketIO({
