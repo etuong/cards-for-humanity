@@ -1,4 +1,4 @@
-const cards = require('./ClassicPack.js');
+const cards = require('./FriendlyPack.js');
 const shuffleArray = require("./Utility.js");
 
 // CardDeck contains all cards, black and white

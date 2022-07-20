@@ -48,5 +48,8 @@
 + [Vue.js](https://vuejs.org/)
 + [Socket.io](https://socket.io/)
 
+### API
+Card texts are downloaded and parsed from [here](https://crhallberg.com/cah/) 
+
 #### License ⚖️
 [MIT](https://en.wikipedia.org/wiki/MIT_License)
