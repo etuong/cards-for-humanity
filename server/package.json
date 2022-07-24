@@ -1,5 +1,5 @@
 {
-  "name": "cards-for-humanity",
+  "name": "cards-for-humanity-server",
   "version": "1.0.0",
   "description": "Server for Cards For Humanity Web App",
   "main": "server.js",
