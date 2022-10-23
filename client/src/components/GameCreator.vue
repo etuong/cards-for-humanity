@@ -41,7 +41,7 @@
         </p>
       </div>
 
-      <input type="submit" style="display:none"/>
+      <input type="submit" style="display: none" />
     </form>
   </card-modal>
 </template>
