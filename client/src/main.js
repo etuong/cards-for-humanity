@@ -10,11 +10,14 @@ window.$ = window.jQuery = jquery;
 
 const connection =
   process.env.NODE_ENV === "development" ? "http://localhost:8081" : "https://cards-for-humanity.onrender.com/";
+  
 const app = createApp(App);
+
 app.use(
   new VueSocketIO({
     debug: false,
     connection,
   })
 );
+
 app.mount("#app");
