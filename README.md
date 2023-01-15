@@ -39,6 +39,8 @@
       heroku git:remote -a your-app
       git subtree push --prefix server heroku master
       ```
+  - FYI since Heroku is no longer free, I would suggest to use Render (https://render.com/)
+  
 - Push client
   - Use your preference to host your client app. I chose Github Page for its simplicity.
   - Run ```yarn build``` and then ```yarn deploy```
