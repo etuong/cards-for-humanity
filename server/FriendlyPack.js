@@ -298,6 +298,16 @@ module.exports = {
     "Volleyball shorts.",
     "Whatever dad does at work.",
     "Your face.",
-    "Your mom!"
+    "Your mom!",
+    "Anne Cho",
+    "Grace Huang",
+    "The DLDPs",
+    "Jia Ying",
+    "Amelia Power",
+    "The lazy interns",
+    "The crazy software engineer",
+    "Ugly UI/UX design",
+    "Stupid websites",
+    "Authentication",
   ],
 };
