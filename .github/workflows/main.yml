@@ -19,6 +19,9 @@ jobs:
       - run: npm install
       - run: npm run build
 
+      - name: Make directory
+        run: mkdir dist
+      
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:
