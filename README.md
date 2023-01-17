@@ -49,6 +49,8 @@
 ### Technologies 🔧
 + [Vue.js](https://vuejs.org/)
 + [Socket.io](https://socket.io/)
++ Client is built, deployed, and hosted on Github Pages using Github Actions. 
++ Server is built and deployed on Render.
 
 ### API
 Card texts are downloaded and parsed from [here](https://crhallberg.com/cah/) 
