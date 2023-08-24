@@ -12,7 +12,7 @@
       <div class="mb-6 pb-3 is-multiline">
         <div class="column is-12 is-9-desktop mx-auto has-text-centered">
           <h2 class="mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">
-            Ethan Uong
+            Cards For Humanity
           </h2>
           <p class="subtitle has-text-grey mb-5">
             An adult party game in which players complete fill-in-the-blank
